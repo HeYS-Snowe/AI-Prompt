@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"D:/Desktop/awesome-design-md-main/design-md/apple/DESIGN.md\" \"D:/Code/.prompt/设计/Apple设计系统-20260405/prompt.md\")",
+      "Bash(cp \"D:/Desktop/awesome-design-md-main/design-md/vercel/DESIGN.md\" \"D:/Code/.prompt/设计/Vercel设计系统-20260405/prompt.md\")",
+      "Bash(cp \"D:/Desktop/awesome-design-md-main/design-md/stripe/DESIGN.md\" \"D:/Code/.prompt/设计/Stripe设计系统-20260405/prompt.md\")",
+      "Bash(cp \"D:/Desktop/awesome-design-md-main/design-md/linear.app/DESIGN.md\" \"D:/Code/.prompt/设计/Linear设计系统-20260405/prompt.md\")",
+      "Bash(cp \"D:/Desktop/awesome-design-md-main/design-md/spotify/DESIGN.md\" \"D:/Code/.prompt/设计/Spotify设计系统-20260405/prompt.md\")"
+    ]
+  }
+}
