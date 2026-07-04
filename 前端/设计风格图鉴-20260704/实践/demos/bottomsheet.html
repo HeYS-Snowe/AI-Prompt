@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bottom Sheet / Half-sheet · 底部半屏页 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Bottom Sheet / Half-sheet<small>底部半屏页</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(160deg,#5b86ff,#34d399);overflow:hidden"><div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;padding:16px;box-shadow:0 -10px 30px rgba(0,0,0,.2)"><div style="width:36px;height:5px;border-radius:999px;background:#d1d1d6;margin:0 auto 14px"></div><div style="font-size:13px;font-weight:700;color:#1c1c1e;text-align:center">选择操作</div><div style="display:flex;gap:8px;margin-top:12px"><div style="flex:1;background:#007aff;color:#fff;border-radius:12px;padding:10px;text-align:center;font-size:10px;font-weight:600">确认</div><div style="flex:1;background:#f2f2f7;color:#1c1c1e;border-radius:12px;padding:10px;text-align:center;font-size:10px;font-weight:600">取消</div></div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">从底部滑出的半屏/全屏面板，用于次级操作、选择、表单，模态轻量、手势自然、不阻断上下文，移动端主流交互。</p>
+  <div class="meta">
+    <span class="tag">移动端 App</span>
+    <span class="tag">2018+</span>
+    <span class="tag">底部弹层 bottomsheet 半屏 sheet</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ffffff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffffff')" title="#ffffff"><small>#FFFFFF</small></div><div class="sw" style="background:#f2f2f7" onclick="navigator.clipboard&&navigator.clipboard.writeText('#f2f2f7')" title="#f2f2f7"><small>#F2F2F7</small></div><div class="sw" style="background:#1c1c1e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1c1c1e')" title="#1c1c1e"><small>#1C1C1E</small></div><div class="sw" style="background:#007aff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#007aff')" title="#007aff"><small>#007AFF</small></div></div>
+  <p class="hint">推荐字体：<code>SF Pro / 系统默认</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>底部滑出，可拖拽改变高度</li><li>顶部 grabber 拖把（圆角小条）</li><li>背景半透明遮罩，点击/下拉关闭</li><li>可堆叠：detents 多档高度（medium/large）</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>用 transform: translateY + 触摸拖拽</li><li>detents：medium(50%)/large(95%) 两档</li><li>背景遮罩 rgba(0,0,0,.4)，随高度渐显</li><li>圆角顶部 20px + grabber 36x5</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">iOS 16+ 原生 sheet、Google Maps 选择面板、打车/支付确认、大部分 App 次级流程。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Bottom Sheet / Half-sheet" (底部半屏页) style. 从底部滑出的半屏/全屏面板，用于次级操作、选择、表单，模态轻量、手势自然、不阻断上下文，移动端主流交互。 Visual: 底部滑出，可拖拽改变高度; 顶部 grabber 拖把（圆角小条）; 背景半透明遮罩，点击/下拉关闭; 可堆叠：detents 多档高度（medium/large）. Palette: #ffffff, #f2f2f7, #1c1c1e, #007aff. Font: SF Pro / 系统默认.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

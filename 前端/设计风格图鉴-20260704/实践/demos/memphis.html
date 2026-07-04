@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memphis Style · 孟菲斯 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Memphis Style<small>孟菲斯</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#fff8e7;background-image:radial-gradient(#1a1a1a 1.5px,transparent 1.5px);background-size:14px 14px;overflow:hidden;display:flex;align-items:center;justify-content:center"><div style="position:absolute;width:80px;height:80px;background:#ff6b9d;border-radius:50%;top:14px;left:16px"></div><div style="position:absolute;width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:42px solid #4ecdc4;bottom:16px;right:18px"></div><div style="background:#ffe66d;border:3px solid #1a1a1a;padding:8px 14px;font-weight:900;font-size:14px;transform:rotate(-6deg);font-family:Arial">MEMPHIS!</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">80 年代反主流：波普色彩、几何图案（波浪线、锯齿、圆点）、活泼俏皮、打破规则，复古而欢快。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">1980s</span>
+    <span class="tag">孟菲斯 波普 几何图案 波浪线</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ff6b9d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff6b9d')" title="#ff6b9d"><small>#FF6B9D</small></div><div class="sw" style="background:#4ecdc4" onclick="navigator.clipboard&&navigator.clipboard.writeText('#4ecdc4')" title="#4ecdc4"><small>#4ECDC4</small></div><div class="sw" style="background:#ffe66d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffe66d')" title="#ffe66d"><small>#FFE66D</small></div><div class="sw" style="background:#1a1a1a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1a1a1a')" title="#1a1a1a"><small>#1A1A1A</small></div></div>
+  <p class="hint">推荐字体：<code>Rubik / Raleway（几何圆润）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>背景布满波点/锯齿/波浪等几何图案</li><li>饱和撞色：粉、青、黄、黑</li><li>图形随手摆放，不规则但和谐</li><li>俏皮、童趣、反严肃</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>SVG pattern 画波浪线、波点、锯齿做背景</li><li>配色撞色，色块边界清晰</li><li>元素旋转散落，打破网格</li><li>字体圆润几何，带圆润感</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">80 年代孟菲斯设计集团、复古服装品牌、部分潮流电商、拼贴海报。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Memphis Style" (孟菲斯) style. 80 年代反主流：波普色彩、几何图案（波浪线、锯齿、圆点）、活泼俏皮、打破规则，复古而欢快。 Visual: 背景布满波点/锯齿/波浪等几何图案; 饱和撞色：粉、青、黄、黑; 图形随手摆放，不规则但和谐; 俏皮、童趣、反严肃. Palette: #ff6b9d, #4ecdc4, #ffe66d, #1a1a1a. Font: Rubik / Raleway（几何圆润）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light & Airy / Pastel · 轻盈粉彩 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Light & Airy / Pastel<small>轻盈粉彩</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#fce4ec,#fff3e0);display:flex;align-items:center;justify-content:center"><div style="background:#fff;border-radius:20px;padding:18px 22px;box-shadow:0 12px 30px rgba(248,187,208,.35);text-align:center"><div style="width:46px;height:46px;border-radius:50%;background:#f8bbd0;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px">&#9825;</div><div style="color:#ad5389;font-weight:800;font-size:15px">pastel</div><div style="color:#e0a0b0;font-size:9px;margin-top:3px">soft / airy / tender</div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">柔和的粉彩色调、轻盈通透、大量留白，温柔、治愈、女性化，常用于生活方式/美妆/儿童产品。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">常青</span>
+    <span class="tag">粉彩 轻盈 留白 柔和</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#fce4ec" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fce4ec')" title="#fce4ec"><small>#FCE4EC</small></div><div class="sw" style="background:#fff3e0" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fff3e0')" title="#fff3e0"><small>#FFF3E0</small></div><div class="sw" style="background:#e3f2fd" onclick="navigator.clipboard&&navigator.clipboard.writeText('#e3f2fd')" title="#e3f2fd"><small>#E3F2FD</small></div><div class="sw" style="background:#f8bbd0" onclick="navigator.clipboard&&navigator.clipboard.writeText('#f8bbd0')" title="#f8bbd0"><small>#F8BBD0</small></div></div>
+  <p class="hint">推荐字体：<code>Quicksand / Nunito（圆润轻盈）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>低饱和粉彩色（粉、蓝、黄、绿）</li><li>大量留白，呼吸感强</li><li>圆润字体、大圆角</li><li>柔光阴影，轻盈通透</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>配色饱和度降至 40% 以下</li><li>阴影用同色系柔光（非黑色）</li><li>圆角 16~24px，字体圆润</li><li>背景近白 #fffaf7，元素粉彩</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">美妆/护肤品牌、母婴产品、生活方式电商、治愈系 App。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Light &amp; Airy / Pastel" (轻盈粉彩) style. 柔和的粉彩色调、轻盈通透、大量留白，温柔、治愈、女性化，常用于生活方式/美妆/儿童产品。 Visual: 低饱和粉彩色（粉、蓝、黄、绿）; 大量留白，呼吸感强; 圆润字体、大圆角; 柔光阴影，轻盈通透. Palette: #fce4ec, #fff3e0, #e3f2fd, #f8bbd0. Font: Quicksand / Nunito（圆润轻盈）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clay 3D · 黏土 3D — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Clay 3D<small>黏土 3D</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#fbc2eb,#a18cd1);display:flex;align-items:center;justify-content:center"><div style="position:relative"><div style="width:90px;height:90px;border-radius:30px;background:radial-gradient(circle at 35% 30%,#ffb3a0,#ff6f9c 60%,#d65a7a);box-shadow:inset -8px -10px 18px rgba(0,0,0,.18),inset 6px 8px 14px rgba(255,255,255,.5),0 18px 36px rgba(0,0,0,.2);transform:rotate(-12deg)"></div><div style="position:absolute;width:42px;height:42px;border-radius:14px;background:radial-gradient(circle at 35% 30%,#b6e3ff,#6cc4ff 60%,#4a9fd6);box-shadow:inset -4px -6px 12px rgba(0,0,0,.18),inset 4px 5px 9px rgba(255,255,255,.5),0 10px 22px rgba(0,0,0,.18);right:-20px;top:-14px;transform:rotate(18deg)"></div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">用 Spline/Blender 渲染的柔软黏土质感 3D 元素，圆润、哑光、可爱，是当代网页 3D 主流，亲切无攻击性。</p>
+  <div class="meta">
+    <span class="tag">沉浸式 / 3D</span>
+    <span class="tag">2022+</span>
+    <span class="tag">黏土3d spline soft render</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ff9a8b" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff9a8b')" title="#ff9a8b"><small>#FF9A8B</small></div><div class="sw" style="background:#a18cd1" onclick="navigator.clipboard&&navigator.clipboard.writeText('#a18cd1')" title="#a18cd1"><small>#A18CD1</small></div><div class="sw" style="background:#fbc2eb" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fbc2eb')" title="#fbc2eb"><small>#FBC2EB</small></div><div class="sw" style="background:#84fab0" onclick="navigator.clipboard&&navigator.clipboard.writeText('#84fab0')" title="#84fab0"><small>#84FAB0</small></div></div>
+  <p class="hint">推荐字体：<code>Clash Display / Outfit（圆润现代展示字）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>柔软黏土质感（次表面散射 SSS）</li><li>哑光、圆润、无锐边</li><li>柔和全局光照</li><li>配色马卡龙，亲和力强</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>用 Spline 制作 clay 材质模型导出</li><li>材质：粗糙度高、柔光、SSS</li><li>配色马卡龙系，柔和过渡</li><li>网页用 Spline viewer 或导出 webm/glb</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Spline 官网、Linear 插画、部分 AI 产品 hero、潮流品牌 3D IP。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Clay 3D" (黏土 3D) style. 用 Spline/Blender 渲染的柔软黏土质感 3D 元素，圆润、哑光、可爱，是当代网页 3D 主流，亲切无攻击性。 Visual: 柔软黏土质感（次表面散射 SSS）; 哑光、圆润、无锐边; 柔和全局光照; 配色马卡龙，亲和力强. Palette: #ff9a8b, #a18cd1, #fbc2eb, #84fab0. Font: Clash Display / Outfit（圆润现代展示字）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

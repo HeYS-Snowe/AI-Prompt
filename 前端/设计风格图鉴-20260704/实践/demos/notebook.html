@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notebook / Paper · 笔记本风 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Notebook / Paper<small>笔记本风</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#fdfcf7;background-image:linear-gradient(rgba(91,141,239,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,138,91,.12) 1px,transparent 1px);background-size:16px 16px;display:flex;align-items:center;justify-content:center"><div style="background:#fff;border-radius:6px;padding:12px 16px;box-shadow:0 6px 16px rgba(0,0,0,.1);transform:rotate(-2deg);position:relative"><div style="position:absolute;top:-8px;left:24px;width:40px;height:14px;background:#ff8a5b;opacity:.6;transform:rotate(-8deg)"></div><div style="font-family:Cursive,Segoe Script;font-size:18px;color:#2b2b2b">笔记 ✓</div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">方格纸/横线纸背景、手写字、胶带、便签元素，模拟真实笔记本，亲切、学习感、有人情味。</p>
+  <div class="meta">
+    <span class="tag">网页表面风格</span>
+    <span class="tag">常青</span>
+    <span class="tag">笔记本 方格纸 手写 便签 washi tape</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#fdfcf7" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fdfcf7')" title="#fdfcf7"><small>#FDFCF7</small></div><div class="sw" style="background:#5b8def" onclick="navigator.clipboard&&navigator.clipboard.writeText('#5b8def')" title="#5b8def"><small>#5B8DEF</small></div><div class="sw" style="background:#ff8a5b" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff8a5b')" title="#ff8a5b"><small>#FF8A5B</small></div><div class="sw" style="background:#2b2b2b" onclick="navigator.clipboard&&navigator.clipboard.writeText('#2b2b2b')" title="#2b2b2b"><small>#2B2B2B</small></div></div>
+  <p class="hint">推荐字体：<code>Caveat / Patrick Hand（手写体）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>方格纸/横线纸背景（淡色网格）</li><li>手写体字体（Caveat）</li><li>胶带(washi tape)/便签元素</li><li>随手摆放，歪斜感</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>背景：linear-gradient 横线 或 方格纸网格</li><li>字体 Caveat / Patrick Hand 手写</li><li>点缀胶带（彩色斜条）/便签（黄色便利贴）</li><li>元素可 rotate(±3deg) 打破规整</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">笔记应用、学习工具、个人主页、手账风作品集。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Notebook / Paper" (笔记本风) style. 方格纸/横线纸背景、手写字、胶带、便签元素，模拟真实笔记本，亲切、学习感、有人情味。 Visual: 方格纸/横线纸背景（淡色网格）; 手写体字体（Caveat）; 胶带(washi tape)/便签元素; 随手摆放，歪斜感. Palette: #fdfcf7, #5b8def, #ff8a5b, #2b2b2b. Font: Caveat / Patrick Hand（手写体）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

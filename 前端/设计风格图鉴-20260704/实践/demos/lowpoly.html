@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Low Poly · 低多边形 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Low Poly<small>低多边形</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a535c,#0a3a40);display:flex;align-items:center;justify-content:center"><svg width="120" height="120" viewBox="0 0 100 100"><polygon points="50,8 84,40 64,52" fill="#ff6b6b"/><polygon points="50,8 64,52 36,52" fill="#ff8e8e"/><polygon points="50,8 36,52 16,40" fill="#ffe66d"/><polygon points="16,40 36,52 30,82" fill="#4ecdc4"/><polygon points="84,40 64,52 70,82" fill="#3bb5ad"/><polygon points="36,52 64,52 50,82" fill="#2a9d97"/><polygon points="30,82 50,82 70,82" fill="#1a535c"/></svg></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">用少量三角面拼出的几何化 3D，保留棱角与色块，复古游戏感、抽象艺术感，轻量且风格化。</p>
+  <div class="meta">
+    <span class="tag">沉浸式 / 3D</span>
+    <span class="tag">2010s+</span>
+    <span class="tag">低多边形 lowpoly 几何面</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ff6b6b" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff6b6b')" title="#ff6b6b"><small>#FF6B6B</small></div><div class="sw" style="background:#4ecdc4" onclick="navigator.clipboard&&navigator.clipboard.writeText('#4ecdc4')" title="#4ecdc4"><small>#4ECDC4</small></div><div class="sw" style="background:#ffe66d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffe66d')" title="#ffe66d"><small>#FFE66D</small></div><div class="sw" style="background:#1a535c" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1a535c')" title="#1a535c"><small>#1A535C</small></div></div>
+  <p class="hint">推荐字体：<code>Montserrat / Bebas（硬朗几何）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>明显的三角面棱角</li><li>每面纯色，靠明暗区分</li><li>配色风格化、对比强</li><li>轻量，适合 web/游戏</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>建模时降低面数，保留 flat shading</li><li>每个面纯色，三角面交界可见</li><li>配色锁定对比强的调色板</li><li>可用 Three.js MeshStandardMaterial flatShading</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">独立游戏、抽象 3D 插画、活动海报背景、部分品牌 IP。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Low Poly" (低多边形) style. 用少量三角面拼出的几何化 3D，保留棱角与色块，复古游戏感、抽象艺术感，轻量且风格化。 Visual: 明显的三角面棱角; 每面纯色，靠明暗区分; 配色风格化、对比强; 轻量，适合 web/游戏. Palette: #ff6b6b, #4ecdc4, #ffe66d, #1a535c. Font: Montserrat / Bebas（硬朗几何）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

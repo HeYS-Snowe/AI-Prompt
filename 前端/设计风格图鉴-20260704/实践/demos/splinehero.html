@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossy 3D / Spline Hero · 3D 主视觉 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Glossy 3D / Spline Hero<small>3D 主视觉</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#1a1a2e,#0a0a0f);display:flex;align-items:center;justify-content:center"><div style="width:90px;height:90px;border-radius:24px;background:conic-gradient(from 45deg,#ff6ec7,#54f2e6,#7c5cff,#ff6ec7);box-shadow:0 0 50px rgba(124,92,255,.5),inset 0 8px 16px rgba(255,255,255,.3),inset 0 -10px 20px rgba(0,0,0,.3);transform:perspective(300px) rotateY(-18deg) rotateX(8deg)"></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">单个炫酷的 3D 物体作为 hero 主视觉，可旋转交互，暗背景突出，强焦点、强记忆点，是 Spline 时代的主流。</p>
+  <div class="meta">
+    <span class="tag">网页表面风格</span>
+    <span class="tag">2022+</span>
+    <span class="tag">spline hero 3D主视觉 glossy 旋转 单焦点</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#0a0a0f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0a0a0f')" title="#0a0a0f"><small>#0A0A0F</small></div><div class="sw" style="background:#ff6ec7" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff6ec7')" title="#ff6ec7"><small>#FF6EC7</small></div><div class="sw" style="background:#54f2e6" onclick="navigator.clipboard&&navigator.clipboard.writeText('#54f2e6')" title="#54f2e6"><small>#54F2E6</small></div><div class="sw" style="background:#7c5cff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#7c5cff')" title="#7c5cff"><small>#7C5CFF</small></div></div>
+  <p class="hint">推荐字体：<code>Space Grotesk / Satoshi（现代干净）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>单个 3D 物体居中作主视觉</li><li>暗背景突出 3D，强焦点</li><li>可旋转/悬浮交互</li><li>高光、反射、材质精致</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>用 Spline 制作 3D 物体，导出 webm/glb 或 Spline viewer</li><li>背景深色，3D 居中</li><li>配少量文字（标题+CTA）</li><li>鼠标拖拽旋转，自动缓慢转动</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">科技产品落地页首屏、AI 产品 hero、品牌展示、创意机构。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Glossy 3D / Spline Hero" (3D 主视觉) style. 单个炫酷的 3D 物体作为 hero 主视觉，可旋转交互，暗背景突出，强焦点、强记忆点，是 Spline 时代的主流。 Visual: 单个 3D 物体居中作主视觉; 暗背景突出 3D，强焦点; 可旋转/悬浮交互; 高光、反射、材质精致. Palette: #0a0a0f, #ff6ec7, #54f2e6, #7c5cff. Font: Space Grotesk / Satoshi（现代干净）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

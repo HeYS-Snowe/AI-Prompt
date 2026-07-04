@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial · 杂志编辑风 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Editorial<small>杂志编辑风</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#fcf9f4;padding:16px;display:flex;gap:10px"><div style="flex:1.2"><div style="font-size:24px;font-weight:800;color:#1a1a1a;line-height:.98;font-family:Georgia,serif;letter-spacing:-.01em">The Art of Editorial</div><div style="font-size:8px;color:#c1272d;letter-spacing:.15em;margin-top:4px;text-transform:uppercase">Design Journal</div></div><div style="flex:1;font-size:7px;color:#555;line-height:1.5;column-count:1"><span style="font-size:22px;float:left;line-height:.9;margin:2px 4px 0 0;color:#1a1a1a;font-family:Georgia">E</span>ditorial design borrows from print magazines, with bold serif headlines and careful typography for a refined reading experience.</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">借鉴纸质杂志排版：大标题、多栏布局、图文混排、首字下沉、精致的行距与字距，阅读体验至上。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">常青</span>
+    <span class="tag">杂志 大标题 多栏 图文混排</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#fcf9f4" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fcf9f4')" title="#fcf9f4"><small>#FCF9F4</small></div><div class="sw" style="background:#1a1a1a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1a1a1a')" title="#1a1a1a"><small>#1A1A1A</small></div><div class="sw" style="background:#c1272d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#c1272d')" title="#c1272d"><small>#C1272D</small></div><div class="sw" style="background:#8a8a8a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#8a8a8a')" title="#8a8a8a"><small>#8A8A8A</small></div></div>
+  <p class="hint">推荐字体：<code>Playfair Display / Tiempos（衬线大标题）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>大号衬线标题，强对比</li><li>正文多栏（2~3 栏）布局</li><li>首字下沉（drop cap）、引文样式</li><li>大量留白 + 精致图注</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>标题用衬线 display 字体，字号 40~80px</li><li>正文 column-count: 2/3，行高 1.7</li><li>首字下沉：first-letter 放大 4~5 倍</li><li>配色米白底 + 深墨文字 + 一抹红</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Medium、The New York Times、Apple Newsroom、高端品牌故事页、独立杂志站。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Editorial" (杂志编辑风) style. 借鉴纸质杂志排版：大标题、多栏布局、图文混排、首字下沉、精致的行距与字距，阅读体验至上。 Visual: 大号衬线标题，强对比; 正文多栏（2~3 栏）布局; 首字下沉（drop cap）、引文样式; 大量留白 + 精致图注. Palette: #fcf9f4, #1a1a1a, #c1272d, #8a8a8a. Font: Playfair Display / Tiempos（衬线大标题）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

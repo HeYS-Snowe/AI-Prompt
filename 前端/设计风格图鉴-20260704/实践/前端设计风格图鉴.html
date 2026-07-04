@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端设计风格图鉴 · Design Style Atlas</title>
+    <style>
+  :root{
+    --bg:#0b0b0f; --bg2:#111118; --panel:#15151d; --panel2:#1b1b25;
+    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --ink:#f4f4f7; --ink2:#a8a8b8; --ink3:#6c6c7c;
+    --accent:#ff5a3c; --accent2:#ffd166;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{min-height:100vh;
+    background:
+      radial-gradient(1100px 560px at 88% -8%, rgba(255,90,60,.16), transparent 60%),
+      radial-gradient(900px 520px at -6% 4%, rgba(255,209,102,.08), transparent 60%),
+      var(--bg);}
+  .wrap{max-width:1380px;margin:0 auto;padding:0 28px}
+  header.top{position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);
+    background:linear-gradient(180deg,rgba(11,11,15,.92),rgba(11,11,15,.66));
+    border-bottom:1px solid var(--line)}
+  .top-in{display:flex;align-items:center;gap:20px;padding:14px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:12px;min-width:0}
+  .brand .logo{font-weight:800;font-size:20px;letter-spacing:-.02em;white-space:nowrap}
+  .brand .logo b{color:var(--accent)}
+  .brand .sub{font-size:12px;color:var(--ink3);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+  .search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--panel);
+    border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-width:240px}
+  .search input{background:transparent;border:0;outline:0;color:var(--ink);font-size:14px;width:100%}
+  .search input::placeholder{color:var(--ink3)}
+  .search .k{font-size:11px;color:var(--ink3);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+  .controls{padding:22px 0 6px;display:flex;flex-direction:column;gap:18px}
+  .hero h1{font-size:clamp(30px,4.6vw,52px);line-height:1.04;letter-spacing:-.035em;margin:0 0 14px;font-weight:800}
+  .hero h1 em{font-style:normal;color:transparent;background:linear-gradient(92deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text}
+  .hero p{color:var(--ink2);font-size:15px;max-width:70ch;margin:0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{appearance:none;background:var(--panel);border:1px solid var(--line);color:var(--ink2);
+    padding:8px 14px;border-radius:999px;font-size:13px;cursor:pointer;font-weight:600;transition:.18s}
+  .chip:hover{border-color:var(--line2);color:var(--ink)}
+  .chip.on{background:var(--ink);color:#0b0b0f;border-color:var(--ink)}
+  .chip .n{opacity:.5;margin-left:6px;font-variant-numeric:tabular-nums}
+  .chip.ghost{background:transparent;border-color:var(--accent);color:var(--accent)}
+  .chip.ghost:hover{background:var(--accent);color:#fff}
+  .pr-btn{appearance:none;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.18s}
+  .pr-btn:hover{filter:brightness(1.08)}
+  .guide{max-width:880px}
+  .guide nav{position:sticky;top:0;z-index:3;background:var(--bg2);border-bottom:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;padding:14px 28px 12px}
+  .guide nav button{appearance:none;background:transparent;border:1px solid var(--line);color:var(--ink2);padding:6px 12px;border-radius:999px;font-size:12px;cursor:pointer;font-weight:600}
+  .guide nav button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .gsect{padding:26px 28px 30px;display:none}
+  .gsect.on{display:block}
+  .gsect h3{font-size:18px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
+  .gsect .lead{color:var(--ink2);font-size:14px;line-height:1.6;margin:0 0 18px;max-width:64ch}
+  .ftab{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  .ftab th,.ftab td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  .ftab th{background:var(--panel);color:var(--ink);font-weight:700;font-size:12px}
+  .ftab td{color:var(--ink2);line-height:1.5}
+  .ftab code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:11.5px;color:var(--accent2);font-family:"SF Mono",ui-monospace,monospace}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  @media(max-width:720px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .step .num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;margin-bottom:10px}
+  .step h5{margin:0 0 6px;font-size:14px;font-weight:700}
+  .step p{margin:0;color:var(--ink2);font-size:12.5px;line-height:1.6}
+  .tmpl{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px}
+  .tmpl .th{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--panel2)}
+  .tmpl .th .t{font-weight:700;font-size:13.5px}
+  .tmpl .th .t span{color:var(--ink3);font-weight:600;font-size:11px;margin-left:6px}
+  .tmpl .th button{appearance:none;background:var(--accent);color:#fff;border:0;border-radius:7px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer}
+  .tmpl pre{margin:0;padding:13px 14px;overflow:auto;font-size:11.5px;line-height:1.6;color:var(--ink2);font-family:"SF Mono",ui-monospace,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+  .mixtab td:first-child{font-weight:700;color:var(--ink)}
+  .mixtab td:nth-child(3){color:var(--ink3)}
+  .pitfall{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .pitfall:last-child{border:0}
+  .pitfall .ic{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:rgba(255,90,60,.16);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  .pitfall p{margin:0;color:var(--ink2);font-size:13px;line-height:1.55}
+  .pitfall p b{color:var(--ink);font-weight:700}
+  .swlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:6px}
+  .swcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;transition:.15s}
+  .swcard:hover{border-color:var(--line2);transform:translateY(-2px)}
+  .swcard .bars{display:flex;height:32px}
+  .swcard .bars span{flex:1}
+  .swcard .info{padding:8px 10px}
+  .swcard .info .nm{font-size:12px;font-weight:700}
+  .swcard .info .hx{font-size:9.5px;color:var(--ink3);font-family:"SF Mono",monospace;margin-top:2px}
+  @keyframes blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+  .blink{animation:blink 1s steps(1) infinite}
+  @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  .shimmer{background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:200% 100%;animation:shimmer 3s linear infinite}
+  .stats{display:flex;gap:22px;flex-wrap:wrap;color:var(--ink3);font-size:12.5px;align-items:center}
+  .stats b{color:var(--ink);font-weight:700}
+  .legend{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+  main{padding:26px 0 80px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(298px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;
+    display:flex;flex-direction:column;transition:transform .22s cubic-bezier(.2,.7,.2,1),border-color .22s,box-shadow .22s}
+  .card:hover{transform:translateY(-4px);border-color:var(--line2);box-shadow:0 24px 60px -28px rgba(0,0,0,.8)}
+  .specimen{height:172px;position:relative;overflow:hidden}
+  .m-specimen{height:230px;position:relative;overflow:hidden}
+  .meta{padding:14px 16px 16px}
+  .names{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .names .en{font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+  .names .zh{font-size:12.5px;color:var(--ink2)}
+  .essence{color:var(--ink2);font-size:12.5px;line-height:1.5;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .tags{display:flex;gap:6px;margin-top:11px;flex-wrap:wrap}
+  .tag{font-size:10.5px;color:var(--ink3);border:1px solid var(--line);padding:2px 7px;border-radius:6px;letter-spacing:.04em}
+  .cat-web{background:rgba(96,165,250,.12);color:#7fb4ff;border-color:transparent}
+  .cat-theme{background:rgba(255,90,60,.14);color:#ff8367;border-color:transparent}
+  .cat-immersive{background:rgba(168,85,247,.14);color:#c08bff;border-color:transparent}
+  .cat-mobile{background:rgba(74,222,128,.14);color:#6df0a0;border-color:transparent}
+  .cat-desktop{background:rgba(255,209,102,.14);color:#ffd166;border-color:transparent}
+  .cat-compound{background:rgba(20,184,166,.16);color:#2dd4bf;border-color:transparent}
+  .swatches{display:flex;gap:0;box-shadow:inset 0 0 0 1px var(--line)}
+  .swatches span{flex:1;height:8px}
+  .overlay{position:fixed;inset:0;z-index:80;background:rgba(6,6,9,.74);backdrop-filter:blur(8px);
+    display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .2s}
+  .overlay.show{display:flex;opacity:1}
+  .modal{background:var(--bg2);border:1px solid var(--line2);border-radius:22px;max-width:900px;width:100%;
+    max-height:88vh;overflow:auto;box-shadow:0 40px 120px -30px #000}
+  .m-body{padding:26px 30px 30px}
+  .m-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+  .m-head .t h2{margin:0;font-size:27px;letter-spacing:-.025em;font-weight:800}
+  .m-head .t .zh{color:var(--ink2);font-size:15px;margin-top:3px}
+  .m-head .era{font-size:12px;color:var(--ink3);border:1px solid var(--line);padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .m-head{flex-wrap:wrap}
+  .demo-btn{appearance:none;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-decoration:none;transition:.18s;white-space:nowrap;margin-top:4px}
+  .demo-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .m-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:auto}
+  .m-essence{color:var(--ink);font-size:15.5px;line-height:1.6;margin:18px 0 0;max-width:64ch}
+  .m-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
+  @media(max-width:720px){.m-grid{grid-template-columns:1fr}.m-body{padding:22px}}
+  .sect h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin:0 0 12px;font-weight:700}
+  .sect ul{margin:0;padding:0;list-style:none}
+  .sect li{font-size:13.5px;line-height:1.62;color:var(--ink2);padding:5px 0 5px 20px;position:relative}
+  .sect li::before{content:"";position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--accent)}
+  .sect code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:12px;color:var(--ink);font-family:"SF Mono",ui-monospace,Consolas,monospace;word-break:break-all}
+  .pal{display:flex;flex-wrap:wrap;gap:9px}
+  .pal .sw{cursor:pointer;border:1px solid var(--line);border-radius:10px;overflow:hidden;width:74px;transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px);border-color:var(--line2)}
+  .pal .sw .c{height:42px}
+  .pal .sw .h{font-size:10px;text-align:center;padding:4px 0;color:var(--ink2);font-family:"SF Mono",ui-monospace,monospace;background:var(--panel)}
+  .ex{font-size:13px;color:var(--ink3);line-height:1.6}
+  .ex b{color:var(--ink2);font-weight:600}
+  .close{position:absolute;top:16px;right:18px;z-index:5;width:34px;height:34px;border-radius:999px;
+    background:rgba(0,0,0,.45);border:1px solid var(--line2);color:#fff;cursor:pointer;font-size:16px;
+    display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+  .close:hover{background:rgba(0,0,0,.7)}
+  .copied{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:#0b0b0f;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:700;
+    opacity:0;pointer-events:none;transition:.22s;z-index:120}
+  .copied.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  .empty{text-align:center;color:var(--ink3);padding:80px 0;font-size:14px}
+  footer.foot{border-top:1px solid var(--line);padding:26px 0;color:var(--ink3);font-size:12.5px}
+  footer.foot a{color:var(--ink2);border-bottom:1px solid var(--line)}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#2a2a35;border-radius:8px;border:2px solid var(--bg)}
+  ::selection{background:var(--accent);color:#fff}
+</style>
+  </head>
+  <body>
+    <header class="top"><div class="wrap top-in">
+        <div class="brand"><span
+            class="logo">Design&nbsp;Style&nbsp;<b>Atlas</b></span><span
+            class="sub">前端设计风格图鉴</span></div>
+        <label class="search"><span style="color:var(--ink3)">&#9096;</span>
+          <input id="q" placeholder="搜索风格名 / 关键词 / 品牌名…"
+            autocomplete="off"><span class="k">/</span></label>
+        <button class="pr-btn" onclick="openGuide()">&#9881; 复刻实战</button>
+      </div></header>
+
+    <section class="wrap controls">
+      <div class="hero">
+        <h1>看到好看，叫得出<em>名字</em>，复刻得出来</h1>
+        <p>覆盖网页表面风格、氛围主题、沉浸式 / 3D、移动端
+          App、桌面软件五大类。每张卡片都是该风格的实拍样本；点开即得配色（点击复制色值）、排版与可直接抄走的复刻要点。</p>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <main class="wrap">
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" style="display:none">没有匹配的风格。换个关键词试试。</div>
+    </main>
+
+    <footer class="foot wrap">
+      <span>设计与编撰 · 2026 · 共 <b id="total2">0</b> 种风格。配色点击即复制 hex。配合本地
+        <code>D:\Code\.prompt</code> 中的术语大全与 awesome-design-md 公司系统库食用更佳。</span>
+    </footer>
+
+    <div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+    <div class="overlay" id="goverlay"><div class="modal guide"
+        id="gmodal"></div></div>
+    <div class="copied" id="copied">已复制</div>
+
+    <script>
+const CATS={web:{zh:"网页表面风格",dot:"#60a5fa"},theme:{zh:"氛围主题风格",dot:"#ff5a3c"},immersive:{zh:"沉浸式 / 3D",dot:"#a855f7"},mobile:{zh:"移动端 App",dot:"#4ade80"},desktop:{zh:"桌面软件",dot:"#ffd166"},compound:{zh:"复合风格",dot:"#14b8a6"}};
+const STYLES=[
+{
+ id:'glass', en:'Glassmorphism', zh:'玻璃拟态', cat:'web', era:'2020+', keywords:'毛玻璃 frosted glass backdrop-filter',
+ essence:'半透明面板叠在高斯模糊的背景之上，带 1px 高光描边，背后内容若隐若现，呈现磨砂玻璃质感。',
+ palette:['#ffffff','#7f5cff','#ff6ec7','#1a1a2e'],
+ type:'Inter / SF Pro Text（清晰无衬线，弱字重对比）',
+ features:['背景需有彩色色块/图片，否则玻璃无内容可透','面层 fill 用 rgba(255,255,255,.08~.18)，深色用 rgba(255,255,255,.06)','统一描边 1px rgba(255,255,255,.18~.25) 模拟玻璃高光','文字需加细微文字阴影或暗遮罩保证可读性'],
+ replicate:['backdrop-filter: blur(20px) saturate(140%); 配 -webkit-backdrop-filter','卡片圆角 16~20px，阴影用多层柔光','Flutter：BackdropFilter + ImageFilter.blur(sigmaX:20)','勿滥用——长列表/表格里用会卡且脏，仅用于弹窗、控制中心、导航栏'],
+ examples:'macOS Big Sur 起、iOS 控制中心、Microsoft Fluent Acrylic、Linear 部分浮层、本地 prompt 库《亚克力与液态玻璃效果》。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(120deg,#7f5cff,#ff6ec7 60%,#ffb86c);overflow:hidden"><div style="position:absolute;width:160px;height:160px;border-radius:50%;background:#54f;filter:blur(30px);top:-30px;left:-20px;opacity:.8"></div><div style="position:absolute;width:140px;height:140px;border-radius:50%;background:#ff3d9a;filter:blur(30px);bottom:-30px;right:-10px;opacity:.8"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.35);color:#fff;box-shadow:0 8px 32px rgba(0,0,0,.25)"><div style="font-size:12px;opacity:.9">毛玻璃面板</div><div style="font-size:10px;opacity:.7;margin-top:4px">Glassmorphism blur(14px)</div></div></div>'
+},
+{
+ id:'neumorphism', en:'Neumorphism', zh:'新拟态 / Soft UI', cat:'web', era:'2019', keywords:'柔和浮雕 soft UI 双向阴影',
+ essence:'背景与组件同色，用「亮+暗」双向柔光阴影制造凸起或凹陷，像在软橡皮上压出来的物理按键。',
+ palette:['#e0e5ec','#9fa6b8','#4a4f5c','#5a7bff'],
+ type:'Quicksand / Nunito（圆润几何无衬线）',
+ features:['背景必须接近组件色，否则浮雕消失','凸起：box-shadow 同时给 -6,-6,12 #fff 与 6,6,12 rgba(0,0,0,.12)','凹陷：改用 inset 阴影','圆角偏大（14~20px），交互常为「按下变凹陷」'],
+ replicate:['核心：亮阴影 #ffffff + 暗阴影 rgba(163,177,198,.6)','配色限单色系，靠阴影而非颜色区分层级','缺点：可访问性差，按钮与背景对比度低，勿用于需高对比的表单'],
+ examples:'UI8 Soft UI Dashboard、Alexander Plyuto 原型、部分智能硬件控制面板。',
+ specimen:'<div style="position:absolute;inset:0;background:#e0e5ec;display:flex;align-items:center;justify-content:center;gap:14px"><div style="width:74px;height:74px;border-radius:18px;background:#e0e5ec;box-shadow:-6px -6px 14px #fff,6px 6px 16px rgba(163,177,198,.6);display:flex;align-items:center;justify-content:center;color:#5a7bff;font-size:22px">&#9654;</div><div style="width:74px;height:74px;border-radius:18px;background:#e0e5ec;box-shadow:inset -5px -5px 12px #fff,inset 5px 5px 14px rgba(163,177,198,.55);display:flex;align-items:center;justify-content:center;color:#9fa6b8;font-size:18px">&#9776;</div></div>'
+},
+{
+ id:'claymorphism', en:'Claymorphism', zh:'黏土拟态', cat:'web', era:'2021', keywords:'膨胀黏土 clay puffy 内阴影',
+ essence:'大圆角膨胀体 + 彩色柔光 + 明显内阴影高光，像捏出来的彩色橡皮泥，圆润、Q弹、童趣。',
+ palette:['#ff6b9d','#ffd166','#6ec1e4','#8b5cf6'],
+ type:'Poppins / Quicksand（粗壮圆体）',
+ features:['圆角极大（24~40px），造型「鼓鼓的」','内阴影 inset 偏移制造顶部高光，外阴影柔和','饱和但不刺眼的马卡龙色','按钮常有「悬浮感」，按下时阴影收缩'],
+ replicate:['box-shadow: inset 0 -8px 16px rgba(0,0,0,.12), inset 0 6px 12px rgba(255,255,255,.6), 0 12px 24px rgba(0,0,0,.12)','半径统一偏大，深色基底配浅色高光','适合玩具/儿童/创意产品，严肃后台慎用'],
+ examples:'Spline 首页插画风组件、部分 Figma 插件、儿童教育 App。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#fef6e4,#fff);display:flex;align-items:center;justify-content:center;gap:12px"><div style="padding:16px 26px;border-radius:26px;background:#ff6b9d;color:#fff;font-weight:700;font-size:13px;box-shadow:inset 0 -7px 14px rgba(0,0,0,.18),inset 0 6px 10px rgba(255,255,255,.5),0 14px 26px rgba(255,107,157,.4)">Press</div><div style="width:56px;height:56px;border-radius:20px;background:#6ec1e4;box-shadow:inset 0 -7px 14px rgba(0,0,0,.18),inset 0 6px 10px rgba(255,255,255,.55),0 14px 26px rgba(110,193,228,.45);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px">&#9733;</div></div>'
+},
+{
+ id:'liquidglass', en:'Liquid Glass', zh:'液态玻璃', cat:'web', era:'2025', keywords:'液态玻璃 折射 Apple vision',
+ essence:'Apple 2025 提出的下一代材质：比玻璃拟态更通透，边缘有动态光线折射，玻璃内部似有光在流动，像真实镜片。',
+ palette:['#0a0a0f','#ffffff','#0a84ff','#ffd60a'],
+ type:'SF Pro（与系统一致）',
+ features:['极高透明度，背景内容近乎可辨','边缘动态折射高光，随内容流动','1px 半透明白描边 + 内部微妙渐变色块','镜片随圆角贴合内容，形成动态高光带'],
+ replicate:['backdrop-filter: blur(24px) saturate(180%) contrast(1.05)','叠加 conic/linear 渐变模拟折射，mix-blend-mode: overlay','边缘 box-shadow inset 高光 + 伪元素流光动画','可读性靠深色文字 + 浅毛玻璃，或浅文字 + 深毛玻璃'],
+ examples:'iOS 26 / iPadOS 26 / macOS Tahoe（2025 WWDC）、visionOS 2、Apple 官方 Liquid Glass 设计指南。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,#0a84ff,transparent 50%),radial-gradient(circle at 75% 70%,#ff375f,transparent 55%),linear-gradient(120deg,#1a1a2e,#16213e);overflow:hidden"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64%;padding:16px;border-radius:20px;background:rgba(255,255,255,.1);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 12px 40px rgba(0,0,0,.4)"><div style="position:absolute;inset:0;border-radius:20px;background:conic-gradient(from 120deg,rgba(255,255,255,0),rgba(255,255,255,.25),rgba(255,255,255,0));mix-blend-mode:overlay;pointer-events:none"></div><div style="color:#fff;font-size:12px;font-weight:600">Liquid Glass</div><div style="color:rgba(255,255,255,.6);font-size:10px;margin-top:4px">折射 流光 镜片感</div></div></div>'
+},
+{
+ id:'flat2', en:'Flat 2.0 / Material', zh:'扁平化 2.0', cat:'web', era:'2014+', keywords:'扁平 subtle shadow 层次',
+ essence:'在纯扁平基础上加入微妙阴影、层级与深度暗示，保留扁平的干净，又比无修饰更可读、更有触感。',
+ palette:['#ffffff','#f5f5f7','#1d1d1f','#0071e3'],
+ type:'SF Pro / Roboto（中性无衬线）',
+ features:['无渐变、无纹理、无拟物，靠阴影分层','阴影极柔：0 1px 2px rgba(0,0,0,.06) 起步','强调色单一克制，多为品牌蓝','大留白 + 几何排版'],
+ replicate:['box-shadow 分 2~3 级 sm/md/lg，颜色一律低透明度黑','圆角 6~12px，按钮/卡片统一','配色：白底 + 深灰文字 + 单一品牌强调色','Google Material Elevation 是参考标准'],
+ examples:'Apple 官网、Google Material Design、Microsoft Fluent 轻量态、大多数现代 SaaS。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f5f7;display:flex;align-items:center;justify-content:center;gap:12px"><div style="width:56%;background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 16px rgba(0,0,0,.06)"><div style="height:8px;width:60%;background:#1d1d1f;border-radius:4px;opacity:.85"></div><div style="height:6px;width:80%;background:#d2d2d7;border-radius:3px;margin-top:8px"></div><div style="display:inline-block;margin-top:12px;padding:6px 14px;background:#0071e3;color:#fff;border-radius:999px;font-size:11px;font-weight:600">Get</div></div></div>'
+},
+{
+ id:'material3', en:'Material You (M3)', zh:'Material 3', cat:'web', era:'2021', keywords:'材质你 动态色彩 大圆角',
+ essence:'Google 新一代设计语言：从壁纸提取动态配色，圆角更夸张，组件更软，强调个性与情感。',
+ palette:['#6750a4','#eaddff','#21005d','#625b71'],
+ type:'Roboto / Google Sans',
+ features:['动态取色（Dynamic Color）从壁纸生成整套色板','圆角刻意大：按钮 999px、卡片 16~28px','Tonals：主色衍生 5 档深浅（primary container 等）','FAB、Chip、导航栏风格统一柔和'],
+ replicate:['配色用 M3 tonal palette：primary / onPrimary / primaryContainer / onPrimaryContainer','阴影柔，多靠 elevation tonal 而非黑阴影','按钮高度 40px、Chip 圆角 8px、卡片 12~28px','参考 Material Theme Builder 直接生成 token'],
+ examples:'Android 12+ 系统 UI、Google 全家桶、Flutter Material 3 组件库。',
+ specimen:'<div style="position:absolute;inset:0;background:#fef7ff;display:flex;align-items:center;justify-content:center;gap:10px"><div style="width:60%;background:#eaddff;border-radius:24px;padding:16px;color:#21005d"><div style="font-size:13px;font-weight:700">Material You</div><div style="font-size:10px;opacity:.7;margin-top:3px">动态取色 大圆角</div><div style="display:flex;gap:6px;margin-top:12px"><span style="padding:5px 12px;border-radius:8px;background:#6750a4;color:#fff;font-size:10px;font-weight:600">Filled</span><span style="padding:5px 12px;border-radius:8px;background:#eaddff;color:#6750a4;border:1px solid #cac4d0;font-size:10px;font-weight:600">Outline</span></div></div><div style="position:absolute;right:18px;bottom:18px;width:46px;height:46px;border-radius:16px;background:#6750a4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 16px rgba(103,80,164,.4)">+</div></div>'
+},
+{
+ id:'bento', en:'Bento Grid', zh:'便当盒网格', cat:'web', era:'2023+', keywords:'便当 bento 不等高网格',
+ essence:'用大小不一的圆角格子拼成模块化布局，像日式便当盒，信息密度高但层次清晰，是当代 Landing 最爱。',
+ palette:['#0b0b0f','#1c1c24','#ff5a3c','#34d399'],
+ type:'Inter / Geist（现代紧凑无衬线）',
+ features:['CSS Grid 不等高、不等宽 tile 拼接','圆角统一（18~28px），间距 12~16px','每格承载一个独立卖点/数据/插图','常配深色 + 单色高亮 + 大留白'],
+ replicate:['grid-template-columns: repeat(4,1fr); 配 grid-column/grid-row: span','tile 用 var(--panel) + 1px 边框 + 大圆角','图标/数字放大成视觉锚点，文字克制','hover 可轻微缩放或亮边框'],
+ examples:'Apple iPhone 产品页、Linear、Vercel、Arc 浏览器官网、2023 后大量 AI 产品落地页。',
+ specimen:'<div style="position:absolute;inset:0;background:#0b0b0f;padding:14px;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1.2fr 1fr;gap:8px"><div style="grid-column:span 2;border-radius:16px;background:linear-gradient(135deg,#1c1c24,#26262f);border:1px solid rgba(255,255,255,.08);padding:12px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-size:16px;font-weight:700">Bento Grid</div><div style="font-size:9px;color:#8a8a98">模块化 高密度 清晰层次</div></div><div style="border-radius:16px;background:#ff5a3c;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:800">99%</div><div style="border-radius:16px;background:#0f1f1a;border:1px solid rgba(52,211,153,.3);display:flex;align-items:center;justify-content:center;color:#34d399;font-size:22px">&#9650;</div></div>'
+},
+{
+ id:'paper', en:'Papermorphism', zh:'纸张拟态', cat:'web', era:'2018+', keywords:'纸张层叠 stacked paper',
+ essence:'用阴影分层和细微旋转模拟真实纸张堆叠，层与层之间有明确前后关系，文档/笔记感强。',
+ palette:['#fdfcf8','#ffffff','#e8e4d8','#2b2b2b'],
+ type:'Lora / Source Serif（衬线带书卷气）',
+ features:['每层白卡 + 不同 y 偏移阴影制造堆叠','轻微 rotate(-1~2deg) 打破规整','纸质米白底 #fdfcf8，非纯白','边缘可有 1px 极淡描边'],
+ replicate:['box-shadow: 0 1px 1px rgba(0,0,0,.04), 0 10px 30px rgba(0,0,0,.06)','上层卡片 transform: rotate(2deg) translateY(-4px)','背景加微噪点纹理（noise）增强纸感','适合笔记、文档、看板类产品'],
+ examples:'Notion 卡片视图、Trello、部分博客主题、纸质风格作品集。',
+ specimen:'<div style="position:absolute;inset:0;background:#fdfcf8;display:flex;align-items:center;justify-content:center"><div style="position:relative;width:62%;height:62%"><div style="position:absolute;inset:0;background:#fff;border-radius:10px;transform:rotate(-4deg);box-shadow:0 12px 30px rgba(0,0,0,.1)"></div><div style="position:absolute;inset:0;background:#fff;border-radius:10px;transform:rotate(3deg);box-shadow:0 12px 30px rgba(0,0,0,.1)"></div><div style="position:absolute;inset:0;background:#fff;border-radius:10px;padding:14px;box-shadow:0 16px 36px rgba(0,0,0,.12)"><div style="height:8px;width:50%;background:#2b2b2b;border-radius:3px"></div><div style="height:5px;width:80%;background:#e8e4d8;border-radius:3px;margin-top:8px"></div><div style="height:5px;width:65%;background:#e8e4d8;border-radius:3px;margin-top:6px"></div></div></div></div>'
+},
+{
+ id:'skeuo2', en:'Skeuomorphism 2.0', zh:'新拟物 2.0', cat:'web', era:'2023+', keywords:'拟物 物理质感 knob dial',
+ essence:'在扁平化基础上重新引入微妙物理暗示：纹理、高光、金属/皮革质感、可旋转旋钮，复古而精致。',
+ palette:['#1a1a1f','#2a2a32','#ffb84d','#d4d4dc'],
+ type:'SF Pro / 自定义 Display（高质感）',
+ features:['重新拥抱材质：拉丝金属、皮革、玻璃','高光与反射：顶部 linear-gradient + 底部阴影','物理交互：旋钮旋转、滑块有阻尼','精致但不卡通，偏高级感'],
+ replicate:['用多层 radial/linear gradient 模拟金属圆柱/球面','box-shadow 内外结合：顶部 inset 高光 + 底部投影','纹理用 CSS pattern 或 SVG overlay，低透明度','visionOS、部分音频/创意工具在回归此风格'],
+ examples:'Apple visionOS 控件、Logic Pro、部分高端音频 App、复古仪表盘 UI。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#2a2a32,#0e0e12);display:flex;align-items:center;justify-content:center;gap:18px"><div style="width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5a5a66,#1a1a1f 70%);box-shadow:inset 0 3px 6px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.6),0 10px 24px rgba(0,0,0,.6);position:relative"><div style="position:absolute;left:50%;top:12px;width:4px;height:24px;background:#ffb84d;border-radius:2px;transform:translateX(-50%) rotate(35deg);transform-origin:bottom center;box-shadow:0 0 8px #ffb84d"></div></div><div style="color:#d4d4dc;font-size:11px;letter-spacing:.2em;text-transform:uppercase">Volume</div></div>'
+},
+{
+ id:'metal', en:'Metallicmorphism', zh:'金属拟态', cat:'web', era:'2024+', keywords:'金属质感 拉丝 brushed 高光反射',
+ essence:'金属质感的表面处理，带高光反射与拉丝纹理，冷峻、工业、高级，常见于汽车/科技品牌。',
+ palette:['#0c0c0e','#3a3a40','#8a8a92','#e8e8ec'],
+ type:'SF Pro / Eurostile（冷硬几何）',
+ features:['表面用 conic/linear gradient 模拟金属反光','边缘高光 1px rgba(255,255,255,.4)','整体冷色调（钢灰、银、深空灰）','可叠加细微噪点或拉丝纹理'],
+ replicate:['background: linear-gradient(135deg,#3a3a40,#0c0c0e 50%,#2a2a2e)','加 box-shadow inset 顶部高光制造抛光感','文字冷白 #e8e8ec，勿用暖色','BMW / NVIDIA / 部分汽车 HMI 标配'],
+ examples:'BMW iDrive HMI、NVIDIA 网站、部分高端硬件官网、赛车/汽车产品页。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a1e,#0c0c0e);display:flex;align-items:center;justify-content:center"><div style="width:64%;padding:18px;border-radius:14px;background:linear-gradient(135deg,#4a4a52,#1a1a1e 45%,#2e2e34 70%,#3a3a40);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 1px rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.6),0 12px 30px rgba(0,0,0,.5)"><div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#e8e8ec;font-size:13px;font-weight:600;letter-spacing:.05em">METALLIC</div><div style="width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8a8a92,#2a2a2e);box-shadow:inset 0 1px 1px rgba(255,255,255,.5)"></div></div><div style="height:4px;background:linear-gradient(90deg,#8a8a92,#3a3a40);border-radius:2px;margin-top:12px;box-shadow:inset 0 1px 1px rgba(255,255,255,.2)"></div></div></div>'
+},
+{
+ id:'brutalism', en:'Brutalism', zh:'野性主义', cat:'theme', era:'2014+', keywords:'野性 粗犷 raw monospace',
+ essence:'反精致的叛逆：系统字体、裸露结构、大字号、强对比、无圆角无阴影，像 90 年代裸 HTML 又刻意为之。',
+ palette:['#ffffff','#000000','#ff4500','#ffff00'],
+ type:'Courier New / system-ui mono（系统等宽，拒绝美化）',
+ features:['纯黑纯白高对比，偶尔荧光色点缀','无圆角、无渐变、无阴影，边框粗实线','超大字号标题，正文密集','故意「丑」、信息直给、反装饰'],
+ replicate:['font-family: "Courier New", monospace; color:#000; background:#fff','border: 3px solid #000; border-radius:0','链接带下划线，悬停反色（background:#000;color:#fff）','HTML 元素直接裸用，少 CSS 包装'],
+ examples:'Bloomberg、Yale School of Art、Are.na、部分独立博客与设计师作品集。',
+ specimen:'<div style="position:absolute;inset:0;background:#fff;color:#000;padding:14px;font-family:Courier New,monospace"><div style="font-size:30px;font-weight:900;line-height:.95;letter-spacing:-.02em">BRUTAL<br>WEB.</div><div style="border:3px solid #000;padding:6px 8px;display:inline-block;margin-top:8px;font-size:11px;font-weight:700">ENTER &gt;&gt;</div><div style="margin-top:10px;font-size:9px;background:#ff4500;color:#fff;display:inline-block;padding:2px 6px;font-weight:700">RAW / UNPOLISHED</div><div style="margin-top:8px;border-top:3px solid #000;font-size:9px;padding-top:5px">no gradients · no shadows · no mercy</div></div>'
+},
+{
+ id:'neobrutalism', en:'Neo-Brutalism', zh:'新野性主义', cat:'theme', era:'2021+', keywords:'新野性 粗黑边 亮色 偏移阴影',
+ essence:'野性主义的可爱进化版：粗黑实线边框 + 饱和亮色 + 硬投影偏移，活泼、醒目、强交互感，是 2022 后流行风。',
+ palette:['#ffe156','#ff6b9d','#4d96ff','#1a1a1a'],
+ type:'Space Grotesk / Archivo（粗壮几何）',
+ features:['边框统一 2~4px 纯黑实线 #000','硬投影 box-shadow: 4px 4px 0 #000（无模糊）','底色高饱和：黄、粉、蓝、绿','圆角 0~12px，按钮按下偏移归零'],
+ replicate:['box-shadow: 6px 6px 0 #1a1a1a; border: 3px solid #1a1a1a','hover：transform: translate(-2px,-2px); shadow: 8px 8px 0','配色块状对比，每块一个亮色','字体用粗黑几何无衬线，权重 700+'],
+ examples:'Gumroad、Linear 早期、Framer 模板、大量 indie SaaS 与 Web3 产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#ffe156;display:flex;align-items:center;justify-content:center"><div style="background:#fff;border:3px solid #1a1a1a;border-radius:14px;box-shadow:6px 6px 0 #1a1a1a;padding:16px 18px;text-align:center"><div style="font-size:18px;font-weight:900;color:#1a1a1a;font-family:Arial,sans-serif">NEO-BRUTAL</div><div style="display:inline-block;margin-top:10px;padding:7px 16px;background:#ff6b9d;color:#1a1a1a;border:3px solid #1a1a1a;border-radius:999px;font-weight:800;font-size:11px;box-shadow:3px 3px 0 #1a1a1a">CLICK ME</div></div></div>'
+},
+{
+ id:'minimalism', en:'Minimalism', zh:'极简主义', cat:'theme', era:'常青', keywords:'极简 留白 less is more',
+ essence:'大量留白、极少元素、呼吸感强。用克制换取高级感，每个元素都有存在的理由，less is more。',
+ palette:['#ffffff','#fafafa','#111111','#c0c0c0'],
+ type:'Inter / Helvetica Now（中性无衬线）',
+ features:['超大留白，元素稀疏','配色克制：黑白灰 + 极少强调色','字号层级靠字重和灰度而非颜色','网格严格对齐，一丝不苟'],
+ replicate:['padding/margin 翻倍，敢于留白','配色限制在 3 色内：白、黑、一灰','标题用细字重（300~500），大字号','动效极轻：opacity / translateY 200ms'],
+ examples:'Apple、MUJI 官网、Linear、Vercel、大多数高端品牌。',
+ specimen:'<div style="position:absolute;inset:0;background:#fafafa;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px"><div style="font-size:30px;font-weight:300;color:#111;letter-spacing:-.03em">less.</div><div style="width:32px;height:1px;background:#111;margin:18px 0"></div><div style="font-size:10px;color:#999;letter-spacing:.2em;text-transform:uppercase">minimalism</div></div>'
+},
+{
+ id:'maximalism', en:'Maximalism', zh:'极繁主义', cat:'theme', era:'2020+', keywords:'极繁 密集 more is more 拼贴',
+ essence:'与极简对立：丰富装饰、多层叠加、信息密集、色彩饱和，more is more，热闹、 expressive、视觉爆炸。',
+ palette:['#ff006e','#fb5607','#ffbe0b','#3a86ff','#8338ec'],
+ type:'Bricolage / Anton（多变展示字体）',
+ features:['元素堆叠、旋转、错位','多色块、多图案、多纹理并置','文字与图形交织，不留空白','动效密集，常带粒子和流动'],
+ replicate:['允许重叠：z-index + transform: rotate','配色 5~7 色高饱和，冷暖混搭','背景放图案/贴纸/SVG 装饰填满','每寸空间都有内容，但需一个视觉中心'],
+ examples:'部分创意机构官网、乐队/音乐节海报、Z 世代潮流品牌、Web3 项目。',
+ specimen:'<div style="position:absolute;inset:0;background:#ffbe0b;overflow:hidden"><div style="position:absolute;width:90px;height:90px;border-radius:50%;background:#ff006e;top:14px;left:16px"></div><div style="position:absolute;width:70px;height:70px;background:#3a86ff;bottom:18px;left:30px;transform:rotate(15deg)"></div><div style="position:absolute;right:14px;top:18px;font-size:30px;font-weight:900;color:#8338ec;transform:rotate(-8deg);font-family:Arial">MORE!</div><div style="position:absolute;right:18px;bottom:22px;font-size:11px;background:#000;color:#fff;padding:4px 8px;transform:rotate(6deg);font-weight:800">expressive</div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-4deg);font-size:22px;font-weight:900;color:#000;font-family:Arial">MAXIMAL</div></div>'
+},
+{
+ id:'swiss', en:'Swiss Style', zh:'瑞士国际主义', cat:'theme', era:'1950s', keywords:'瑞士 网格 helvetica 不对称',
+ essence:'严格网格、无衬线字体、不对称布局、客观摄影。理性、秩序、信息层级清晰，是现代平面设计之祖。',
+ palette:['#ffffff','#111111','#d6001c','#f5f5f5'],
+ type:'Helvetica / Inter（经典无衬线）',
+ features:['12 栏严格网格，一切对齐','无衬线、左对齐、字距紧','不对称构图，留白也是设计','红色作为唯一强调，黑白为主'],
+ replicate:['CSS Grid 12 列，元素严格吸附','font-size 阶梯清晰（8/12/24/48），字重分级','大量左对齐文本块，标题靠字号而非颜色','配色：#fff / #111 / 一个 #d6001c'],
+ examples:'Apple 早期设计、众多博物馆/美术馆官网、瑞士联邦铁路、经典海报传统。',
+ specimen:'<div style="position:absolute;inset:0;background:#fff;display:grid;grid-template-columns:1fr 1fr;padding:0"><div style="padding:16px;display:flex;flex-direction:column;justify-content:space-between"><div style="font-size:30px;font-weight:800;color:#111;line-height:.92;letter-spacing:-.04em">SCHWEIZ<br>SWISS</div><div style="font-size:8px;color:#555;letter-spacing:.1em">GRID SYSTEMS</div></div><div style="background:#d6001c;display:flex;align-items:flex-end;padding:16px"><div style="color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em">TYPOGRAPHIE / 1957</div></div></div>'
+},
+{
+ id:'bauhaus', en:'Bauhaus', zh:'包豪斯', cat:'theme', era:'1919', keywords:'包豪斯 几何 三原色 功能主义',
+ essence:'几何图形（圆、方、三角）+ 三原色（红黄蓝）+ 功能主义。形式追随功能，影响整个现代设计。',
+ palette:['#e63946','#f4d35e','#1d3557','#ffffff'],
+ type:'Futura / Universal（几何无衬线）',
+ features:['基本几何：圆=黄、方=红、三角=蓝','构图基于几何叠加与分割','无装饰，纯色块','字体几何化、字距紧'],
+ replicate:['用 SVG/CSS 画大圆、大方、三角叠加','配色锁三原色 + 黑白','字体用 Futura / Poppins 几何体','排版追求平衡而非对称'],
+ examples:'包豪斯学校档案、部分设计博物馆、复古几何风品牌、海报传统。',
+ specimen:'<div style="position:absolute;inset:0;background:#f0ece2;display:flex;align-items:center;justify-content:center;gap:8px"><div style="width:60px;height:60px;background:#e63946"></div><div style="width:60px;height:60px;border-radius:50%;background:#f4d35e"></div><div style="width:0;height:0;border-left:32px solid transparent;border-right:32px solid transparent;border-bottom:56px solid #1d3557"></div></div>'
+},
+{
+ id:'memphis', en:'Memphis Style', zh:'孟菲斯', cat:'theme', era:'1980s', keywords:'孟菲斯 波普 几何图案 波浪线',
+ essence:'80 年代反主流：波普色彩、几何图案（波浪线、锯齿、圆点）、活泼俏皮、打破规则，复古而欢快。',
+ palette:['#ff6b9d','#4ecdc4','#ffe66d','#1a1a1a'],
+ type:'Rubik / Raleway（几何圆润）',
+ features:['背景布满波点/锯齿/波浪等几何图案','饱和撞色：粉、青、黄、黑','图形随手摆放，不规则但和谐','俏皮、童趣、反严肃'],
+ replicate:['SVG pattern 画波浪线、波点、锯齿做背景','配色撞色，色块边界清晰','元素旋转散落，打破网格','字体圆润几何，带圆润感'],
+ examples:'80 年代孟菲斯设计集团、复古服装品牌、部分潮流电商、拼贴海报。',
+ specimen:'<div style="position:absolute;inset:0;background:#fff8e7;background-image:radial-gradient(#1a1a1a 1.5px,transparent 1.5px);background-size:14px 14px;overflow:hidden;display:flex;align-items:center;justify-content:center"><div style="position:absolute;width:80px;height:80px;background:#ff6b9d;border-radius:50%;top:14px;left:16px"></div><div style="position:absolute;width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:42px solid #4ecdc4;bottom:16px;right:18px"></div><div style="background:#ffe66d;border:3px solid #1a1a1a;padding:8px 14px;font-weight:900;font-size:14px;transform:rotate(-6deg);font-family:Arial">MEMPHIS!</div></div>'
+},
+{
+ id:'editorial', en:'Editorial', zh:'杂志编辑风', cat:'theme', era:'常青', keywords:'杂志 大标题 多栏 图文混排',
+ essence:'借鉴纸质杂志排版：大标题、多栏布局、图文混排、首字下沉、精致的行距与字距，阅读体验至上。',
+ palette:['#fcf9f4','#1a1a1a','#c1272d','#8a8a8a'],
+ type:'Playfair Display / Tiempos（衬线大标题）',
+ features:['大号衬线标题，强对比','正文多栏（2~3 栏）布局','首字下沉（drop cap）、引文样式','大量留白 + 精致图注'],
+ replicate:['标题用衬线 display 字体，字号 40~80px','正文 column-count: 2/3，行高 1.7','首字下沉：first-letter 放大 4~5 倍','配色米白底 + 深墨文字 + 一抹红'],
+ examples:'Medium、The New York Times、Apple Newsroom、高端品牌故事页、独立杂志站。',
+ specimen:'<div style="position:absolute;inset:0;background:#fcf9f4;padding:16px;display:flex;gap:10px"><div style="flex:1.2"><div style="font-size:24px;font-weight:800;color:#1a1a1a;line-height:.98;font-family:Georgia,serif;letter-spacing:-.01em">The Art of Editorial</div><div style="font-size:8px;color:#c1272d;letter-spacing:.15em;margin-top:4px;text-transform:uppercase">Design Journal</div></div><div style="flex:1;font-size:7px;color:#555;line-height:1.5;column-count:1"><span style="font-size:22px;float:left;line-height:.9;margin:2px 4px 0 0;color:#1a1a1a;font-family:Georgia">E</span>ditorial design borrows from print magazines, with bold serif headlines and careful typography for a refined reading experience.</div></div>'
+},
+{
+ id:'y2k', en:'Y2K Aesthetic', zh:'千禧复古风', cat:'theme', era:'1998~2003', keywords:'千禧 银色 像素字 蓝紫渐变',
+ essence:'致敬 2000 年代视觉：银色金属、蓝紫渐变、像素字体、电路纹理、未来乐观感，当下正大规模回潮。',
+ palette:['#c0c0ff','#9d4edd','#00b4d8','#ffffff'],
+ type:'Verdana / Pixel / MS Sans Serif（复古系统字）',
+ features:['银灰金属渐变 + 蓝紫泡泡渐变','像素化/锯齿字体','光泽按钮、bevel 浮雕','电路板、星球、蝴蝶等装饰'],
+ replicate:['background: linear-gradient银色金属 + 蓝紫','按钮用 bevel：highlight top-left, shadow bottom-right','字体 Verdana / 像素字体，字号小','配色冷调，配粉紫高光'],
+ examples:'早期 MSN/iMac G3、当下 Z 世代时尚品牌、潮流音乐封面、回潮的网页作品集。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#c0c0ff,#9d4edd);overflow:hidden"><div style="position:absolute;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#c0c0ff 40%,#9d4edd);top:-30px;right:-20px;filter:blur(2px);opacity:.7"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:26px;font-weight:900;color:#fff;text-shadow:0 0 10px #9d4edd,2px 2px 0 #4a0080;font-family:Verdana">Y2K</div><div style="margin-top:8px;padding:6px 16px;display:inline-block;background:linear-gradient(180deg,#e9d5ff,#9d4edd);border:1px solid #fff;border-radius:4px;color:#fff;font-size:10px;font-weight:700;font-family:Verdana;box-shadow:inset 1px 1px 0 #fff">click here</div></div></div>'
+},
+{
+ id:'frutiger', en:'Frutiger Aero', zh:'枫木水族风', cat:'theme', era:'2004~2013', keywords:'水族 glossy 自然 蓝绿 清透',
+ essence:'2000s 中期 glossy 自然风：清透蓝绿、水滴、气泡、绿叶、镜面反光，干净乐观的科技自然感，近年强烈回潮。',
+ palette:['#3fb950','#00a8e8','#a8e6cf','#ffffff'],
+ type:'Frutiger / Segoe UI（清透圆润无衬线）',
+ features:['清透的蓝绿渐变 + 镜面高光','水滴、气泡、水波、绿叶等自然元素','玻璃质感按钮带强烈光泽','明亮、干净、乐观的氛围'],
+ replicate:['background: linear-gradient 清透蓝绿，配白色高光','按钮加 inset 顶部白色高光（gloss）','点缀水滴/叶子 SVG 元素','字体 Frutiger / Segoe UI 圆润清透'],
+ examples:'Windows Vista/Aero、早期 Apple Aqua、当下回潮的 Windows 11 部分壁纸风、Y2K 后续复兴。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(180deg,#a8e6cf,#3fb950 55%,#00a8e8);overflow:hidden"><div style="position:absolute;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,rgba(255,255,255,.4));top:14px;right:20px"></div><div style="position:absolute;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,rgba(255,255,255,.3));bottom:18px;left:24px"></div><div style="position:absolute;left:50%;bottom:24px;transform:translateX(-50%);padding:10px 20px;border-radius:12px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.5));border:1px solid #fff;color:#1a6b3a;font-weight:800;font-size:12px;box-shadow:inset 0 2px 4px rgba(255,255,255,.8),0 6px 16px rgba(0,0,0,.2)">Frutiger Aero</div></div>'
+},
+{
+ id:'vaporwave', en:'Vaporwave', zh:'蒸汽波', cat:'theme', era:'2012+', keywords:'蒸汽波 粉紫 希腊雕塑 复古网格',
+ essence:'粉紫青蓝渐变、希腊雕塑、棕榈、80s 网格地平线、日文假名，怀旧迷幻的赛博怀旧美学。',
+ palette:['#ff71ce','#01cdfe','#b967ff','#05ffa1'],
+ type:'VCR OSD Mono / Pixel（复古霓虹字）',
+ features:['粉紫 + 青蓝 + 品红的迷幻渐变','80s 透视网格地平线','希腊柱、棕榈、雕像、日文假名','故障/扫描线/CRT 质感'],
+ replicate:['background: linear-gradient 粉紫青','用 perspective grid（CSS transform 透视网格）','叠加 scanline / glitch 滤镜','字体 VCR OSD Mono / 像素霓虹'],
+ examples:'音乐封面（Macintosh Plus）、潮流周边、复古主题作品集、Web3 艺术项目。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(180deg,#ff71ce,#b967ff 40%,#01cdfe);overflow:hidden"><div style="position:absolute;inset:50% 0 0 0;background:linear-gradient(0deg,#2a0a4a,transparent),repeating-linear-gradient(90deg,transparent,transparent 22px,#ff71ce 22px,#ff71ce 24px),repeating-linear-gradient(0deg,transparent,transparent 18px,#01cdfe 18px,#01cdfe 20px);transform:perspective(220px) rotateX(58deg);transform-origin:top"></div><div style="position:absolute;left:50%;top:20px;transform:translateX(-50%);font-size:20px;color:#fff;text-shadow:0 0 8px #ff71ce;font-family:Arial">VAPORWAVE</div></div>'
+},
+{
+ id:'cyberpunk', en:'Cyberpunk', zh:'赛博朋克', cat:'theme', era:'常青', keywords:'赛博 霓虹 故障 未来 dystopia',
+ essence:'霓虹色、暗色基底、故障效果、未来科技感。高科技低生活，霓虹与雨夜，是科技反乌托邦的视觉符号。',
+ palette:['#0a0a12','#ff003c','#00fff5','#fee440'],
+ type:'Orbitron / Rajdhani（未来几何无衬线）',
+ features:['深色近黑底 + 高饱和霓虹（青、品红、黄）','故障/glitch：色差、撕裂、扫描线','HUD 风格线框、扫描动画','日文/英文混排，赛博城市感'],
+ replicate:['背景 #0a0a12，霓虹用 box-shadow 发光','glitch：text-shadow 红青双色偏移 + clip 动画','配 perspective 网格 + 雨夜','字体 Orbitron / Rajdhani 几何未来'],
+ examples:'《赛博朋克 2077》、科幻电影 UI、游戏官网、Web3/加密项目、电竞品牌。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,#1a0a2a,#0a0a12);overflow:hidden"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:24px;font-weight:900;color:#00fff5;text-shadow:0 0 10px #00fff5,3px 0 #ff003c,-3px 0 #00fff5;font-family:Arial">CYBER//PUNK</div><div style="margin-top:8px;color:#fee440;font-size:9px;letter-spacing:.3em;text-shadow:0 0 6px #fee440">高科�NUCLEAR 低生活</div></div><div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:repeating-linear-gradient(90deg,transparent,transparent 18px,rgba(0,255,245,.25) 18px,rgba(0,255,245,.25) 19px),repeating-linear-gradient(0deg,transparent,transparent 14px,rgba(255,0,60,.2) 14px,rgba(255,0,60,.2) 15px);transform:perspective(160px) rotateX(60deg);transform-origin:bottom"></div></div>'
+},
+{
+ id:'synthwave', en:'Synthwave', zh:'合成波', cat:'theme', era:'2010s', keywords:'合成波 80s 日落 网格 霓虹',
+ essence:'80s 复古未来：日落渐变（橙粉紫）、透视网格地平线、霓虹描边、日落太阳带条纹，迷幻而怀旧。',
+ palette:['#ff006e','#fb5607','#8338ec','#3a0ca3'],
+ type:'Monoton / Audiowide（霓虹描边字）',
+ features:['日落渐变：橙→粉→紫','透视网格地面 + 远山/太阳剪影','霓虹描边字（outline + glow）','深紫/品红基调，配粉橙高光'],
+ replicate:['太阳：径向渐变圆 + 水平条纹裁切','网格：perspective + repeating-linear-gradient','标题用 -webkit-text-stroke 描边 + text-shadow glow','配色锁定粉紫橙'],
+ examples:'《迈阿密热线》、Drive 配乐封面、Synthwave 音乐厂牌、复古游戏 UI。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(180deg,#3a0ca3,#8338ec 45%,#ff006e);overflow:hidden"><div style="position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#fb5607,#ff006e);box-shadow:0 0 30px #ff006e"></div><div style="position:absolute;left:0;right:0;top:30%;height:0;border-top:3px solid #3a0ca3;transform:translateY(40px)"></div><div style="position:absolute;left:0;right:0;bottom:0;height:42%;background:repeating-linear-gradient(90deg,transparent,transparent 20px,#ff006e 20px,#ff006e 22px),repeating-linear-gradient(0deg,transparent,transparent 16px,#00f5d4 16px,#00f5d4 17px);transform:perspective(180px) rotateX(62deg);transform-origin:top"></div></div>'
+},
+{
+ id:'pixelart', en:'Pixel Art', zh:'像素风', cat:'theme', era:'8-bit', keywords:'像素 8-bit 像素字体',
+ essence:'复古像素图形、8-bit 配色、网格对齐、像素字体，致敬早期游戏机，怀旧而精致，当下回潮。',
+ palette:['#1a1c2c','#41a6f6','#ef7d57','#ffcd75'],
+ type:'Press Start 2P / Pixelify Sans（像素字体）',
+ features:['图形按像素网格（image-rendering: pixelated）','限色 8~16 色调色板','像素字体，字号整数','硬边、无抗锯齿'],
+ replicate:['img { image-rendering: pixelated } 保留锯齿','字体 "Press Start 2P" 像素体','配色用限定调色板（如 sweetie16）','元素吸附像素网格对齐'],
+ examples:'《星露谷物语》《蔚蓝》UI、复古游戏、潮流品牌像素 IP、NFT 像素项目。',
+ specimen:'<div style="position:absolute;inset:0;background:#1a1c2c;display:flex;align-items:center;justify-content:center"><div style="display:grid;grid-template-columns:repeat(7,10px);grid-template-rows:repeat(7,10px);gap:2px"><div style="background:#41a6f6;grid-area:1/3/2/6"></div><div style="background:#41a6f6;grid-area:2/2/3/7"></div><div style="background:#41a6f6;grid-area:3/1/4/8"></div><div style="background:#41a6f6;grid-area:4/1/5/8"></div><div style="background:#41a6f6;grid-area:5/2/6/7"></div><div style="background:#41a6f6;grid-area:6/3/7/6"></div><div style="background:#ef7d57;grid-area:7/4/8/5"></div></div></div>'
+},
+{
+ id:'sketchy', en:'Hand-drawn / Sketchy', zh:'手绘涂鸦风', cat:'theme', era:'常青', keywords:'手绘 涂鸦 sketch 白板',
+ essence:'不规则手绘线条、涂鸦感、白板笔记风格，亲切、随性、有人情味，弱化技术的冰冷。',
+ palette:['#fdfaf3','#2b2b2b','#ff5252','#5b8def'],
+ type:'Caveat / Patrick Hand（手写体）',
+ features:['手绘 SVG 边框（rough.js 或手画 path）','字体手写体，略歪斜','配色米白纸 + 手绘彩','元素随手摆放，不强对齐'],
+ replicate:['用 rough.js 生成手绘形状，或 SVG path 模拟','字体 Caveat / Patrick Hand','背景米白 #fdfaf3 + 极淡横线（笔记本格）','允许 rotate(±2deg) 打破规整'],
+ examples:'Excalidraw、手绘风教程网站、设计师作品集、教育类产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#fdfaf3;background-image:linear-gradient(#cde6ff22 1px,transparent 1px);background-size:100% 16px;display:flex;align-items:center;justify-content:center"><div style="border:2.5px solid #2b2b2b;border-radius:18px 14px 16px 20px/16px 18px 14px 20px;padding:14px 18px;transform:rotate(-1.5deg);box-shadow:3px 3px 0 #2b2b2b22"><div style="font-family:Cursive,Segoe Script,serif;font-size:22px;color:#2b2b2b;font-weight:700">sketchy!</div><div style="font-family:Cursive;color:#ff5252;font-size:11px;margin-top:4px">hand-drawn & doodle</div></div></div>'
+},
+{
+ id:'terminal', en:'Retro Terminal / CRT', zh:'终端复古', cat:'theme', era:'70s~80s', keywords:'终端 CRT 绿屏 扫描线',
+ essence:'绿屏/琥珀色单色显示器、等宽字体、扫描线、CRT 弧面、闪烁光标，致敬早期计算机的硬核极客浪漫。',
+ palette:['#0a1a0a','#33ff66','#003b00','#ffb000'],
+ type:'VT323 / IBM Plex Mono（等宽终端字）',
+ features:['单色显示：绿底绿字 #33ff66 或琥珀色','扫描线 overlay + CRT 弧面 vignette','闪烁光标、逐字打字效果','纯 ASCII 界面，无图形'],
+ replicate:['背景 #0a1a0a，文字 #33ff66，font VT323','扫描线：repeating-linear-gradient 叠加','光标闪烁 animation + text-shadow 发光','边框用 box-shadow inset 模拟 CRT 弧面'],
+ examples:'黑客主题作品集、CLI 工具官网、复古游戏、极客文化周边。',
+ specimen:'<div style="position:absolute;inset:0;background:#0a1a0a;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.25),rgba(0,0,0,.25) 1px,transparent 1px,transparent 3px);display:flex;align-items:center;justify-content:center"><div style="color:#33ff66;font-family:Consolas,monospace;font-size:12px;text-shadow:0 0 6px #33ff66;line-height:1.5"><div>&gt; system.init<span style="animation:blink 1s steps(1) infinite">_</span></div><div style="color:#ffb000">&gt; [OK] retro terminal online</div><div>&gt; press any key_<span style="color:#33ff66">&#9608;</span></div></div></div>'
+},
+{
+ id:'organic', en:'Organic / Blob', zh:'有机流体', cat:'theme', era:'2020+', keywords:'有机 blob 不规则曲线',
+ essence:'曲线、不规则形状（blob）、自然流动的边界，模仿自然界形态，柔和、温暖、去工业化。',
+ palette:['#fff5f0','#ff8a5b','#6c63ff','#43c6ac'],
+ type:'Quicksand / Nunito（圆润无衬线）',
+ features:['不规则 blob 形状（border-radius 多值）','柔和渐变填充','圆润字体、大圆角','配色温暖、自然、低饱和'],
+ replicate:['border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%（blob）','背景用柔和径向渐变','SVG path 画有机流动边界','hover 时 blob 形状可 morph 动画'],
+ examples:'部分健康/养生品牌、创意机构、插画风 SaaS 落地页、儿童产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#fff5f0;overflow:hidden;display:flex;align-items:center;justify-content:center"><div style="position:absolute;width:140px;height:140px;background:linear-gradient(135deg,#ff8a5b,#6c63ff);border-radius:60% 40% 30% 70%/60% 30% 70% 40%;top:8px;left:-10px;opacity:.85"></div><div style="position:absolute;width:90px;height:90px;background:#43c6ac;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;bottom:6px;right:6px;opacity:.8"></div><div style="position:relative;color:#fff;font-weight:800;font-size:16px;text-align:center;z-index:2;font-family:Arial">organic</div></div>'
+},
+{
+ id:'industrial', en:'Industrial', zh:'工业风', cat:'theme', era:'常青', keywords:'工业 暴露结构 粗粝 单色',
+ essence:'暴露的结构、粗粝质感、单色调、功能性优先，源自工厂/仓库美学，硬朗、真实、不修饰。',
+ palette:['#2b2b2b','#8a8a8a','#d4a017','#1a1a1a'],
+ type:'Oswald / Bebas Neue（窄体粗壮）',
+ features:['深灰/水泥灰主调，配警示黄','粗粝纹理：水泥、金属、磨损','暴露的网格/线条结构','功能性优先，少装饰'],
+ replicate:['背景水泥灰 #3a3a3a + 噪点纹理','强调色警示黄 #d4a017，仅用于关键元素','字体 Oswald 窄体粗壮，全大写','边框、分割线粗实，结构外露'],
+ examples:'工业品牌、机械/工程类产品、Loft 风咖啡馆、部分运动品牌。',
+ specimen:'<div style="position:absolute;inset:0;background:#2b2b2b;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:8px 8px;display:flex;align-items:center;justify-content:center"><div style="border:3px solid #8a8a8a;padding:16px 20px;position:relative"><div style="position:absolute;top:-4px;left:-4px;width:14px;height:14px;border-top:3px solid #d4a017;border-left:3px solid #d4a017"></div><div style="position:absolute;bottom:-4px;right:-4px;width:14px;height:14px;border-bottom:3px solid #d4a017;border-right:3px solid #d4a017"></div><div style="color:#e8e8e8;font-size:20px;font-weight:900;letter-spacing:.1em;font-family:Arial">INDUSTRIAL</div><div style="color:#d4a017;font-size:9px;letter-spacing:.3em;margin-top:4px">STRUCTURE / FUNCTION</div></div></div>'
+},
+{
+ id:'auroragrad', en:'Aurora / Mesh Gradient', zh:'极光渐变 / 网格渐变', cat:'theme', era:'2020+', keywords:'极光 mesh gradient 模糊光斑',
+ essence:'多个柔和色斑叠加 + 模糊，形成如极光般的流动渐变，梦幻、高级、有空间感，是当代 Landing 背景。',
+ palette:['#7f5cff','#ff6ec7','#54f2e6','#0b0b0f'],
+ type:'Inter / Geist（干净无衬线，不抢渐变）',
+ features:['多个径向渐变色斑叠加','filter: blur 模糊边缘','配色梦幻：紫粉青蓝','缓慢漂浮动画增强氛围'],
+ replicate:['多个 radial-gradient 叠加成 mesh','对容器 filter: blur(60px) 柔化','色斑用 @keyframes 缓慢位移','文字用白/浅色，置于渐变之上'],
+ examples:'Stripe、Linear、Vercel、Spotify Wrapped、大量 AI 产品与 SaaS 落地页。',
+ specimen:'<div style="position:absolute;inset:0;background:#0b0b0f;overflow:hidden"><div style="position:absolute;width:200px;height:200px;border-radius:50%;background:#7f5cff;filter:blur(50px);top:-30px;left:-20px;opacity:.7"></div><div style="position:absolute;width:180px;height:180px;border-radius:50%;background:#ff6ec7;filter:blur(50px);top:20px;right:-30px;opacity:.6"></div><div style="position:absolute;width:160px;height:160px;border-radius:50%;background:#54f2e6;filter:blur(50px);bottom:-30px;left:30%;opacity:.5"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-weight:800;font-size:18px;letter-spacing:-.02em">aurora<span style="color:#ff6ec7">.</span></div></div>'
+},
+{
+ id:'holographic', en:'Holographic', zh:'全息镭射', cat:'theme', era:'2020+', keywords:'全息 镭射 iridescent 彩虹',
+ essence:'随角度变化的彩虹全息光泽（iridescent），如镭射全息贴纸，炫目、未来、潮流，强视觉冲击。',
+ palette:['#ff6ec7','#54f2e6','#a78bfa','#fde047'],
+ type:'Space Grotesk / Outfit（现代几何）',
+ features:['conic-gradient 彩虹角度渐变','mix-blend-mode 制造镭射叠加','随鼠标移动角度变化','高光强、饱和、流动'],
+ replicate:['background: conic-gradient 多色环 + 模糊','mix-blend-mode: overlay 叠加在元素上','可用 background-attachment 或 JS 跟随鼠标','字体现代几何，白色高对比'],
+ examples:'潮流时尚品牌、Web3 项目、音乐节视觉、Z 世代社交 App。',
+ specimen:'<div style="position:absolute;inset:0;background:#0b0b0f;display:flex;align-items:center;justify-content:center"><div style="width:78%;padding:16px;border-radius:18px;background:conic-gradient(from 0deg,#ff6ec7,#54f2e6,#a78bfa,#fde047,#ff6ec7);box-shadow:0 0 30px rgba(167,139,250,.5)"><div style="background:#0b0b0f;border-radius:14px;padding:14px;text-align:center"><div style="color:#fff;font-weight:900;font-size:18px;background:conic-gradient(from 90deg,#ff6ec7,#54f2e6,#a78bfa,#fde047);-webkit-background-clip:text;background-clip:text;color:transparent">HOLOGRAPHIC</div><div style="color:#8a8a98;font-size:9px;margin-top:4px">iridescent / rainbow shift</div></div></div></div>'
+},
+{
+ id:'duotone', en:'Duotone', zh:'双色调', cat:'theme', era:'常青', keywords:'双色调 duotone 高对比 印刷',
+ essence:'只用两个对比色（如深蓝+亮橙）渲染图像/界面，源自印刷，强对比、风格化、高级且统一。',
+ palette:['#1d3557','#e63946','#f1faee','#457b9d'],
+ type:'Inter / Oswald（干净，让色彩说话）',
+ features:['图像用双色映射（filter / blend）','界面整体锁定双色 + 中性','高对比、强视觉统一','常配大字号无衬线'],
+ replicate:['图像：CSS filter + mix-blend-mode，或 SVG feColorMatrix 双色映射','配色锁定 1 深 1 亮 + 中性灰','文字用浅色叠在深色之上','适合摄影/媒体类内容'],
+ examples:'Spotify 早期品牌、媒体杂志、音乐流媒体、海报设计。',
+ specimen:'<div style="position:absolute;inset:0;background:#1d3557;display:flex;align-items:center;justify-content:center;overflow:hidden"><div style="position:absolute;width:120px;height:120px;border-radius:50%;background:#e63946;mix-blend-mode:screen;top:14px;right:14px;opacity:.9"></div><div style="position:relative;text-align:center"><div style="font-size:24px;font-weight:900;color:#f1faee;letter-spacing:-.02em">DUO<br>TONE</div><div style="color:#e63946;font-size:9px;letter-spacing:.2em;margin-top:6px">TWO-COLOR WORLD</div></div></div>'
+},
+{
+ id:'pastel', en:'Light & Airy / Pastel', zh:'轻盈粉彩', cat:'theme', era:'常青', keywords:'粉彩 轻盈 留白 柔和',
+ essence:'柔和的粉彩色调、轻盈通透、大量留白，温柔、治愈、女性化，常用于生活方式/美妆/儿童产品。',
+ palette:['#fce4ec','#fff3e0','#e3f2fd','#f8bbd0'],
+ type:'Quicksand / Nunito（圆润轻盈）',
+ features:['低饱和粉彩色（粉、蓝、黄、绿）','大量留白，呼吸感强','圆润字体、大圆角','柔光阴影，轻盈通透'],
+ replicate:['配色饱和度降至 40% 以下','阴影用同色系柔光（非黑色）','圆角 16~24px，字体圆润','背景近白 #fffaf7，元素粉彩'],
+ examples:'美妆/护肤品牌、母婴产品、生活方式电商、治愈系 App。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#fce4ec,#fff3e0);display:flex;align-items:center;justify-content:center"><div style="background:#fff;border-radius:20px;padding:18px 22px;box-shadow:0 12px 30px rgba(248,187,208,.35);text-align:center"><div style="width:46px;height:46px;border-radius:50%;background:#f8bbd0;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px">&#9825;</div><div style="color:#ad5389;font-weight:800;font-size:15px">pastel</div><div style="color:#e0a0b0;font-size:9px;margin-top:3px">soft / airy / tender</div></div></div>'
+},
+{
+ id:'noir', en:'Monochrome / Noir', zh:'单色黑白', cat:'theme', era:'常青', keywords:'单色 黑白 noir 高对比',
+ essence:'仅黑、白、灰构成，靠灰度层次和排版建立视觉，极致克制、高级、电影感，凸显内容本身。',
+ palette:['#0a0a0a','#262626','#a0a0a0','#ffffff'],
+ type:'Inter / Helvetica（中性，灰度即层次）',
+ features:['仅黑/白/灰，零彩色','靠灰度（5~9 阶）建立层次','强对比排版，留白克制','电影 noir 感，冷峻'],
+ replicate:['配色锁定 #000~#fff 灰阶','标题深黑，正文深灰，辅助中灰','零彩色，连图标也用灰度','靠字号、字重、间距制造层次'],
+ examples:'高端摄影作品集、电影/艺术品牌、极简 SaaS、设计师 portfolio。',
+ specimen:'<div style="position:absolute;inset:0;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="color:#fff;font-size:26px;font-weight:900;letter-spacing:-.03em">NOIR.</div><div style="width:40px;height:1px;background:#fff;margin:14px 0"></div><div style="color:#a0a0a0;font-size:10px;letter-spacing:.25em;text-transform:uppercase">monochrome</div><div style="color:#5a5a5a;font-size:8px;margin-top:6px">black / white / nothing else</div></div>'
+},
+{
+ id:'spatial', en:'Spatial UI', zh:'空间计算 UI', cat:'immersive', era:'2024+', keywords:'空间计算 visionOS AR 透明',
+ essence:'为 AR/VR/空间计算设计：透明悬浮面板、深度层级、注视点交互，UI 漂浮在真实空间中，强调深度与通透。',
+ palette:['#0a0a0f','#ffffff','#0a84ff','#ffd60a'],
+ type:'SF Pro（系统一致，高清晰）',
+ features:['半透明悬浮窗，背后环境可见','窗口可立体排列、有深度 z 层','注视点 + 手势交互，无传统点击','高对比文字保证通透下的可读性'],
+ replicate:['面板 backdrop-filter + 高描边 + 大圆角','用 transform: translateZ 模拟深度','文字加描边/阴影应对复杂背景','visionOS 设计规范是标杆'],
+ examples:'Apple Vision Pro / visionOS、Meta Quest Horizon OS、Spatial Web、AR 导航。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a2a3a,#0a0a0f);overflow:hidden"><div style="position:absolute;width:160px;height:100px;border-radius:16px;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.3);transform:perspective(600px) rotateY(-22deg) translateZ(20px);top:18px;left:14px;box-shadow:0 20px 50px rgba(0,0,0,.5)"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60%;padding:16px;border-radius:20px;background:rgba(255,255,255,.12);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 30px 60px rgba(0,0,0,.5)"><div style="color:#fff;font-size:13px;font-weight:700">Spatial Window</div><div style="color:rgba(255,255,255,.6);font-size:9px;margin-top:4px">visionOS · depth · gaze</div></div></div>'
+},
+{
+ id:'isometric', en:'3D Isometric', zh:'等距 3D', cat:'immersive', era:'常青', keywords:'等距 isometric 2.5D 轴测',
+ essence:'30 度等距投影的 2.5D 插画风格，用平面图形拼出立体场景，清晰、可爱、信息量大，无需真 3D。',
+ palette:['#6c5ce7','#00cec9','#fdcb6e','#dfe6e9'],
+ type:'Poppins / Inter（圆润现代）',
+ features:['等距投影（30°/30°）画立方体场景','平面色块拼出立体感','配色明亮、饱和、统一','无透视变形，可读性高'],
+ replicate:['用 transform: rotate(45deg) skewX/Y 模拟等距面','或直接用 isometric SVG 插画','三个面用三档明度区分（亮/中/暗）','配色锁定 4~6 色统一调色板'],
+ examples:'SaaS 插画（如 Stripe）、游戏地图、信息图表、产品功能图解。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#dfe6e9,#b2becf);display:flex;align-items:center;justify-content:center"><div style="position:relative;width:120px;height:120px;transform:rotateX(55deg) rotateZ(-45deg);transform-style:preserve-3d"><div style="position:absolute;inset:0;background:#6c5ce7"></div><div style="position:absolute;inset:0;background:#a29bfe;transform:translateZ(36px)"></div><div style="position:absolute;width:36px;height:100%;background:#5b4bd6;transform:rotateY(90deg);right:0;transform-origin:right"></div></div></div>'
+},
+{
+ id:'clay3d', en:'Clay 3D', zh:'黏土 3D', cat:'immersive', era:'2022+', keywords:'黏土3d spline soft render',
+ essence:'用 Spline/Blender 渲染的柔软黏土质感 3D 元素，圆润、哑光、可爱，是当代网页 3D 主流，亲切无攻击性。',
+ palette:['#ff9a8b','#a18cd1','#fbc2eb','#84fab0'],
+ type:'Clash Display / Outfit（圆润现代展示字）',
+ features:['柔软黏土质感（次表面散射 SSS）','哑光、圆润、无锐边','柔和全局光照','配色马卡龙，亲和力强'],
+ replicate:['用 Spline 制作 clay 材质模型导出','材质：粗糙度高、柔光、SSS','配色马卡龙系，柔和过渡','网页用 Spline viewer 或导出 webm/glb'],
+ examples:'Spline 官网、Linear 插画、部分 AI 产品 hero、潮流品牌 3D IP。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#fbc2eb,#a18cd1);display:flex;align-items:center;justify-content:center"><div style="position:relative"><div style="width:90px;height:90px;border-radius:30px;background:radial-gradient(circle at 35% 30%,#ffb3a0,#ff6f9c 60%,#d65a7a);box-shadow:inset -8px -10px 18px rgba(0,0,0,.18),inset 6px 8px 14px rgba(255,255,255,.5),0 18px 36px rgba(0,0,0,.2);transform:rotate(-12deg)"></div><div style="position:absolute;width:42px;height:42px;border-radius:14px;background:radial-gradient(circle at 35% 30%,#b6e3ff,#6cc4ff 60%,#4a9fd6);box-shadow:inset -4px -6px 12px rgba(0,0,0,.18),inset 4px 5px 9px rgba(255,255,255,.5),0 10px 22px rgba(0,0,0,.18);right:-20px;top:-14px;transform:rotate(18deg)"></div></div></div>'
+},
+{
+ id:'glass3d', en:'Glass / Crystal 3D', zh:'玻璃/晶体 3D', cat:'immersive', era:'2023+', keywords:'玻璃3d 水晶 折射 glassy',
+ essence:'高透明玻璃/水晶质感的 3D 渲染，强折射、强高光、内部色散，通透、奢华、未来感，适合 hero 焦点。',
+ palette:['#a0e9ff','#c9b8ff','#ffffff','#5b86ff'],
+ type:'Satoshi / Space Grotesk（现代干净）',
+ features:['高透明 + 强折射（IOR 高）','内部色散（彩虹边缘）','强高光、强环境反射','深色背景衬托通透感'],
+ replicate:['Blender/Octane 玻璃材质（transmission 1, roughness 0, IOR 1.5）','开启 caustics 焦散，加色散','深色环境 + HDRI 反射','网页导出 webm/glb，循环旋转'],
+ examples:'Apple 产品 hero（Vision Pro 玻璃）、AI 产品视觉、奢侈品牌 3D、加密项目。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#2a2a4a,#0a0a14);display:flex;align-items:center;justify-content:center"><div style="position:relative;width:96px;height:96px"><div style="position:absolute;inset:0;border-radius:28px;background:linear-gradient(135deg,rgba(160,233,255,.5),rgba(201,184,255,.4));backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 8px 16px rgba(255,255,255,.4),inset 0 -10px 20px rgba(91,134,255,.3),0 20px 50px rgba(91,134,255,.4)"></div><div style="position:absolute;top:10px;left:14px;width:30px;height:14px;border-radius:50%;background:rgba(255,255,255,.6);filter:blur(3px)"></div></div></div>'
+},
+{
+ id:'lowpoly', en:'Low Poly', zh:'低多边形', cat:'immersive', era:'2010s+', keywords:'低多边形 lowpoly 几何面',
+ essence:'用少量三角面拼出的几何化 3D，保留棱角与色块，复古游戏感、抽象艺术感，轻量且风格化。',
+ palette:['#ff6b6b','#4ecdc4','#ffe66d','#1a535c'],
+ type:'Montserrat / Bebas（硬朗几何）',
+ features:['明显的三角面棱角','每面纯色，靠明暗区分','配色风格化、对比强','轻量，适合 web/游戏'],
+ replicate:['建模时降低面数，保留 flat shading','每个面纯色，三角面交界可见','配色锁定对比强的调色板','可用 Three.js MeshStandardMaterial flatShading'],
+ examples:'独立游戏、抽象 3D 插画、活动海报背景、部分品牌 IP。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a535c,#0a3a40);display:flex;align-items:center;justify-content:center"><svg width="120" height="120" viewBox="0 0 100 100"><polygon points="50,8 84,40 64,52" fill="#ff6b6b"/><polygon points="50,8 64,52 36,52" fill="#ff8e8e"/><polygon points="50,8 36,52 16,40" fill="#ffe66d"/><polygon points="16,40 36,52 30,82" fill="#4ecdc4"/><polygon points="84,40 64,52 70,82" fill="#3bb5ad"/><polygon points="36,52 64,52 50,82" fill="#2a9d97"/><polygon points="30,82 50,82 70,82" fill="#1a535c"/></svg></div>'
+},
+{
+ id:'cinematic', en:'Scroll-driven Cinematic', zh:'滚动叙事', cat:'immersive', era:'2020+', keywords:'滚动叙事 scroll storytelling 视差',
+ essence:'滚动驱动的故事化体验：随滚动推进场景变换、镜头运动、内容揭示，像交互式电影，沉浸感极强。',
+ palette:['#0a0a0f','#ffffff','#ff5a3c','#1a1a2e'],
+ type:'Custom display + Inter（叙事感标题）',
+ features:['滚动绑定动画（GSAP ScrollTrigger）','场景/镜头随滚动变换','文字与视觉交错揭示','视差、缩放、形变制造纵深'],
+ replicate:['GSAP ScrollTrigger + Lenis 平滑滚动','用 pin 锁定章节，滚动驱动 timeline','多层视差：translateY 速度不同','章节间用大标题 + 揭示动效'],
+ examples:'Apple 产品页、AirPods 介绍页、NASA 任务页、获奖 Awwwards 站点。',
+ specimen:'<div style="position:absolute;inset:0;background:#0a0a0f;overflow:hidden"><div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,#ff5a3c33,transparent 60%)"></div><div style="position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);text-align:center;width:80%"><div style="color:#fff;font-size:22px;font-weight:900;letter-spacing:-.03em">scroll<br>the story</div><div style="margin:10px auto 0;width:2px;height:30px;background:linear-gradient(#ff5a3c,transparent)"></div></div><div style="position:absolute;left:0;right:0;bottom:14px;display:flex;gap:4px;justify-content:center"><span style="width:20px;height:3px;background:#ff5a3c"></span><span style="width:20px;height:3px;background:#ffffff33"></span><span style="width:20px;height:3px;background:#ffffff33"></span></div></div>'
+},
+{
+ id:'particle', en:'Particle Field', zh:'粒子场', cat:'immersive', era:'2020+', keywords:'粒子 particle canvas three.js',
+ essence:'漂浮的光点/星尘/粒子构成动态背景，梦幻、科技、有生命力，常作为 hero 背景，增强氛围。',
+ palette:['#0b0b0f','#7dd3fc','#c4b5fd','#fde047'],
+ type:'Inter / Geist（不抢粒子风头）',
+ features:['大量小粒子漂浮（canvas/three.js）','鼠标交互：粒子被吸引/排斥','配色深底 + 亮色粒子','性能可控，粒子数自适应'],
+ replicate:['Three.js Points 或 Canvas 2D 画粒子','加鼠标力场（距离反比）','粒子用 additive blend 发光','requestAnimationFrame，粒子数限 200~2000'],
+ examples:'Particle.js 示例、AI 产品 hero、科技公司官网、获奖创意站。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#1a1a2e,#0b0b0f);overflow:hidden"><div style="position:absolute;width:4px;height:4px;border-radius:50%;background:#7dd3fc;box-shadow:0 0 8px #7dd3fc;top:20%;left:20%"></div><div style="position:absolute;width:3px;height:3px;border-radius:50%;background:#c4b5fd;box-shadow:0 0 8px #c4b5fd;top:30%;left:60%"></div><div style="position:absolute;width:5px;height:5px;border-radius:50%;background:#fde047;box-shadow:0 0 10px #fde047;top:60%;left:30%"></div><div style="position:absolute;width:3px;height:3px;border-radius:50%;background:#7dd3fc;box-shadow:0 0 8px #7dd3fc;top:70%;left:70%"></div><div style="position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;top:45%;left:45%"></div><div style="position:absolute;width:4px;height:4px;border-radius:50%;background:#c4b5fd;box-shadow:0 0 8px #c4b5fd;top:15%;left:75%"></div><div style="position:absolute;width:3px;height:3px;border-radius:50%;background:#7dd3fc;box-shadow:0 0 8px #7dd3fc;top:80%;left:15%"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-weight:800;font-size:16px;text-align:center">particle field<div style="color:#8a8a98;font-size:9px;margin-top:4px">floating · glowing · alive</div></div></div>'
+},
+{
+ id:'gradientweb', en:'Modern Gradient Web', zh:'现代渐变 Web', cat:'immersive', era:'2023+', keywords:'渐变 stripe vercel 现代',
+ essence:'Stripe/Vercel 式精致渐变：流动光带、网格背景、柔和渐变文字，干净、专业、有科技感，是当代 SaaS 标配。',
+ palette:['#0a0a0f','#ffffff','#5b21b6','#0ea5e9'],
+ type:'Geist / Inter（现代紧凑，负字距）',
+ features:['背景网格 + 流动渐变光带','渐变文字（background-clip:text）','深色底 + 单色高光','精致、克制、有质感'],
+ replicate:['网格：background-image linear-gradient 网格线','光带：径向/锥形渐变 + blur + 缓动位移','文字渐变：linear-gradient + -webkit-background-clip:text','配色深底，高光用品牌色渐变'],
+ examples:'Stripe、Vercel、Linear、Resend、当下所有顶级 SaaS 落地页。',
+ specimen:'<div style="position:absolute;inset:0;background:#0a0a0f;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px;overflow:hidden"><div style="position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#5b21b6,transparent 60%);filter:blur(30px);top:-60px;left:50%;transform:translateX(-50%);opacity:.7"></div><div style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#0ea5e9,transparent 60%);filter:blur(30px);bottom:-50px;right:10%;opacity:.6"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:transparent;background:linear-gradient(92deg,#fff,#a78bfa);-webkit-background-clip:text;background-clip:text;font-weight:800;font-size:20px">gradient.web</div></div>'
+},
+{
+ id:'ios', en:'iOS / HIG Native', zh:'iOS 原生', cat:'mobile', era:'常青', keywords:'iOS HIG 苹果 系统原生',
+ essence:'遵循 Apple Human Interface Guidelines：圆角卡片、SF 字体、克制配色、毛玻璃导航栏，原生、精致、高一致性。',
+ palette:['#f2f2f7','#ffffff','#007aff','#1c1c1e'],
+ type:'SF Pro Text / SF Pro Display（系统字体）',
+ features:['圆角卡片（12~16px）+ 系统阴影','SF 字体，字重层级清晰','分组列表（inset grouped）','毛玻璃 TabBar/NavigationBar'],
+ replicate:['圆角 12~16px，卡片白底 + 柔和阴影','配色 #f2f2f7 底 + #ffffff 卡 + #007aff 强调','列表用 grouped table，section header 大写灰','TabBar 用 blur + 半透明白'],
+ examples:'iOS 系统应用（设置、App Store）、Apple 自家 App、大量遵循 HIG 的第三方 App。',
+ specimen:'<div style="position:absolute;inset:0;background:#f2f2f7;padding:14px;display:flex;flex-direction:column;gap:10px"><div style="background:#fff;border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,.08)"><div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#007aff,#5ac8fa);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px">&#9776;</div><div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1c1c1e">设置</div><div style="font-size:9px;color:#8e8e93">通用 · 蓝牙 · 隐私</div></div><div style="color:#c7c7cc;font-size:14px">›</div></div><div style="background:#fff;border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 3px rgba(0,0,0,.08)"><span style="font-size:12px;color:#1c1c1e">飞行模式</span><div style="width:30px;height:18px;background:#34c759;border-radius:999px;position:relative"><div style="position:absolute;right:2px;top:2px;width:14px;height:14px;background:#fff;border-radius:50%"></div></div></div><div style="margin-top:auto;display:flex;justify-content:space-around;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-radius:14px;padding:8px"><span style="color:#007aff;font-size:11px;font-weight:600">首页</span><span style="color:#8e8e93;font-size:11px">搜索</span><span style="color:#8e8e93;font-size:11px">我的</span></div></div>'
+},
+{
+ id:'android', en:'Android Material', zh:'安卓 Material', cat:'mobile', era:'2021+', keywords:'安卓 materialyou 动态色',
+ essence:'Android 原生遵循 Material You：动态取色、大圆角、FAB、手势导航，强调个性、表达与流畅手势。',
+ palette:['#6750a4','#eaddff','#21005d','#fef7ff'],
+ type:'Roboto（M3 默认）',
+ features:['动态色取自壁纸','大圆角卡片 + FAB 悬浮按钮','底部手势条 + 顶部大型应用栏','表达力强：Chip、Card、Bottom Sheet'],
+ replicate:['配色 M3 tonal，圆角 16~28px','FAB 在右下，Bottom Sheet 常驻手势','顶部 Large Top App Bar 可滚动收起','间距用 4dp 基准，间距 16/24dp'],
+ examples:'Android 系统应用、Google 全家桶、Material You 主题第三方 App。',
+ specimen:'<div style="position:absolute;inset:0;background:#fef7ff;padding:0;display:flex;flex-direction:column"><div style="background:#6750a4;color:#fff;padding:16px 16px 18px"><div style="font-size:9px;opacity:.8;letter-spacing:.1em">今日</div><div style="font-size:18px;font-weight:700;margin-top:2px">Android</div></div><div style="padding:12px;display:flex;flex-direction:column;gap:8px;flex:1"><div style="background:#eaddff;color:#21005d;border-radius:18px;padding:12px"><div style="font-size:11px;font-weight:600">动态取色</div><div style="font-size:8px;opacity:.7;margin-top:2px">Dynamic Color from wallpaper</div></div><div style="display:flex;gap:6px"><span style="background:#6750a4;color:#fff;border-radius:8px;padding:4px 10px;font-size:9px;font-weight:600">Assist</span><span style="background:#fff;color:#6750a4;border:1px solid #cac4d0;border-radius:8px;padding:4px 10px;font-size:9px">Set up</span></div></div><div style="position:absolute;right:14px;bottom:18px;width:40px;height:40px;border-radius:14px;background:#6750a4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 14px rgba(103,80,164,.4)">+</div></div>'
+},
+{
+ id:'fluent', en:'Fluent Design', zh:'Fluent 设计', cat:'mobile', era:'2017+', keywords:'fluent 亚克力 微软 mica reveal',
+ essence:'微软设计语言：Acrylic 亚克力半透明 + Reveal 高光 + 深度层次，统一 Win/Mobile，通透、连贯、轻盈。',
+ palette:['#005fb8','#ffffff','#f3f3f3','#202020'],
+ type:'Segoe UI（系统字体）',
+ features:['Acrylic 半透明背景（亚克力模糊）','Reveal：边框随鼠标/触摸高亮','深度：元素有 z 层与视差','Mica 不透明材质用于窗口'],
+ replicate:['背景 Acrylic：blur(30px) + 5~15% 着色','边框用 Reveal：border-image 或光感渐变','配色以系统强调色 #005fb8 为准','圆角 4~8px，比苹果小'],
+ examples:'Windows 11、Microsoft 365、Edge、部分跨平台 App。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a4a8a,#005fb8);padding:14px;display:flex;flex-direction:column;gap:10px"><div style="background:rgba(255,255,255,.7);backdrop-filter:blur(30px);border-radius:8px;padding:12px;box-shadow:0 8px 24px rgba(0,0,0,.2)"><div style="font-size:12px;font-weight:600;color:#202020">Fluent Design</div><div style="font-size:9px;color:#444;margin-top:2px">Acrylic + Reveal + Depth</div></div><div style="display:flex;gap:8px"><div style="flex:1;background:rgba(255,255,255,.15);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.4);border-radius:8px;padding:10px;text-align:center;color:#fff"><div style="font-size:18px">📁</div><div style="font-size:8px;margin-top:2px">文件</div></div><div style="flex:1;background:rgba(255,255,255,.15);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.4);border-radius:8px;padding:10px;text-align:center;color:#fff"><div style="font-size:18px">⚙</div><div style="font-size:8px;margin-top:2px">设置</div></div></div></div>'
+},
+{
+ id:'cardfeed', en:'Card Feed', zh:'卡片信息流', cat:'mobile', era:'2020+', keywords:'卡片流 feed tiktok 小红书 瀑布流',
+ essence:'以卡片为基本单元的滚动信息流：瀑布流/单列卡片承载图文，沉浸、可滑动、内容为王，是内容 App 主流。',
+ palette:['#ffffff','#161823','#ff2d55','#f1f1f2'],
+ type:'Inter / 系统默认（高可读）',
+ features:['卡片为基本单元，圆角图片','瀑布流（两列不等高）或单列大卡','顶导航 + 底 Tab，沉浸式滚动','点赞/评论/收藏等高频微交互'],
+ replicate:['瀑布流：CSS columns 或 grid + masonry','卡片圆角 12~16px，图片占主面积','滚动时顶/底栏可隐藏增强沉浸','加载用骨架屏，下拉刷新'],
+ examples:'小红书、TikTok、抖音、Instagram、Pinterest、大部分内容社区 App。',
+ specimen:'<div style="position:absolute;inset:0;background:#f1f1f2;padding:8px;column-count:2;column-gap:8px"><div style="break-inside:avoid;margin-bottom:8px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)"><div style="height:54px;background:linear-gradient(135deg,#ff8a8a,#ff2d55)"></div><div style="padding:6px 8px"><div style="font-size:8px;color:#161823;font-weight:600;line-height:1.3">夏日穿搭分享｜通勤显瘦</div><div style="font-size:7px;color:#8a8a98;margin-top:4px">♥ 2.3k</div></div></div><div style="break-inside:avoid;margin-bottom:8px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)"><div style="height:40px;background:linear-gradient(135deg,#7dd3fc,#3b82f6)"></div><div style="padding:6px 8px"><div style="font-size:8px;color:#161823;font-weight:600;line-height:1.3">旅行vlog 三亚海边日落</div><div style="font-size:7px;color:#8a8a98;margin-top:4px">♥ 8.9k</div></div></div><div style="break-inside:avoid;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)"><div style="height:64px;background:linear-gradient(135deg,#fde047,#f59e0b)"></div><div style="padding:6px 8px"><div style="font-size:8px;color:#161823;font-weight:600">居家好物推荐</div></div></div></div>'
+},
+{
+ id:'bottomsheet', en:'Bottom Sheet / Half-sheet', zh:'底部半屏页', cat:'mobile', era:'2018+', keywords:'底部弹层 bottomsheet 半屏 sheet',
+ essence:'从底部滑出的半屏/全屏面板，用于次级操作、选择、表单，模态轻量、手势自然、不阻断上下文，移动端主流交互。',
+ palette:['#ffffff','#f2f2f7','#1c1c1e','#007aff'],
+ type:'SF Pro / 系统默认',
+ features:['底部滑出，可拖拽改变高度','顶部 grabber 拖把（圆角小条）','背景半透明遮罩，点击/下拉关闭','可堆叠：detents 多档高度（medium/large）'],
+ replicate:['用 transform: translateY + 触摸拖拽','detents：medium(50%)/large(95%) 两档','背景遮罩 rgba(0,0,0,.4)，随高度渐显','圆角顶部 20px + grabber 36x5'],
+ examples:'iOS 16+ 原生 sheet、Google Maps 选择面板、打车/支付确认、大部分 App 次级流程。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(160deg,#5b86ff,#34d399);overflow:hidden"><div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;padding:16px;box-shadow:0 -10px 30px rgba(0,0,0,.2)"><div style="width:36px;height:5px;border-radius:999px;background:#d1d1d6;margin:0 auto 14px"></div><div style="font-size:13px;font-weight:700;color:#1c1c1e;text-align:center">选择操作</div><div style="display:flex;gap:8px;margin-top:12px"><div style="flex:1;background:#007aff;color:#fff;border-radius:12px;padding:10px;text-align:center;font-size:10px;font-weight:600">确认</div><div style="flex:1;background:#f2f2f7;color:#1c1c1e;border-radius:12px;padding:10px;text-align:center;font-size:10px;font-weight:600">取消</div></div></div></div>'
+},
+{
+ id:'gestureminimal', en:'Gesture-first Minimal', zh:'手势优先极简', cat:'mobile', era:'2020+', keywords:'手势极简 无按钮 全屏 swipable',
+ essence:'极简到几乎无按钮，靠手势（滑动、长按、捏合）驱动，全屏沉浸、内容至上，是新一代「无感」设计。',
+ palette:['#000000','#ffffff','#ff375f','#f5f5f7'],
+ type:'SF Pro / 系统默认（超克制）',
+ features:['全屏沉浸，隐藏导航','手势驱动：左右滑切换、长按操作','极少的可见控件，浮于内容之上','动画跟手、有物理感'],
+ replicate:['隐藏 TabBar/NavBar，手势替代','关键操作浮层化，闲置时淡出','手势配 spring 物理动效','内容铺满全屏，安全区留白'],
+ examples:'TikTok（全屏滑动）、Instagram Reels、Apple Books、Arc 移动版。',
+ specimen:'<div style="position:absolute;inset:0;background:#000;overflow:hidden"><div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#2a1a3a,#000)"></div><div style="position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);color:#fff;text-align:center"><div style="font-size:16px;font-weight:700">swipe</div><div style="font-size:9px;color:#ffffff99;margin-top:4px">向左滑看下一个</div></div><div style="position:absolute;right:10px;bottom:30px;display:flex;flex-direction:column;gap:14px;align-items:center;color:#fff"><span style="font-size:16px">♥</span><span style="font-size:14px">💬</span><span style="font-size:14px">↗</span></div><div style="position:absolute;left:0;right:0;bottom:8px;display:flex;gap:4px;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#fff"></span><span style="width:6px;height:6px;border-radius:50%;background:#fff4"></span><span style="width:6px;height:6px;border-radius:50%;background:#fff4"></span></div></div>'
+},
+{
+ id:'data', en:'Data-driven Dashboard', zh:'数据可视化风', cat:'web', era:'常青', keywords:'数据 仪表盘 dashboard 图表',
+ essence:'以图表和数据为核心视觉元素，信息密集但有序，科技感十足，强调可读性、对比与实时反馈。',
+ palette:['#0f172a','#3b82f6','#10b981','#f59e0b'],
+ type:'Inter / IBM Plex Sans（数据可读） + IBM Plex Mono（数字）',
+ features:['图表为主角：折线、柱状、热力图','深色底 + 高饱和数据色','数字用等宽字体对齐','密集但分区的栅格布局'],
+ replicate:['图表用 Recharts/ECharts/D3','配色深底 + 区分色（蓝绿橙红）','数字 font-variant-numeric: tabular-nums','卡片化分区，每个指标一个 KPI 卡'],
+ examples:'Grafana、Datadog、Vercel Analytics、Linear Insights、各类 SaaS 后台。',
+ specimen:'<div style="position:absolute;inset:0;background:#0f172a;padding:12px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;gap:8px"><div style="grid-column:span 2;background:#1e293b;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center"><div style="color:#fff;font-size:10px;font-weight:700">总览</div><div style="color:#3b82f6;font-size:11px;font-weight:800;font-family:Consolas,monospace">+24.8%</div></div><div style="background:#1e293b;border-radius:10px;padding:8px"><div style="color:#64748b;font-size:7px">活跃用户</div><svg width="100%" height="34" viewBox="0 0 100 34"><polyline points="0,28 14,22 28,24 42,14 56,18 70,8 84,12 100,4" fill="none" stroke="#3b82f6" stroke-width="2"/><polyline points="0,30 14,26 28,28 42,20 56,24 70,16 84,18 100,10" fill="none" stroke="#10b981" stroke-width="2"/></svg></div><div style="background:#1e293b;border-radius:10px;padding:8px;display:flex;align-items:flex-end;gap:3px"><div style="flex:1;height:40%;background:#3b82f6;border-radius:2px"></div><div style="flex:1;height:70%;background:#3b82f6;border-radius:2px"></div><div style="flex:1;height:50%;background:#3b82f6;border-radius:2px"></div><div style="flex:1;height:90%;background:#f59e0b;border-radius:2px"></div><div style="flex:1;height:60%;background:#3b82f6;border-radius:2px"></div><div style="flex:1;height:75%;background:#3b82f6;border-radius:2px"></div></div></div>'
+},
+{
+ id:'macos', en:'macOS / Aqua Native', zh:'macOS 原生', cat:'desktop', era:'常青', keywords:'macOS aqua 苹果 系统原生',
+ essence:'macOS 原生风格：毛玻璃工具栏、红黄绿交通灯、侧边栏 + 主区、精致系统字体，克制、优雅、高一致。',
+ palette:['#e6e6e6','#ffffff','#1d1d1f','#0a84ff'],
+ type:'SF Pro Text（系统字体）',
+ features:['顶部毛玻璃工具栏 + 交通灯按钮','侧边栏（半透明）+ 主内容区','系统级圆角与阴影','字体 SF Pro，字重克制'],
+ replicate:['工具栏 blur(20px) + vibrancy 半透明','交通灯 #ff5f57/#febc2e/#28c840','窗口圆角 10px + 大投影','侧边栏 #e6e6e6 半透明，主区白'],
+ examples:'macOS 系统应用（访达、邮件）、Apple 自家 Mac App、大量原生 Mac 软件。',
+ specimen:'<div style="position:absolute;inset:0;background:#c8c8c8;padding:16px;display:flex;justify-content:center;align-items:center"><div style="width:84%;height:80%;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.3);overflow:hidden;display:flex;flex-direction:column"><div style="background:rgba(245,245,245,.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.1);padding:8px 12px;display:flex;align-items:center;gap:6px"><div style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></div><div style="width:11px;height:11px;border-radius:50%;background:#febc2e"></div><div style="width:11px;height:11px;border-radius:50%;background:#28c840"></div><div style="color:#1d1d1f;font-size:10px;font-weight:600;margin-left:14px">访达</div></div><div style="display:flex;flex:1"><div style="width:34%;background:rgba(230,230,230,.6);backdrop-filter:blur(10px);border-right:1px solid rgba(0,0,0,.08);padding:8px"><div style="font-size:9px;color:#1d1d1f;font-weight:600;padding:4px 6px;background:#0a84ff;color:#fff;border-radius:5px">文稿</div><div style="font-size:9px;color:#1d1d1f;padding:4px 6px;margin-top:2px">下载</div><div style="font-size:9px;color:#1d1d1f;padding:4px 6px">应用程序</div></div><div style="flex:1;padding:10px"><div style="height:10px;width:50%;background:#e5e5e5;border-radius:3px;margin-bottom:6px"></div><div style="height:8px;width:70%;background:#f0f0f0;border-radius:3px;margin-bottom:4px"></div><div style="height:8px;width:60%;background:#f0f0f0;border-radius:3px"></div></div></div></div></div>'
+},
+{
+ id:'win11', en:'Windows 11 Mica/Acrylic', zh:'Windows 11 原生', cat:'desktop', era:'2021+', keywords:'windows11 mica acrylic 云母 亚克力',
+ essence:'Win11 设计：Mica 云母材质（背景着色）+ Acrylic 亚克力半透明 + 圆角窗口，比 Win10 更柔和、精致、连贯。',
+ palette:['#005fb8','#f3f3f3','#202020','#ffffff'],
+ type:'Segoe UI Variable（系统字体）',
+ features:['Mica 云母：窗口背景取桌面壁纸色调','圆角窗口（8px）+ 居中任务栏','Acrylic 用于菜单/面板半透明','强调色 #005fb8 系统蓝'],
+ replicate:['窗口圆角 8px，Mica 用 wallpaper-tinted 纯色','菜单/弹层 Acrylic：blur(30px) + 着色','强调色用系统 accent，圆角统一 4~8px','字体 Segoe UI Variable'],
+ examples:'Windows 11 系统应用、Microsoft 365、Edge、PowerToys。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#4a90d9,#005fb8);padding:18px;display:flex;justify-content:center;align-items:center"><div style="width:78%;height:78%;background:#f3f3f3;border-radius:8px;box-shadow:0 16px 40px rgba(0,0,0,.35);overflow:hidden;display:flex;flex-direction:column"><div style="background:rgba(243,243,243,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);padding:8px 12px;display:flex;justify-content:space-between;align-items:center"><div style="color:#202020;font-size:10px;font-weight:600">设置</div><div style="display:flex;gap:8px;color:#202020;font-size:12px"><span>—</span><span>☐</span><span>✕</span></div></div><div style="display:flex;flex:1"><div style="width:36%;background:rgba(255,255,255,.5);backdrop-filter:blur(30px);padding:10px;border-right:1px solid rgba(0,0,0,.06)"><div style="font-size:9px;color:#202020;padding:5px 8px;background:#005fb8;color:#fff;border-radius:4px">系统</div><div style="font-size:9px;color:#202020;padding:5px 8px;margin-top:2px">蓝牙和设备</div><div style="font-size:9px;color:#202020;padding:5px 8px">个性化</div></div><div style="flex:1;padding:12px"><div style="color:#202020;font-size:11px;font-weight:700">系统</div><div style="height:28px;background:rgba(255,255,255,.7);backdrop-filter:blur(30px);border-radius:6px;margin-top:8px;padding:6px 10px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:8px;color:#202020">深色模式</span><div style="width:26px;height:14px;background:#005fb8;border-radius:999px;position:relative"><div style="position:absolute;right:2px;top:2px;width:10px;height:10px;background:#fff;border-radius:50%"></div></div></div></div></div></div></div>'
+},
+{
+ id:'linearsaas', en:'Linear-style Dark SaaS', zh:'Linear 暗色 SaaS', cat:'desktop', era:'2022+', keywords:'linear 暗色 saas 精致 负字距',
+ essence:'Linear 开创的精致暗色 SaaS 风：深色 + 高对比、极紧凑负字距、网格背景、渐变光晕，专业、快、高级。',
+ palette:['#08090a','#ffffff','#5e6ad2','#262626'],
+ type:'Inter Variable（紧凑，负字距 -0.02~-0.04em）',
+ features:['近黑底 #08090a + 细网格','渐变光晕 + 玻璃面板','负字距 Inter，字重分级精细','极小圆角（4~8px），紧凑间距'],
+ replicate:['背景 #08090a + 细网格线 rgba(255,255,255,.04)','强调色 Linear 紫 #5e6ad2，标题渐变','Inter 紧凑字距 letter-spacing:-.02em','圆角克制 4~8px，间距 8px 基准'],
+ examples:'Linear、Cursor、Resend、Cal.com、大量 2022 后开发者工具。',
+ specimen:'<div style="position:absolute;inset:0;background:#08090a;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:20px 20px;overflow:hidden"><div style="position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#5e6ad2,transparent 60%);filter:blur(40px);top:-40px;left:30%;opacity:.5"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:70%"><div style="color:#fff;font-size:16px;font-weight:700;letter-spacing:-.03em">linear-style</div><div style="color:#8a8f98;font-size:9px;margin-top:4px;letter-spacing:-.01em">dark · tight · refined</div><div style="display:flex;gap:6px;margin-top:10px"><div style="background:#fff;color:#08090a;border-radius:6px;padding:5px 12px;font-size:9px;font-weight:600">开始</div><div style="background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 12px;font-size:9px">了解更多</div></div></div></div>'
+},
+{
+ id:'ide', en:'IDE / Code Editor', zh:'IDE 代码编辑器', cat:'desktop', era:'常青', keywords:'IDE vscode cursor 编辑器 代码',
+ essence:'代码编辑器界面：活动栏 + 侧边栏 + 编辑区 + 终端/面板，语法高亮、紧凑、信息密集，为开发者效率优化。',
+ palette:['#1e1e1e','#252526','#007acc','#4ec9b0'],
+ type:'JetBrains Mono / Cascadia Code（等宽 + 连字）',
+ features:['活动栏（图标）+ 文件树 + 编辑区','语法高亮（多色 token）','紧凑行高、行号、minimap','底部状态栏 + 集成终端'],
+ replicate:['三栏布局：activity bar / sidebar / editor','语法色：关键字蓝、字符串橙、类型青','等宽字体 + 连字（ligatures）','深色 #1e1e1e 主，强调 #007acc'],
+ examples:'VS Code、Cursor、JetBrains 全家桶、Sublime、Zed。',
+ specimen:'<div style="position:absolute;inset:0;background:#1e1e1e;display:flex"><div style="width:30px;background:#333333;display:flex;flex-direction:column;align-items:center;padding-top:8px;gap:10px"><div style="width:14px;height:14px;background:#007acc;border-radius:2px"></div><div style="width:14px;height:14px;background:#555"></div><div style="width:14px;height:14px;background:#555"></div></div><div style="width:26%;background:#252526;padding:8px"><div style="color:#cccccc;font-size:8px;font-weight:600;margin-bottom:6px">资源管理器</div><div style="color:#888;font-size:7px">▸ SRC</div><div style="color:#c5c5c5;font-size:7px;padding-left:8px">main.ts</div><div style="color:#c5c5c5;font-size:7px;padding-left:8px">app.tsx</div></div><div style="flex:1;padding:8px;font-family:Consolas,monospace;font-size:8px;line-height:1.6"><div><span style="color:#858585">1</span> <span style="color:#569cd6">const</span> <span style="color:#4ec9b0">app</span> = () =&gt; {</div><div><span style="color:#858585">2</span> <span style="color:#569cd6">&nbsp;&nbsp;return</span> <span style="color:#ce9178">&lt;Editor/&gt;</span></div><div><span style="color:#858585">3</span> }</div></div><div style="position:absolute;left:0;right:0;bottom:0;height:16px;background:#007acc;color:#fff;font-size:7px;display:flex;align-items:center;padding:0 10px;gap:12px"><span>main 分支</span><span>UTF-8</span><span>TypeScript</span></div></div>'
+},
+{
+ id:'retrodesktop', en:'Retro Desktop (Win95)', zh:'复古桌面 (Win95)', cat:'desktop', era:'1995', keywords:'复古 win95 像素 灰色 3D边框',
+ essence:'致敬 Windows 95/98：灰色 3D 凸起边框、像素图标、MS Sans Serif、开始按钮，怀旧、复古、极客浪漫。',
+ palette:['#c0c0c0','#000080','#ffffff','#000000'],
+ type:'MS Sans Serif / W95FA（像素系统字）',
+ features:['灰色 #c0c0c0 凸起 3D 边框','标题栏深蓝 #000080','像素化图标与字体','开始按钮 + 任务栏'],
+ replicate:['边框用 border-outset 或手画 bevel（亮上左、暗下右）','窗口标题栏 #000080，按钮灰','字体 MS Sans Serif / 像素体','配色锁死 95 经典灰蓝'],
+ examples:'Windows 95/98 模拟器、复古游戏菜单、怀旧主题作品集、Lo-fi 美学项目。',
+ specimen:'<div style="position:absolute;inset:0;background:#008080;display:flex;align-items:center;justify-content:center"><div style="background:#c0c0c0;border:2px solid;border-color:#ffffff #808080 #808080 #ffffff;width:60%;padding:0;box-shadow:2px 2px 0 #404040"><div style="background:#000080;color:#fff;font-size:10px;font-weight:700;padding:3px 6px;display:flex;justify-content:space-between"><span>我的电脑</span><span style="background:#c0c0c0;color:#000;padding:0 4px;border:1px solid;border-color:#ffffff #808080 #808080 #ffffff">x</span></div><div style="padding:10px;display:flex;gap:12px"><div style="text-align:center"><div style="width:26px;height:26px;background:#c0c0c0;border:1px solid;border-color:#ffffff #808080 #808080 #ffffff;margin:0 auto"></div><div style="font-size:8px;color:#000;margin-top:3px">(C:)</div></div><div style="text-align:center"><div style="width:26px;height:26px;background:#c0c0c0;border:1px solid;border-color:#ffffff #808080 #808080 #ffffff;margin:0 auto"></div><div style="font-size:8px;color:#000;margin-top:3px">控制面板</div></div></div></div><div style="position:absolute;left:0;right:0;bottom:0;background:#c0c0c0;border-top:2px solid #ffffff;padding:3px 6px;display:flex;align-items:center;gap:6px"><div style="background:#c0c0c0;border:2px solid;border-color:#ffffff #808080 #808080 #ffffff;font-size:9px;font-weight:700;padding:2px 8px">开始</div><div style="flex:1;background:#fff;border:1px solid;border-color:#808080 #ffffff #ffffff #808080;height:16px"></div></div></div>'
+},
+{
+ id:'protool', en:'Pro Tool / DAW Dark', zh:'专业工具暗色', cat:'desktop', era:'常青', keywords:'专业工具 daw 音频 视频 暗色 高密度',
+ essence:'音频/视频/设计等专业软件的暗色高密度界面：深灰面板、密集控件、波形/时间轴，为专业工作流优化。',
+ palette:['#1e1e20','#2a2a2e','#3a3a3e','#0a84ff'],
+ type:'Inter / SF Pro（紧凑，小字号）',
+ features:['深灰面板（#1e1e20~#2a2a2e）','密集控件：旋钮、推子、波形','时间轴/轨道布局','强调色克制，多为蓝/橙'],
+ replicate:['面板分级 #1e1e20/#2a2a2e/#3a3a3e','波形用 SVG path，推子/旋钮自定义','时间轴用 grid + 缩放','控件密集但分组清晰'],
+ examples:'Logic Pro、Ableton、Premiere、DaVinci Resolve、Figma 暗色。',
+ specimen:'<div style="position:absolute;inset:0;background:#1e1e20;display:flex;flex-direction:column"><div style="background:#2a2a2e;padding:6px 10px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #0a0a0a"><div style="width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5a5a5e,#1a1a1e);border:1px solid #3a3a3e"></div><div style="width:60px;height:6px;background:#3a3a3e;border-radius:3px;position:relative"><div style="position:absolute;left:60%;top:-3px;width:4px;height:12px;background:#0a84ff;border-radius:2px"></div></div><div style="color:#888;font-size:8px">-6.0 dB</div></div><div style="flex:1;display:flex;flex-direction:column;padding:8px;gap:4px"><div style="background:#2a2a2e;border-radius:4px;height:24px;display:flex;align-items:center;padding:0 8px;gap:8px"><div style="width:50px;color:#ccc;font-size:7px">轨道 1</div><svg width="60%" height="16" viewBox="0 0 200 16"><polyline points="0,8 10,4 20,12 30,3 40,13 50,5 60,11 70,2 80,14 90,6 100,10 110,4 120,12 130,3 140,13 150,6 160,10 170,5 180,11 190,7 200,8" fill="none" stroke="#0a84ff" stroke-width="1.5"/></svg></div><div style="background:#2a2a2e;border-radius:4px;height:24px;display:flex;align-items:center;padding:0 8px;gap:8px"><div style="width:50px;color:#ccc;font-size:7px">轨道 2</div><svg width="60%" height="16" viewBox="0 0 200 16"><polyline points="0,8 15,6 30,10 45,4 60,12 75,7 90,9 105,5 120,11 135,6 150,10 165,4 180,12 195,8" fill="none" stroke="#ff9f0a" stroke-width="1.5"/></svg></div></div></div>'
+},
+{
+ id:'markdown', en:'Markdown / Notion Workspace', zh:'Notion 工作区', cat:'desktop', era:'2018+', keywords:'notion markdown 工作区 块 编辑器',
+ essence:'Notion 式块编辑工作区：左侧目录 + 中间文档 + 右侧属性，干净、聚焦内容、块可拖拽，是知识管理主流。',
+ palette:['#ffffff','#f7f7f5','#1f1f1f','#37352f'],
+ type:'Inter / 自定义（清爽无衬线）',
+ features:['左目录树 + 中文档 + 右属性','块（block）为单元，可拖拽重组','大量留白，聚焦内容','克制配色，强调内容层级'],
+ replicate:['三栏布局：sidebar / editor / properties','内容用块（段落/标题/列表/代码）','配色 #fff/#f7f7f5/#37352f 极淡','hover 显示块手柄（⋮⋮）可拖拽'],
+ examples:'Notion、Obsidian、Craft、Logseq、各类知识库/文档工具。',
+ specimen:'<div style="position:absolute;inset:0;background:#fff;display:flex"><div style="width:30%;background:#f7f7f5;padding:10px;border-right:1px solid #ededec"><div style="color:#9b9a97;font-size:7px;font-weight:600;margin-bottom:6px">私人</div><div style="color:#37352f;font-size:8px;padding:3px 5px;background:#efefee;border-radius:3px">📖 设计笔记</div><div style="color:#37352f;font-size:8px;padding:3px 5px">📝 待办清单</div><div style="color:#37352f;font-size:8px;padding:3px 5px">💡 灵感库</div></div><div style="flex:1;padding:14px 20px"><div style="color:#37352f;font-size:16px;font-weight:700">设计笔记</div><div style="color:#9b9a97;font-size:7px;margin:3px 0 10px">2026年7月4日 创建</div><div style="color:#37352f;font-size:9px;line-height:1.7;margin-bottom:6px">这是一篇关于<span style="background:#fff3cd;padding:0 2px">前端设计风格</span>的整理笔记。</div><div style="color:#37352f;font-size:9px;line-height:1.7;margin-bottom:4px">▫ 拟态家族</div><div style="color:#37352f;font-size:9px;line-height:1.7;margin-bottom:4px">▫ 氛围主题</div><div style="color:#37352f;font-size:9px;line-height:1.7">▫ 沉浸式 3D</div></div></div>'
+},
+{
+ id:'acid', en:'Acid Gradient', zh:'酸性渐变', cat:'theme', era:'2023+', keywords:'酸性 渐变 acid 撞色 金属光泽',
+ essence:'高饱和撞色（绿+紫、橙+蓝）带金属光泽的渐变流体，迷幻、前卫、躁动，Y3K 美学的代表，潮流与 Web3 项目爱用。',
+ palette:['#00ff88','#8b00ff','#ff006e','#c0ff00'],
+ type:'Space Grotesk / Clash Display（前卫粗体）',
+ features:['高饱和撞色对：绿紫、橙蓝、黄品红','金属/镭射光泽叠加（mix-blend）','渐变如流体般扭曲','配深色底，对比极强'],
+ replicate:['background: conic-gradient 撞色 + 模糊柔化','mix-blend-mode: overlay/screen 制造镭射光泽','字体白/亮色高对比','配色锁定 2-3 个撞色，勿超过'],
+ examples:'潮流时尚、Web3/加密项目、音乐节视觉、Z 世代社交 App、酸性海报设计。',
+ specimen:'<div style="position:absolute;inset:0;background:#0a0a0f;display:flex;align-items:center;justify-content:center"><div style="position:absolute;width:180px;height:180px;border-radius:50%;background:conic-gradient(from 0deg,#00ff88,#8b00ff,#ff006e,#c0ff00,#00ff88);filter:blur(34px);opacity:.8;top:50%;left:50%;transform:translate(-50%,-50%)"></div><div style="position:relative;color:#fff;font-weight:900;font-size:20px;text-shadow:0 0 12px #8b00ff,0 0 4px #00ff88;letter-spacing:-.02em">ACID</div></div>'
+},
+{
+ id:'riso', en:'RISO / Xerox', zh:'RISO 复古印刷', cat:'theme', era:'1980s 复兴', keywords:'riso 复古印刷 半色调网点 套色不准 zine',
+ essence:'RISO/复印机美学：半色调网点、套色不准（CMYK 错位）、粗糙纸张纹理，独立刊物与亚文化审美，怀旧而有手工感。',
+ palette:['#ff4d4d','#4d9dff','#ffd93d','#f5f0e6'],
+ type:'RISO / 衬线或手写（粗糙印刷感）',
+ features:['半色调网点（halftone dots）','套色错位：青/品红/黄偏移 2-4px','米黄/粗糙纸张底','限色 2-4 种荧光印刷色'],
+ replicate:['网点：background: radial-gradient 小圆点 repeat','套色错位：多层同元素偏移红/青 text-shadow','底色米黄 #f5f0e6 + 噪点纹理','配色限荧光红/蓝/黄印刷色'],
+ examples:'独立杂志/zine、亚文化社区、艺术展览页、复古音乐项目。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f0e6;background-image:radial-gradient(#0002 1px,transparent 1px);background-size:7px 7px;overflow:hidden"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:28px;font-weight:900;color:#ff4d4d;font-family:Georgia,serif;text-shadow:3px 0 #4d9dff,-2px 2px #ffd93d;letter-spacing:-.03em">RISO</div><div style="font-size:9px;color:#0008;margin-top:6px;letter-spacing:.2em">HALFTONE / MISPRINT</div></div></div>'
+},
+{
+ id:'metaball', en:'Liquid / Metaball', zh:'液态金属', cat:'theme', era:'2022+', keywords:'液态 metaball 水滴融合 gooey 流体',
+ essence:'流体变形，形状像水滴般融合分离，背景常伴动态模糊渐变，有机、未来、迷幻，是动效驱动的前沿美学。',
+ palette:['#ff5e8a','#7c5cff','#54f2e6','#0b0b0f'],
+ type:'Outfit / Space Grotesk（圆润现代）',
+ features:['多个圆形/水滴通过 blur + contrast 融合（gooey）','流动渐变填充','有机变形动画','深色底衬托流体质感'],
+ replicate:['filter: blur(16px) contrast(20) 实现 gooey 融合','水滴用 border-radius: 50% + 不同色','background: 流动渐变','SVG gooey filter 或 CSS contrast 技巧'],
+ examples:'AI 产品 hero、创意机构、音乐视觉、获奖动效站点。',
+ specimen:'<div style="position:absolute;inset:0;background:#0b0b0f;filter:contrast(18)"><div style="position:absolute;width:80px;height:80px;border-radius:50%;background:#ff5e8a;filter:blur(10px);top:30%;left:28%"></div><div style="position:absolute;width:70px;height:70px;border-radius:50%;background:#7c5cff;filter:blur(10px);top:42%;left:48%"></div><div style="position:absolute;width:60px;height:60px;border-radius:50%;background:#54f2e6;filter:blur(10px);top:50%;left:36%"></div></div>'
+},
+{
+ id:'kanso', en:'Japanese Minimal / Kanso', zh:'日式余白', cat:'theme', era:'常青', keywords:'日式 余白 侘寂 kanso 大地色',
+ essence:'极致留白、低饱和大地色、纤细字体、强调"气"的流动，侘寂美学，克制、静谧、禅意。',
+ palette:['#f5f1ea','#d8cfc0','#8a7e6e','#2b2b2b'],
+ type:'思源宋体 / Noto Serif（纤细衬线）',
+ features:['极致留白，元素极稀疏','低饱和大地色：米白、灰褐、墨色','纤细字体，大量字间距','不对称、呼吸感、留白即设计'],
+ replicate:['留白占 70%+，元素居中或偏置','配色锁大地色 #f5f1ea/#8a7e6e/#2b2b2b','字体细宋体，字间距宽松','装饰极少，一根线/一个字即够'],
+ examples:'日式品牌（无印良品）、茶道/禅修、高端日料、设计工作室。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f1ea;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:24px;color:#2b2b2b;font-family:Georgia,serif;letter-spacing:.4em;font-weight:300">余白</div><div style="width:1px;height:30px;background:#8a7e6e;margin:18px 0;opacity:.5"></div><div style="font-size:9px;color:#8a7e6e;letter-spacing:.3em">KANSO · WABI-SABI</div></div>'
+},
+{
+ id:'generative', en:'Generative UI', zh:'生成式边框', cat:'theme', era:'2026 前沿', keywords:'生成式 边框 流动波浪 点阵 generative',
+ essence:'边框不再是直线，而是流动的、随机的波浪线或点阵，由算法/动效生成，强调 AI 原生的"活的"界面。',
+ palette:['#0b0b0f','#7dd3fc','#c4b5fd','#34d399'],
+ type:'Space Grotesk / Geist（现代几何）',
+ features:['边框用 SVG path 波浪线 / 虚线点阵','随机生成，每次不同','配以微动效（流动/呼吸）','深色底 + 发光描边'],
+ replicate:['SVG path 画波浪/点阵边框，stroke-dasharray 动画','border 用 stroke-dashoffset 流动','配色深底 + 单色发光描边','可加 noise/random 让边框"活"起来'],
+ examples:'AI Agent 界面、自动化工具、前沿科技产品、2026 新兴趋势。',
+ specimen:'<div style="position:absolute;inset:0;background:#0b0b0f;display:flex;align-items:center;justify-content:center"><svg width="70%" height="80" viewBox="0 0 200 80"><path d="M10,40 Q30,15 50,40 T90,40 T130,40 T170,40 T210,40" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="6 4"/><path d="M10,55 Q30,30 50,55 T90,55 T130,55 T170,55 T210,55" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="3 5"/></svg></div>'
+},
+{
+ id:'plaintext', en:'Plain Text / No-UI', zh:'纯文本极简', cat:'theme', era:'2026 前沿', keywords:'纯文本 no-ui 命令行 光标 极简文本',
+ essence:'只有文字、光标和极细的线条，像命令行但更柔和，强调 AI 的响应速度与纯粹，是 No-UI/AI 原生趋势。',
+ palette:['#0a0a0a','#e8e8e8','#5a5a5a','#7dd3fc'],
+ type:'JetBrains Mono / Geist Mono（等宽，柔和）',
+ features:['只有文字 + 光标 + 极细分割线','无卡片、无阴影、无渐变','配以打字机/逐字动效','强调"快"与"纯"'],
+ replicate:['背景纯深色/纯浅色，无任何装饰','文字等宽字体，配闪烁光标 ▍','分割线 1px 极淡','动效：逐字打字机'],
+ examples:'AI 聊天界面（Claude/ChatGPT 极简态）、命令行工具、终端式效率产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#0a0a0a;padding:16px;display:flex;flex-direction:column;justify-content:center;font-family:Consolas,monospace"><div style="color:#e8e8e8;font-size:12px;line-height:1.7">&gt; 你好<span style="color:#7dd3fc">▍</span></div><div style="color:#5a5a5a;font-size:11px;margin-top:4px">— 我是纯文本界面，没有卡片 —</div><div style="border-top:1px solid #222;margin-top:10px"></div></div>'
+},
+{
+ id:'luxury', en:'Luxury', zh:'奢华风', cat:'theme', era:'常青', keywords:'奢华 黑金 衬线 大留白 高端',
+ essence:'黑金/深色、衬线大字、超大留白、精细细节、极克制，凸显稀缺与高端，是奢侈品牌的视觉语言。',
+ palette:['#0d0d0d','#c9a24b','#1a1a1a','#e8dcc8'],
+ type:'Playfair Display / Cormorant（优雅衬线）',
+ features:['黑/深底 + 金色点缀，配色极克制','衬线大字标题，超大留白','细节精致（细线、字距、微金色）','零花哨，少即是奢'],
+ replicate:['背景 #0d0d0d，文字金色 #c9a24b','标题 Playfair Display 衬线大字 48-80px','留白占 60%+，元素克制','金色仅用于关键元素/分隔线'],
+ examples:'奢侈品（LV/Chanel）、高端酒店、珠宝、时尚品牌。',
+ specimen:'<div style="position:absolute;inset:0;background:#0d0d0d;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:24px;color:#c9a24b;font-family:Georgia,serif;letter-spacing:.25em;font-weight:400">LUXURY</div><div style="width:36px;height:1px;background:#c9a24b;margin:16px 0;opacity:.6"></div><div style="font-size:9px;color:#e8dcc8;letter-spacing:.3em;opacity:.7">EST · MMXXVI</div></div>'
+},
+{
+ id:'darkluxury', en:'Dark Luxury', zh:'暗黑奢华', cat:'theme', era:'常青', keywords:'暗黑奢华 近黑 金属 低调发光 高端',
+ essence:'近黑背景、金属质感、低调发光，比奢华风更深沉、更男性化，高级感来自材质而非颜色。',
+ palette:['#080808','#8a7a5c','#3a3a3a','#d4c8a8'],
+ type:'Cormorant / 自定义衬线（深沉）',
+ features:['近黑底 #080808，比奢华更暗','金属质感（拉丝/哑光金）','低调发光（微妙而非张扬）','冷峻、深沉、男性化'],
+ replicate:['背景 #080808，金属用渐变 #8a7a5c→#3a3a3a','发光极克制：box-shadow rgba 微金','字体深沉衬线，字距宽','细节如腕表/汽车 HMI'],
+ examples:'豪车/腕表品牌、高端男性奢侈品、威士忌/雪茄、精品酒店。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#161616,#080808);display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:22px;color:transparent;background:linear-gradient(135deg,#8a7a5c,#d4c8a8,#3a3a3a);-webkit-background-clip:text;background-clip:text;font-family:Georgia,serif;letter-spacing:.3em;font-weight:400">NOIR</div><div style="font-size:8px;color:#8a7a5c;margin-top:12px;letter-spacing:.4em;opacity:.6">DARK LUXURY</div></div>'
+},
+{
+ id:'earthy', en:'Earthy / Botanical', zh:'大地植物', cat:'theme', era:'常青', keywords:'大地 植物 botanical 橄榄绿 赭石 陶土 可持续',
+ essence:'橄榄绿、赭石、米色、陶土色、植物纹样，可持续品牌的视觉语言，温暖、自然、有机。',
+ palette:['#5a6b3b','#c08552','#e8dcc8','#3d4a2a'],
+ type:'Lora / Source Serif（温暖衬线）',
+ features:['大地色：橄榄绿、赭石、陶土、米色','植物纹样/叶子插画','温暖、有机、手工感','配色低饱和，贴近自然'],
+ replicate:['配色 #5a6b3b(橄榄)/#c08552(陶土)/#e8dcc8(米)','点缀 SVG 叶子/藤蔓插画','字体温暖衬线 Lora','圆角柔和，留白自然'],
+ examples:'可持续品牌、有机食品、护肤、咖啡/茶、家居。',
+ specimen:'<div style="position:absolute;inset:0;background:#e8dcc8;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="44" height="44" viewBox="0 0 40 40"><path d="M20,8 C12,16 12,28 20,34 C28,28 28,16 20,8 Z" fill="#5a6b3b"/><path d="M20,10 L20,33" stroke="#3d4a2a" stroke-width="1"/></svg><div style="color:#3d4a2a;font-family:Georgia,serif"><div style="font-size:16px;font-weight:700;letter-spacing:.05em">BOTANICAL</div><div style="font-size:8px;color:#c08552;letter-spacing:.2em;margin-top:3px">EARTHY · ORGANIC</div></div></div>'
+},
+{
+ id:'calm', en:'Calm / Wellness', zh:'治愈冥想', cat:'theme', era:'常青', keywords:'治愈 冥想 calm wellness 米色 呼吸 留白',
+ essence:'超大留白、柔和米色、圆润形状、慢动效、呼吸感，冥想/心理健康产品的视觉语言，宁静、放松。',
+ palette:['#f5f0eb','#8b9d83','#d4a574','#e8e0d5'],
+ type:'Nunito / Quicksand（圆润柔和）',
+ features:['超大留白，呼吸感极强','柔和米色/草木绿，低饱和','圆润形状，大圆角','慢动效，呼吸节奏'],
+ replicate:['背景米色 #f5f0eb，元素圆润','配色草木绿 #8b9d83 + 陶土 #d4a574','动效极慢：3-5s ease 呼吸','留白占 60%+，元素稀疏'],
+ examples:'Calm、Headspace、冥想/瑜伽、心理健康、母婴、养生。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f0eb;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#8b9d83,#6b7d63);box-shadow:0 0 40px rgba(139,157,131,.4)"></div><div style="color:#8b9d83;font-size:12px;margin-top:18px;letter-spacing:.25em;font-weight:600">breathe</div></div>'
+},
+{
+ id:'antidesign', en:'Anti-Design', zh:'反设计', cat:'web', era:'2020+', keywords:'反设计 antidesign 混乱 打破规则 系统字体',
+ essence:'故意打破所有规则：混乱布局、不协调配色、复古系统字体，比 Brutalism 更极端、更随性，反叛、实验、有作者性。',
+ palette:['#ff00ff','#00ff00','#ffff00','#0000ff'],
+ type:'Comic Sans / Times New Roman / 系统默认（故意不协调）',
+ features:['故意不协调：撞色、错位、字号混乱','复古系统字体（Comic Sans/Times）','打破网格，自由错落','比 Brutalism 更混乱，更"个人"'],
+ replicate:['配色高饱和撞色（品红+绿+黄+蓝）','字体 Comic Sans / Times / 默认系统字','布局打破网格，元素随手放','链接下划线、文字倾斜、字号随意'],
+ examples:'艺术项目、实验性网站、反叛品牌、部分设计师作品集。',
+ specimen:'<div style="position:absolute;inset:0;background:#ffff00;overflow:hidden"><div style="position:absolute;top:14px;left:16px;font-size:26px;font-family:Comic Sans MS,cursive;color:#ff00ff;font-weight:700;transform:rotate(-6deg)">anti!</div><div style="position:absolute;top:40px;right:20px;font-size:13px;color:#0000ff;text-decoration:underline">click here?</div><div style="position:absolute;bottom:18px;left:24px;font-size:11px;color:#00ff00;background:#000;padding:3px 7px;transform:rotate(4deg);font-family:Times New Roman">no rules</div></div>'
+},
+{
+ id:'notebook', en:'Notebook / Paper', zh:'笔记本风', cat:'web', era:'常青', keywords:'笔记本 方格纸 手写 便签 washi tape',
+ essence:'方格纸/横线纸背景、手写字、胶带、便签元素，模拟真实笔记本，亲切、学习感、有人情味。',
+ palette:['#fdfcf7','#5b8def','#ff8a5b','#2b2b2b'],
+ type:'Caveat / Patrick Hand（手写体）',
+ features:['方格纸/横线纸背景（淡色网格）','手写体字体（Caveat）','胶带(washi tape)/便签元素','随手摆放，歪斜感'],
+ replicate:['背景：linear-gradient 横线 或 方格纸网格','字体 Caveat / Patrick Hand 手写','点缀胶带（彩色斜条）/便签（黄色便利贴）','元素可 rotate(±3deg) 打破规整'],
+ examples:'笔记应用、学习工具、个人主页、手账风作品集。',
+ specimen:'<div style="position:absolute;inset:0;background:#fdfcf7;background-image:linear-gradient(rgba(91,141,239,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,138,91,.12) 1px,transparent 1px);background-size:16px 16px;display:flex;align-items:center;justify-content:center"><div style="background:#fff;border-radius:6px;padding:12px 16px;box-shadow:0 6px 16px rgba(0,0,0,.1);transform:rotate(-2deg);position:relative"><div style="position:absolute;top:-8px;left:24px;width:40px;height:14px;background:#ff8a5b;opacity:.6;transform:rotate(-8deg)"></div><div style="font-family:Cursive,Segoe Script;font-size:18px;color:#2b2b2b">笔记 ✓</div></div></div>'
+},
+{
+ id:'retro90', en:'Retro Web 90s', zh:'90 年代网页', cat:'web', era:'1990s', keywords:'90s 网页 comic sans marquee gif 平铺背景',
+essence:'致敬早期互联网：Comic Sans、平铺背景图、&lt;marquee&gt;滚动、下划线蓝链、GIF 动画、表格布局，怀旧、原生态、网景时代。',
+palette:['#008080','#0000ee','#008000','#c0c0c0'],
+type:'Comic Sans MS / Times New Roman（复古系统字）',
+features:['平铺背景纹理/壁纸','Comic Sans / Times 字体','下划线蓝色超链接','&lt;marquee&gt; 滚动文字、GIF、表格布局'],
+replicate:['背景平铺小纹理图案','字体 Comic Sans MS','链接 color:#0000ee; text-decoration:underline','表格布局，文字密集，居中对齐'],
+ examples:'怀旧个人站、复古趣味项目、Web1 致敬页、Lo-fi 美学。',
+ specimen:'<div style="position:absolute;inset:0;background:#008080;background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1px);background-size:12px 12px;padding:14px;text-align:center;font-family:Times New Roman"><div style="font-size:22px;color:#ffff00;font-weight:700;text-shadow:1px 1px #000">★ 欢迎来到我的主页 ★</div><div style="font-size:11px;color:#fff;margin-top:6px">建设中...</div><div style="margin-top:8px;display:inline-block;background:#c0c0c0;border:2px outset;padding:4px 10px;font-size:10px;color:#000">点击这里</div></div>'
+},
+{
+ id:'newspaper', en:'Newspaper', zh:'报纸风', cat:'web', era:'常青', keywords:'报纸 newspaper 密集 黑白 衬线 masthead 多栏',
+ essence:'密集文字、黑白、衬线、分隔线、多栏、报刊式 masthead（报头），新闻媒体的经典视觉，权威、严肃、信息密集。',
+ palette:['#f4f1ea','#1a1a1a','#8a8a8a','#c1272d'],
+ type:'Playfair Display / Tiempos（经典衬线）',
+ features:['黑白为主，极克制红色点缀','报头 masthead：大字 + 日期 + 期号','密集多栏文字 + 分隔线','衬线字体，权威感'],
+ replicate:['背景米白 #f4f1ea，文字深墨 #1a1a1a','报头大字 + 下划线 + 日期/期号','正文 column-count: 2-3，行高紧','分隔线 1px 实线，标题衬线'],
+ examples:'纽约时报、卫报、新闻媒体、复古品牌、编辑性内容。',
+ specimen:'<div style="position:absolute;inset:0;background:#f4f1ea;padding:12px"><div style="text-align:center;border-bottom:2px solid #1a1a1a;padding-bottom:6px"><div style="font-size:20px;font-family:Georgia,serif;font-weight:700;letter-spacing:-.01em">THE DAILY</div><div style="font-size:7px;color:#8a8a8a;margin-top:2px;letter-spacing:.1em">EST. 2026 · 第 027 期</div></div><div style="display:flex;gap:10px;margin-top:8px;font-size:7px;color:#1a1a1a;line-height:1.4"><div style="flex:1"><b>头条新闻</b><br>本报讯，密集排版与多栏布局是报纸风的标志，黑白衬线传递权威感。</div><div style="flex:1;border-left:1px solid #c0c0c0;padding-left:8px"><b>要闻</b><br>分隔线区分栏目，报头加粗，正文紧凑。</div></div></div>'
+},
+{
+ id:'typoled', en:'Typography-led', zh:'字体驱动', cat:'web', era:'常青', keywords:'字体驱动 typography oversized 超大字 文字即图形',
+ essence:'超大字体作为主视觉，文字本身就是图形，极简、强冲击，用字号和字重说话，排版即设计。',
+ palette:['#ffffff','#0a0a0a','#ff4500','#f5f5f5'],
+ type:'Anton / Archivo Black（超粗展示字）',
+ features:['超大字体（视口宽度级 15-25vw）','文字即主视觉，几乎无图','极简，靠字号/字重/留白','强对比，大即正义'],
+ replicate:['font-size: clamp(80px, 20vw, 320px)','字体 Anton / Archivo Black 超粗','配色极简黑白 + 一个强调色','留白克制，字撑满'],
+ examples:'品牌官网、活动页、创意工作室、海报式网页。',
+ specimen:'<div style="position:absolute;inset:0;background:#ffffff;display:flex;align-items:center;justify-content:center;overflow:hidden"><div style="font-size:88px;font-family:Arial Black,sans-serif;font-weight:900;letter-spacing:-.05em;line-height:.85;color:#0a0a0a;text-align:center">TYPE<span style="color:#ff4500">.</span></div></div>'
+},
+{
+ id:'vercel', en:'Vercel / Geist', zh:'Vercel 黑白', cat:'web', era:'2020+', keywords:'vercel geist 纯黑白 开发者 网格 极简',
+ essence:'纯黑白为主、Geist 字体、极少颜色、网格背景、代码感、锐利，开发者工具的视觉标配，极致克制与专业。',
+ palette:['#000000','#ffffff','#666666','#fafafa'],
+ type:'Geist Sans / Geist Mono（Vercel 自研）',
+ features:['纯黑白，几乎零彩色','网格背景 + 流动渐变（极淡）','Geist 字体，紧凑字距','锐利、克制、开发者气质'],
+ replicate:['背景 #000 或 #fff + 细网格 rgba','字体 Geist Sans，letter-spacing 紧','强调色几乎不用，靠灰阶分层','组件锐利，圆角小（4-8px）'],
+ examples:'Vercel、Geist 设计系统、Next.js、shadcn/ui、开源项目官网。',
+ specimen:'<div style="position:absolute;inset:0;background:#000;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="color:#fff;font-size:24px;font-weight:800;letter-spacing:-.04em;font-family:Arial">▲ Vercel</div><div style="color:#666;font-size:9px;margin-top:6px;letter-spacing:.1em">DEVELOP · PREVIEW · SHIP</div></div>'
+},
+{
+ id:'stripe', en:'Stripe Style', zh:'Stripe 渐变专业', cat:'web', era:'常青', keywords:'stripe 白底 倾斜3D卡 渐变 柔和阴影 专业',
+ essence:'白底、精致的倾斜 3D 渐变卡片、柔和多层阴影、专业可信、动效流畅，是 B2B/金融科技视觉标杆。',
+ palette:['#ffffff','#635bff','#0a2540','#f6f9fc'],
+ type:'Stripe Sans / Camphor（圆润专业）',
+ features:['白底干净，专业可信','倾斜的 3D 渐变卡片（标志特征）','柔和多层阴影（ambient+key+rim）','渐变精致，配色克制'],
+ replicate:['白底 #ffffff + 卡片倾斜 transform: rotate/perspective','卡片用 conic/linear 渐变 + 多层柔光阴影','配色 Stripe 紫 #635bff 为主','动效流畅，hover 卡片轻微浮起旋转'],
+ examples:'Stripe、支付/金融科技、B2B SaaS、API 平台。',
+ specimen:'<div style="position:absolute;inset:0;background:#f6f9fc;display:flex;align-items:center;justify-content:center"><div style="width:54%;padding:18px;border-radius:14px;background:linear-gradient(135deg,#635bff,#0a2540);box-shadow:0 20px 40px -10px rgba(99,91,255,.4),0 4px 12px rgba(0,0,0,.08);transform:perspective(500px) rotateY(-12deg) rotateX(4deg)"><div style="color:#fff;font-size:14px;font-weight:700">payments</div><div style="color:rgba(255,255,255,.7);font-size:9px;margin-top:4px">由 Stripe 提供支持</div></div></div>'
+},
+{
+ id:'fullbleed', en:'Full-bleed Hero', zh:'全出血主视觉', cat:'web', era:'常青', keywords:'全出血 full-bleed 首屏大图 铺满 overlay',
+ essence:'首屏一张大图/视频铺满整个视口，文字叠加其上，强冲击、强氛围，几乎所有现代落地页的首屏标配。',
+ palette:['#0a0a0a','#ffffff','#ff5a3c','#1a1a2e'],
+ type:'Inter / 自定义 Display（叠加在图上）',
+ features:['首屏大图/视频 100vw×100vh 铺满','文字叠加（overlay），常配遮罩','强视觉冲击，氛围优先','向下滚动揭示更多内容'],
+ replicate:['hero { height:100vh; background: cover/center image }','文字 position:absolute 叠加，配半透明遮罩','暗图配白字，亮图配深字','遮罩 linear-gradient 增强可读性'],
+ examples:'Apple 产品页、Airbnb、汽车品牌、几乎所有现代落地页首屏。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#16213e),radial-gradient(circle at 70% 30%,#ff5a3c55,transparent 50%);display:flex;align-items:center;justify-content:center"><div style="text-align:center;color:#fff"><div style="font-size:24px;font-weight:800;letter-spacing:-.03em">FULL-BLEED</div><div style="font-size:10px;opacity:.7;margin-top:6px">首屏铺满 · 文字叠加</div></div></div>'
+},
+{
+ id:'splinehero', en:'Glossy 3D / Spline Hero', zh:'3D 主视觉', cat:'web', era:'2022+', keywords:'spline hero 3D主视觉 glossy 旋转 单焦点',
+ essence:'单个炫酷的 3D 物体作为 hero 主视觉，可旋转交互，暗背景突出，强焦点、强记忆点，是 Spline 时代的主流。',
+ palette:['#0a0a0f','#ff6ec7','#54f2e6','#7c5cff'],
+ type:'Space Grotesk / Satoshi（现代干净）',
+ features:['单个 3D 物体居中作主视觉','暗背景突出 3D，强焦点','可旋转/悬浮交互','高光、反射、材质精致'],
+ replicate:['用 Spline 制作 3D 物体，导出 webm/glb 或 Spline viewer','背景深色，3D 居中','配少量文字（标题+CTA）','鼠标拖拽旋转，自动缓慢转动'],
+ examples:'科技产品落地页首屏、AI 产品 hero、品牌展示、创意机构。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#1a1a2e,#0a0a0f);display:flex;align-items:center;justify-content:center"><div style="width:90px;height:90px;border-radius:24px;background:conic-gradient(from 45deg,#ff6ec7,#54f2e6,#7c5cff,#ff6ec7);box-shadow:0 0 50px rgba(124,92,255,.5),inset 0 8px 16px rgba(255,255,255,.3),inset 0 -10px 20px rgba(0,0,0,.3);transform:perspective(300px) rotateY(-18deg) rotateX(8deg)"></div></div>'
+},
+{
+ id:'glassmobile', en:'Glass Mobile', zh:'毛玻璃移动', cat:'mobile', era:'iOS 14+', keywords:'毛玻璃移动 渐变背景 半透明卡 控制中心',
+ essence:'彩色渐变背景上漂浮半透明毛玻璃卡片，iOS 控制中心那种感觉，通透、年轻、有层次，是 iOS 14+ 的标志风格。',
+ palette:['#5e5ce6','#ff9f0a','#ff375f','#0a0a0f'],
+ type:'SF Pro Text（系统圆润）',
+ features:['彩色渐变背景 + 半透明卡片漂浮','backdrop-filter blur 毛玻璃','圆角大、卡片有层次阴影','年轻、通透、活力'],
+ replicate:['背景 linear-gradient 多彩','卡片 rgba 半透明 + blur(20px)','圆角 16-20px + 柔和阴影','强调色用系统色'],
+ examples:'iOS 控制中心、天气/音乐 App、年轻向工具、小组件界面。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(150deg,#5e5ce6,#ff375f 60%,#ff9f0a);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:rgba(255,255,255,.18);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px;color:#fff"><div style="font-size:9px;opacity:.8">飞行模式</div><div style="font-size:18px;margin-top:4px">✈</div></div><div style="background:rgba(255,255,255,.18);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px;color:#fff"><div style="font-size:9px;opacity:.8">音乐</div><div style="font-size:16px;margin-top:4px">♫</div></div><div style="grid-column:span 2;background:rgba(255,255,255,.18);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px;color:#fff"><div style="font-size:9px;opacity:.8">亮度</div><div style="height:6px;background:rgba(255,255,255,.4);border-radius:3px;margin-top:6px"><div style="width:70%;height:100%;background:#fff;border-radius:3px"></div></div></div></div>'
+},
+{
+ id:'darknative', en:'Dark Mode Native', zh:'原生暗色', cat:'mobile', era:'常青', keywords:'原生暗色 oled纯黑 低对比 强调色 夜间',
+ essence:'OLED 纯黑(#000)、低对比、强调色点缀、省电护眼，层级靠深浅灰而非阴影，夜间使用与媒体消费 App 的标配。',
+ palette:['#000000','#1c1c1e','#0a84ff','#f5f5f7'],
+ type:'SF Pro Text（系统暗色适配）',
+ features:['OLED 纯黑 #000，省电','低对比，强调色点缀','层级靠深浅灰（#1c1c1e）而非阴影','减少蓝光，夜间友好'],
+ replicate:['背景纯黑 #000，卡片 #1c1c1e','强调色单一（系统蓝/橙/绿）','不用黑阴影，用更深的灰做层级','文字 #f5f5f7，副文字 #8e8e93'],
+ examples:'夜间模式 App、媒体消费（视频/音乐）、开发者/极客向、社交媒体。',
+ specimen:'<div style="position:absolute;inset:0;background:#000;padding:12px;display:flex;flex-direction:column;gap:8px"><div style="background:#1c1c1e;border-radius:12px;padding:12px"><div style="color:#f5f5f7;font-size:12px;font-weight:600">设置</div><div style="color:#8e8e93;font-size:9px;margin-top:2px">深色模式已开启</div></div><div style="background:#1c1c1e;border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center"><span style="color:#f5f5f7;font-size:11px">通知</span><span style="color:#0a84ff;font-size:11px;font-weight:600">5 条</span></div><div style="background:#1c1c1e;border-radius:12px;padding:12px"><div style="display:flex;justify-content:space-between"><span style="color:#f5f5f7;font-size:11px">夜间模式</span><div style="width:30px;height:18px;background:#0a84ff;border-radius:999px;position:relative"><div style="position:absolute;right:2px;top:2px;width:14px;height:14px;background:#fff;border-radius:50%"></div></div></div></div></div>'
+},
+{
+ id:'vibrant', en:'Vibrant Gradient', zh:'高饱和渐变卡', cat:'mobile', era:'2018+', keywords:'高饱和渐变卡 vibrant 健身 金融 彩色卡 白字',
+ essence:'彩色渐变卡片、白色文字、活力四射，健身/金融 App 常用数据卡用渐变提升情绪，激励、年轻、有能量。',
+ palette:['#ff6a00','#ee0979','#2193b0','#6dd5ed'],
+ type:'Poppins / Inter（粗壮活力）',
+ features:['卡片用饱和渐变填充','白字叠在渐变上','数据卡为主，激励感强','配色活力，情绪驱动'],
+ replicate:['卡片 background: linear-gradient 饱和撞色','文字白色 + 微阴影保证可读','圆角 16-20px','配色橙红/蓝绿等活力对'],
+ examples:'健身（Keep/Nike）、金融/记账、运动、激励向产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f5f7;padding:12px;display:flex;flex-direction:column;gap:8px"><div style="background:linear-gradient(135deg,#ff6a00,#ee0979);border-radius:16px;padding:14px;color:#fff"><div style="font-size:9px;opacity:.85">今日步数</div><div style="font-size:24px;font-weight:800;margin-top:2px">12,480</div><div style="font-size:8px;opacity:.8;margin-top:2px">超额完成 🎯</div></div><div style="display:flex;gap:8px"><div style="flex:1;background:linear-gradient(135deg,#2193b0,#6dd5ed);border-radius:14px;padding:12px;color:#fff"><div style="font-size:8px;opacity:.85">心率</div><div style="font-size:16px;font-weight:700;margin-top:2px">72</div></div></div></div>'
+},
+{
+ id:'minimaltab', en:'Minimal Tab', zh:'极简标签', cat:'mobile', era:'2020+', keywords:'极简标签 纯图标 tab 大留白 独立app',
+ essence:'底部纯图标 Tab（无文字或仅激活时显示）、大留白、极简，很多独立 App 和设计感强的应用采用，克制、优雅。',
+ palette:['#ffffff','#1a1a1a','#007aff','#f5f5f7'],
+ type:'SF Pro / Inter（克制中性）',
+ features:['底部 Tab 纯图标，激活时才显文字','大留白，内容呼吸','配色极简，零装饰','独立 App 设计感'],
+ replicate:['TabBar 纯图标，激活项加文字/颜色','背景近白，内容区大留白','强调色单一系统蓝','圆角克制，间距宽松'],
+ examples:'Things、独立 App、设计感工具、极简向效率产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f5f7;display:flex;flex-direction:column"><div style="flex:1;padding:20px;display:flex;flex-direction:column;justify-content:center"><div style="color:#1a1a1a;font-size:18px;font-weight:700">收件箱</div><div style="color:#8e8e93;font-size:10px;margin-top:4px">3 封未读</div></div><div style="display:flex;justify-content:space-around;background:#fff;border-top:1px solid #eee;padding:12px 0 18px"><span style="color:#007aff;font-size:20px">✉</span><span style="color:#c7c7cc;font-size:20px">◎</span><span style="color:#c7c7cc;font-size:20px">☰</span></div></div>'
+},
+{
+ id:'onboarding', en:'Onboarding Story', zh:'引导故事流', cat:'mobile', era:'常青', keywords:'引导 onboarding 全屏插画 一句话 滑动 进度点',
+ essence:'全屏插画 + 一句话、左右滑动、跳过按钮、进度点，首次启动引导的标准模式，讲故事、低门槛、建立第一印象。',
+ palette:['#6c5ce7','#fdcb6e','#a29bfe','#ffffff'],
+ type:'Poppins / Nunito（友好圆润）',
+ features:['全屏插画 + 一句话标题','左右滑动切换，进度点指示','跳过按钮始终可见','首次启动，建立认知'],
+ replicate:['每屏：全屏插画 + 居中一句话','底部进度点 + 跳过按钮','滑动用 transform translateX','插画用 clay/扁平风格'],
+ examples:'所有 App 首次启动、功能介绍、权限请求引导。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(160deg,#6c5ce7,#a29bfe);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff"><div style="font-size:40px">🚀</div><div style="font-size:16px;font-weight:700;margin-top:14px">快速开始</div><div style="font-size:10px;opacity:.8;margin-top:6px;text-align:center;max-width:60%">三步上手，开启你的创作之旅</div><div style="position:absolute;bottom:24px;display:flex;gap:6px"><span style="width:24px;height:4px;background:#fff;border-radius:2px"></span><span style="width:6px;height:4px;background:#ffffff55;border-radius:2px"></span><span style="width:6px;height:4px;background:#ffffff55;border-radius:2px"></span></div></div>'
+},
+{
+ id:'widget', en:'Widget / Glanceable', zh:'小组件', cat:'mobile', era:'iOS 14+', keywords:'小组件 widget glanceable 信息密度 即时 ios android',
+ essence:'iOS/Android 桌面小组件，信息密度高、圆角、即时信息一览，强调"一眼获取"，是系统级的信息呈现方式。',
+ palette:['#1c1c1e','#0a84ff','#34c759','#ffd60a'],
+ type:'SF Pro Text（紧凑系统字）',
+ features:['小尺寸（2x2 / 4x2）信息卡','信息密度高但层级清晰','圆角（12-20px）','即时数据，一眼可读'],
+ replicate:['卡片小尺寸 + 圆角 16px','信息分主次：大数字 + 小标签','配色深色卡 + 强调色数据','支持点击进 App 详情'],
+ examples:'iOS/Android 桌面小组件、天气/日历/健康/财务、系统工具。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#0f0f1a);padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:#1c1c1e;border-radius:16px;padding:12px;grid-column:span 2"><div style="color:#8e8e93;font-size:8px">今日天气</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span style="color:#fff;font-size:26px;font-weight:700">24°</span><span style="color:#ffd60a;font-size:14px">☀</span></div></div><div style="background:#1c1c1e;border-radius:16px;padding:10px"><div style="color:#8e8e93;font-size:7px">步数</div><div style="color:#34c759;font-size:16px;font-weight:700;margin-top:2px">8.2k</div></div><div style="background:#1c1c1e;border-radius:16px;padding:10px"><div style="color:#8e8e93;font-size:7px">日程</div><div style="color:#0a84ff;font-size:16px;font-weight:700;margin-top:2px">3</div></div></div>'
+},
+{
+ id:'orbitnav', en:'Orbit / Bubble Nav', zh:'悬浮气泡导航', cat:'mobile', era:'2020+', keywords:'气泡导航 orbit 悬浮药丸 弹性 底部导航',
+ essence:'底部导航栏变成悬浮的药丸/气泡形状，带弹性动画，脱离传统 Tab 栏，更年轻、更灵动、更有交互趣味。',
+ palette:['#5b3fff','#ffffff','#7c5cff','#0a0a0f'],
+ type:'Inter / SF Pro（现代圆润）',
+ features:['底部导航悬浮成药丸/气泡','与底部留间距，不贴边','弹性 spring 动画切换','选中项放大/变色'],
+ replicate:['TabBar position 绝对，底部留 16-24px 间距','圆角 999px 药丸形 + 阴影','切换用 spring 物理动效','选中项放大/背景色填充'],
+ examples:'部分潮流 App、Z 世代社交、设计感强的独立应用。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a1a2e,#0a0a0f);overflow:hidden"><div style="position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:4px;background:#fff;border-radius:999px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.3)"><span style="width:44px;height:36px;border-radius:999px;background:#5b3fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">⌂</span><span style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#999;font-size:15px">◎</span><span style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#999;font-size:15px">☰</span></div></div>'
+},
+{
+ id:'cardstack', en:'Card Stack', zh:'卡片堆叠', cat:'mobile', era:'2014+', keywords:'卡片堆叠 cardstack tinder 透视 滑动 层级',
+ essence:'卡片透视堆叠，滑动时带旋转和模糊层级，强力景深感，是 Tinder 式选择交互的视觉，沉浸、有趣、决策驱动。',
+ palette:['#ff5a5f','#ffffff','#1a1a2e','#ff6b6b'],
+ type:'Inter / SF Pro（清晰）',
+ features:['卡片层叠，下层缩小+模糊','滑动带旋转（如向右滑 +8deg）','z-index 层级明确','强景深，决策感强'],
+ replicate:['下层卡片 scale(.92) + translateY + blur(2px)','顶层卡片绝对定位居中','滑动用 transform rotate + translateX','左滑/右滑触发不同动作'],
+ examples:'Tinder、探探、内容浏览 App、选择/匹配类交互。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center"><div style="position:relative;width:62%;height:60%"><div style="position:absolute;inset:0;background:#fff;border-radius:16px;transform:translateY(18px) scale(.9);opacity:.5;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div><div style="position:absolute;inset:0;background:linear-gradient(135deg,#ff5a5f,#ff6b6b);border-radius:16px;transform:translateY(0) scale(1);box-shadow:0 20px 40px rgba(0,0,0,.4);display:flex;align-items:flex-end;padding:14px"><div style="color:#fff;font-size:13px;font-weight:700">卡片堆叠</div></div></div></div>'
+},
+{
+ id:'admin', en:'Admin Dashboard', zh:'后台管理', cat:'desktop', era:'常青', keywords:'后台管理 admin 表格 图表 状态色 筛选 ant',
+ essence:'左侧导航 + 顶部栏、密集表格、图表多、状态色（成功绿/警告橙/危险红）、紧凑间距，运营与管理的标配，效率优先。',
+ palette:['#001529','#1890ff','#52c41a','#ffffff'],
+ type:'Inter / PingFang（紧凑可读）',
+ features:['左侧深色导航 + 顶部栏','密集数据表格 + 图表','状态色：绿成功/橙警告/红危险','紧凑间距，筛选器+分页'],
+ replicate:['布局：左侧栏 200px + 主区','表格 dense 模式，行高 40px','图表用 ECharts/AntV','状态色 Badge 组件区分'],
+ examples:'Ant Design Pro、Element Admin、各类后台管理系统、数据看板、CMS。',
+ specimen:'<div style="position:absolute;inset:0;background:#f0f2f5;display:flex"><div style="width:32%;background:#001529;padding:8px"><div style="color:#fff;font-size:9px;font-weight:700;padding:6px;opacity:.9">管理后台</div><div style="color:#1890ff;font-size:8px;padding:5px 6px;background:rgba(24,144,255,.15);border-radius:4px;margin-top:4px">仪表盘</div><div style="color:rgba(255,255,255,.65);font-size:8px;padding:5px 6px;margin-top:2px">订单管理</div><div style="color:rgba(255,255,255,.65);font-size:8px;padding:5px 6px">用户管理</div></div><div style="flex:1;padding:10px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;gap:6px"><div style="flex:1;background:#fff;border-radius:6px;padding:7px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="font-size:7px;color:#8c8c8c">总订单</div><div style="color:#1890ff;font-size:13px;font-weight:700">1,284</div></div><div style="flex:1;background:#fff;border-radius:6px;padding:7px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="font-size:7px;color:#8c8c8c">收入</div><div style="color:#52c41a;font-size:13px;font-weight:700">¥48k</div></div></div><div style="flex:1;background:#fff;border-radius:6px;padding:7px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="font-size:7px;color:#8c8c8c;margin-bottom:3px">近7天</div><svg width="100%" height="30" viewBox="0 0 100 30"><polyline points="0,24 16,18 32,20 48,10 64,14 80,6 100,12" fill="none" stroke="#1890ff" stroke-width="1.5"/></svg></div></div></div>'
+},
+{
+ id:'console', en:'Cloud Console', zh:'云控制台', cat:'desktop', era:'常青', keywords:'云控制台 console 服务导航 面包屑 资源表 vercel aws',
+ essence:'左侧可折叠服务导航、面包屑、资源列表、区域选择器、顶部搜索，云服务/SaaS 控制台的统一范式，专业、信息密集。',
+ palette:['#000000','#ffffff','#0070f3','#111111'],
+ type:'Inter（Vercel/AWS 风现代无衬线）',
+ features:['左侧可折叠服务导航（分组）','顶部面包屑 + 搜索','资源列表/表格为主','区域选择器 + 状态徽标'],
+ replicate:['左栏分组服务图标+文字，可折叠','面包屑：项目 / 服务 / 资源','主区表格 + 操作按钮','状态用色点徽标'],
+ examples:'Vercel Dashboard、AWS Console、Stripe Dashboard、Supabase、云服务平台。',
+ specimen:'<div style="position:absolute;inset:0;background:#fafafa;display:flex"><div style="width:30%;background:#111;color:#fff;padding:8px"><div style="font-size:8px;font-weight:700;padding:4px 6px;color:#999">服务</div><div style="font-size:8px;padding:4px 6px;background:#0070f3;border-radius:4px;margin-top:2px">概览</div><div style="font-size:8px;padding:4px 6px;opacity:.7;margin-top:2px">部署</div><div style="font-size:8px;padding:4px 6px;opacity:.7">存储</div><div style="font-size:8px;padding:4px 6px;opacity:.7">分析</div></div><div style="flex:1;padding:8px"><div style="font-size:8px;color:#666;margin-bottom:6px">项目 / <span style="color:#111">概览</span></div><div style="background:#fff;border:1px solid #eee;border-radius:6px;padding:8px"><div style="font-size:9px;font-weight:600;color:#111">生产环境</div><div style="display:flex;align-items:center;gap:4px;margin-top:6px"><span style="width:6px;height:6px;border-radius:50%;background:#0070f3"></span><span style="font-size:8px;color:#666">就绪 · my-app.vercel.app</span></div></div></div></div>'
+},
+{
+ id:'sidebarmatte', en:'Sidebar Matte', zh:'磨砂侧栏', cat:'desktop', era:'macOS Ventura+', keywords:'磨砂侧栏 sidebar matte vibrancy macos 半透明',
+ essence:'macOS Ventura 式磨砂侧边栏，半透明模糊跟随后台颜色变化（vibrancy 活力模糊），连贯、通透、系统感强。',
+ palette:['#e8e8ec','#1a1a2e','#0a84ff','#ffffff'],
+ type:'SF Pro Text（系统字体）',
+ features:['侧栏半透明 + backdrop-filter blur','跟随壁纸/后台颜色变化（vibrancy）','与主区分明（细线/圆角）','系统级连贯感'],
+ replicate:['侧栏 backdrop-filter: blur(30px) saturate(180%)','背景半透明 rgba，透出桌面色','侧栏与主区用圆角分离（macOS 风格）','选中项用系统强调色'],
+ examples:'macOS Ventura/Sonoma 原生应用、访达、邮件、备忘录、部分跨平台 App。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#0a84ff 80%);display:flex;padding:10px"><div style="width:34%;background:rgba(255,255,255,.5);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,.3)"><div style="font-size:8px;color:#1a1a2e;opacity:.6;font-weight:600;margin-bottom:6px">收藏</div><div style="font-size:9px;padding:4px 6px;background:rgba(10,132,255,.2);color:#0a4699;border-radius:5px;font-weight:600">📄 文档</div><div style="font-size:9px;padding:4px 6px;color:#1a1a2e;margin-top:2px">⬇ 下载</div><div style="font-size:9px;padding:4px 6px;color:#1a1a2e">🖼 图片</div></div><div style="flex:1;background:rgba(255,255,255,.95);border-radius:10px;margin-left:8px;padding:10px"><div style="font-size:10px;font-weight:700;color:#1a1a2e">文档</div><div style="height:6px;background:#e8e8ec;border-radius:3px;margin-top:8px"></div></div></div>'
+},
+{
+ id:'doodlebrutal', en:'Doodle Brutalism', zh:'涂鸦工业风', cat:'compound', era:'2022+', keywords:'涂鸦工业风 doodle brutalism neo-brutal 手绘 新粗野 你画我猜',
+ essence:'Neo-Brutalism 的硬边骨架 + 涂鸦手绘的纸感表面：粗黑实线、硬实心阴影、饱和撞色，再覆一层素描纸纹理与手写体，活泼俏皮又有结构。Gumroad、你画我猜类游戏的标准配方。',
+ palette:['#ffd93d','#ff6b6b','#4ecdc4','#1a1a1a'],
+ type:'ZCOOL KuaiLe / Patrick Hand（手写体）配 Noto Sans SC 正文',
+ features:['骨架：4px 墨黑实线边框 + 6px 硬实心偏移阴影（无模糊）','表面：素描纸底 #FBF7EE + 28px 网格纹理模拟方格本','配色高饱和撞色：暖黄/番茄红/薄荷绿/靛蓝，每块一个亮色','手写体标题 + 漂浮涂鸦 SVG 图标，hover 上浮按下归零'],
+ replicate:['边框 border:4px solid #1a1a1a；阴影 box-shadow:6px 6px 0 #1a1a1a','纸纹：body background-image 画 28px 网格 + 噪点','字体 display 用 ZCOOL KuaiLe，正文 Noto Sans SC','hover transform:translate(-.5rem,-.5rem) shadow:10px 10px 0；active 归零'],
+ examples:'你画我猜类游戏（《你画我猜》）、Gumroad、Notion 部分插画、独立开发者产品、儿童/教育向 SaaS。',
+ specimen:'<div style="position:absolute;inset:0;background:#fbf7ee;background-image:linear-gradient(rgba(26,26,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,26,.05) 1px,transparent 1px);background-size:16px 16px;display:flex;align-items:center;justify-content:center;gap:10px"><div style="position:absolute;left:14px;top:10px;font-size:22px;color:#ff6b6b;transform:rotate(-8deg)">✎</div><div style="position:absolute;right:18px;top:14px;font-size:18px;color:#4ecdc4;transform:rotate(6deg)">★</div><div style="background:#fff;border:3px solid #1a1a1a;border-radius:10px;box-shadow:5px 5px 0 #1a1a1a;padding:14px 18px;transform:rotate(-1.5deg)"><div style="font-size:18px;font-weight:900;color:#1a1a1a;font-family:Comic Sans MS,cursive">你画我猜</div><div style="display:inline-block;margin-top:8px;padding:5px 12px;background:#ffd93d;border:2px solid #1a1a1a;border-radius:999px;font-weight:800;font-size:11px;box-shadow:2px 2px 0 #1a1a1a;font-family:Comic Sans MS,cursive">开始 ✏</div></div></div>'
+},
+{
+ id:'linearbento', en:'Linear Aurora Bento', zh:'Linear 极光便当', cat:'compound', era:'2023+', keywords:'linear 极光 bento 当代ai产品 dark saas aurora',
+ essence:'Linear 暗色 SaaS 的克制 + 极光渐变光晕 + Bento 网格：近黑底带蓝调、网格背景、紫蓝光斑漂浮、不等高圆角卡片。当代 AI 产品官网的统治级配方。',
+ palette:['#08090a','#5e6ad2','#7c3aed','#2563eb'],
+ type:'Inter / Geist（紧凑负字距 -0.02~-0.04em）',
+ features:['底色近黑带蓝调 #08090a + 细网格 rgba(255,255,255,.03)','极光光斑：紫 #7c3aed + 蓝 #2563eb 径向渐变 blur 60-80px','Bento 不等高卡片：圆角 24px、边框 1px rgba(255,255,255,.08)','标题渐变文字 + 精致微动效，克制不花哨'],
+ replicate:['grid 12 列 + grid-column/row span 拼 Bento','光斑：多个 radial-gradient 容器 filter:blur(60px)','标题 -webkit-background-clip:text 渐变字','圆角 24px、间距 8-12px，字距 Inter 紧缩'],
+ examples:'Linear、Cursor、Vercel、Cal.com、大量 2023 后 AI 工具与开发者 SaaS 落地页。',
+ specimen:'<div style="position:absolute;inset:0;background:#08090a;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:18px 18px;overflow:hidden;padding:12px;display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1.1fr 1fr;gap:7px"><div style="position:absolute;width:200px;height:200px;border-radius:50%;background:#7c3aed;filter:blur(50px);top:-40px;left:30%;opacity:.5"></div><div style="position:absolute;width:160px;height:160px;border-radius:50%;background:#2563eb;filter:blur(50px);bottom:-30px;right:10%;opacity:.4"></div><div style="grid-column:span 2;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:10px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;z-index:1"><div style="font-size:13px;font-weight:700;letter-spacing:-.03em">AI Workspace</div><div style="font-size:8px;color:#8a8f98">极光 便当 暗色</div></div><div style="border-radius:14px;background:#5e6ad2;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:800;z-index:1">99%</div><div style="border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#2dd4bf;font-size:16px;z-index:1">↑</div></div>'
+},
+{
+ id:'glassclay', en:'Glassmorphism + Clay', zh:'毛玻璃黏土', cat:'compound', era:'2022+', keywords:'毛玻璃 黏土 glass clay 柔和现代 saas',
+ essence:'玻璃拟态的通透面板 + 黏土拟态的圆润立体：半透明毛玻璃卡片漂浮在彩色渐变上，内部带黏土感的胖圆角与内阴影。柔和、现代、亲和，教育与协作产品爱用。',
+ palette:['#a78bfa','#f0abfc','#7dd3fc','#ffffff'],
+ type:'Quicksand / Nunito（圆润几何）',
+ features:['毛玻璃：backdrop-filter blur(16-20px) + 1px 白描边','黏土：大圆角 24-32px + 内阴影高光 + 柔和外阴影','背景彩色渐变（紫粉蓝），玻璃透出','配色马卡龙，亲和无攻击性'],
+ replicate:['卡片 backdrop-filter:blur(20px) + rgba 填充 + 圆角 28px','box-shadow: inset 0 6px 12px rgba(255,255,255,.5), 0 12px 24px rgba(0,0,0,.12)','背景 linear-gradient 多彩供玻璃透出','文字白/深色，配文字阴影保证可读'],
+ examples:'Spline、教育/儿童产品、协作 SaaS、设计工具引导页。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(135deg,#a78bfa,#f0abfc 60%,#7dd3fc);overflow:hidden"><div style="position:absolute;width:120px;height:120px;border-radius:50%;background:#fff;filter:blur(30px);top:-20px;left:-10px;opacity:.5"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:18px;border-radius:28px;background:rgba(255,255,255,.2);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 7px 14px rgba(255,255,255,.5),0 14px 30px rgba(0,0,0,.18);text-align:center"><div style="width:48px;height:48px;border-radius:16px;background:rgba(255,255,255,.3);margin:0 auto 8px;box-shadow:inset 0 -5px 10px rgba(0,0,0,.1),inset 0 4px 8px rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px">★</div><div style="color:#fff;font-weight:800;font-size:13px">毛玻璃+黏土</div></div></div>'
+},
+{
+ id:'editorialimmersive', en:'Editorial + Immersive', zh:'杂志沉浸', cat:'compound', era:'2022+', keywords:'杂志 沉浸 editorial immersive 高端品牌 滚动叙事',
+ essence:'杂志排版的精致版式 + 沉浸式全屏叙事：大衬线标题、多栏图文、首字下沉，叠加全屏大图视差与滚动驱动章节切换。高端品牌故事的标配。',
+ palette:['#fcf9f4','#1a1a1a','#c1272d','#8a8a8a'],
+ type:'Playfair Display / Tiempos（大衬线）配滚动叙事',
+ features:['大衬线标题（Playfair 40-80px）+ 多栏正文','首字下沉、精致图注、严格网格','全屏大图/视频 hero + 视差滚动','滚动驱动章节切换（GSAP ScrollTrigger）'],
+ replicate:['标题 Playfair Display，正文 column-count 2-3','hero height:100vh + 背景大图 + 文字 overlay','滚动用 ScrollTrigger pin 章节 + 视差 translateY','配色米白底 + 深墨文字 + 一抹红'],
+ examples:'Apple 产品故事页、时尚/奢侈品牌官网、高端媒体专题、Airbnb 杂志。',
+ specimen:'<div style="position:absolute;inset:0;background:linear-gradient(160deg,#2a2018,#0f0a06 60%);overflow:hidden"><div style="position:absolute;left:14px;top:14px;width:40%;color:#fcf9f4"><div style="font-size:22px;font-family:Georgia,serif;font-weight:800;line-height:.96;letter-spacing:-.02em">The Art of<br>Storytelling</div><div style="font-size:7px;color:#c1272d;letter-spacing:.2em;margin-top:5px;text-transform:uppercase">EDITORIAL · ISSUE 01</div></div><div style="position:absolute;right:12px;bottom:14px;width:42%;font-size:7px;color:#cfc7bb;line-height:1.5;font-family:Georgia,serif"><span style="font-size:20px;float:left;line-height:.85;margin:2px 4px 0 0;color:#fcf9f4">A</span> marriage of refined editorial typography and immersive full-bleed storytelling for premium brands.</div></div>'
+},
+{
+ id:'cyberhud', en:'Cyberpunk + HUD', zh:'赛博战术风', cat:'compound', era:'常青', keywords:'赛博 战术 cyberpunk hud sci-fi 游戏 区块链',
+ essence:'赛博朋克的霓虹暗底 + HUD 战术界面：近黑底、青粉霓虹发光、扫描线故障，叠加半透明面板、数据条、瞄准框、雷达线框。游戏感科技产品的统一语言。',
+ palette:['#0a0a12','#00fff5','#ff003c','#fee440'],
+ type:'Orbitron / Rajdhani（未来几何）配等宽数据',
+ features:['近黑底 #0a0a12 + 霓虹青 #00fff5 / 品红 #ff003c 发光','HUD 元素：半透明面板、数据条、瞄准框、线框','扫描线 / glitch overlay','等宽字体 + 数据流，军事雷达感'],
+ replicate:['霓虹用 box-shadow/text-shadow 多层发光','HUD 面板 backdrop-filter + 1px 霓虹描边 + 切角','扫描线 repeating-linear-gradient 叠加','字体 Orbitron 标题 + 等宽数据'],
+ examples:'《赛博朋克 2077》UI、科幻游戏官网、区块链/加密项目、电竞品牌、数据可视化。',
+ specimen:'<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,#1a0a2a,#0a0a12);overflow:hidden"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64%;border:1px solid #00fff5;background:rgba(0,255,245,.06);padding:14px;clip-path:polygon(0 8px,8px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 8px),calc(100% - 8px) 100%,14px 100%,0 calc(100% - 14px))"><div style="color:#00fff5;font-size:14px;font-weight:900;text-shadow:0 0 8px #00fff5,2px 0 #ff003c;font-family:Arial">TACTICAL//SYS</div><div style="display:flex;gap:6px;margin-top:8px"><span style="height:4px;flex:1;background:#00fff5;box-shadow:0 0 6px #00fff5"></span><span style="height:4px;flex:1;background:#00fff5;box-shadow:0 0 6px #00fff5"></span><span style="height:4px;flex:1;background:#ff003c44"></span><span style="height:4px;flex:1;background:#ff003c44"></span></div><div style="color:#fee440;font-size:7px;margin-top:6px;letter-spacing:.2em">STATUS: ONLINE</div></div><div style="position:absolute;right:14px;top:14px;width:28px;height:28px;border:1px solid #ff003c"></div></div>'
+},
+{
+ id:'calmorganic', en:'Calm + Organic', zh:'治愈有机', cat:'compound', era:'2020+', keywords:'治愈 有机 calm organic 米色 曲线 冥想',
+ essence:'治愈冥想的留白呼吸 + 有机流体的自然曲线：柔和米色、超大留白、圆润 blob 形状、植物纹样、慢动效。健康、母婴、生活方式产品的温柔语言。',
+ palette:['#f5f0eb','#8b9d83','#d4a574','#6c63ff'],
+ type:'Nunito / Quicksand（圆润柔和）',
+ features:['超大留白 + 柔和米色 #f5f0eb 底','不规则 blob 曲线 + 植物纹样','配色草木绿/陶土/米，低饱和温暖','慢动效（3-5s ease 呼吸），圆润大圆角'],
+ replicate:['blob border-radius:60% 40% 30% 70%/60% 30% 70% 40%','背景米色 + 径向柔光 + SVG 叶子','动效极慢，呼吸节奏','圆角 24-32px，留白占 60%+'],
+ examples:'Calm、Headspace、健康/母婴、瑜伽冥想、可持续生活品牌。',
+ specimen:'<div style="position:absolute;inset:0;background:#f5f0eb;overflow:hidden;display:flex;align-items:center;justify-content:center"><div style="position:absolute;width:130px;height:130px;background:#8b9d83;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;top:10px;left:-10px;opacity:.55"></div><div style="position:absolute;width:80px;height:80px;background:#d4a574;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;bottom:8px;right:6px;opacity:.5"></div><div style="position:relative;z-index:1;text-align:center"><div style="width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,#8b9d83,#6b7d63);margin:0 auto;box-shadow:0 0 30px rgba(139,157,131,.4)"></div><div style="color:#8b9d83;font-size:13px;margin-top:12px;letter-spacing:.25em;font-weight:700">breathe</div></div></div>'
+},
+{
+ id:'vercelmono', en:'Vercel Mono + Grid', zh:'开发者网格', cat:'compound', era:'2020+', keywords:'vercel mono grid 开发者 黑白 网格 极简',
+ essence:'Vercel 黑白极简 + 网格背景 + 等宽字：纯黑白、几乎零彩色、细网格底、Geist/Mono 字体、锐利克制。开源项目与开发者工具官网的视觉标配。',
+ palette:['#000000','#ffffff','#666666','#fafafa'],
+ type:'Geist Sans / Geist Mono（紧凑锐利）',
+ features:['纯黑白，零彩色，靠灰阶分层','细网格背景 rgba(255,255,255,.04)','等宽字 + 负字距，代码感','锐利小圆角 4-8px，组件克制'],
+ replicate:['背景 #000 + linear-gradient 网格线','字体 Geist，letter-spacing 紧','强调色几乎不用，组件靠边框/灰阶','圆角小，间距严谨'],
+ examples:'Vercel、Next.js、shadcn/ui、Geist 设计系统、开源项目官网、技术博客。',
+ specimen:'<div style="position:absolute;inset:0;background:#000;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:18px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-.04em;font-family:Arial">▲ develop</div><div style="color:#666;font-size:8px;margin-top:5px;font-family:Consolas,monospace;letter-spacing:.05em">preview · ship_</div></div>'
+},
+{
+ id:'bentobrutal', en:'Bento + Neo-Brutalism', zh:'便当粗野', cat:'compound', era:'2023+', keywords:'便当 粗野 bento brutalism 高辨识度 独立saas',
+ essence:'Bento 网格的模块化 + Neo-Brutalism 的硬边：不等高圆角卡片拼网格，每格粗黑边框 + 硬实心阴影 + 撞色。高辨识度、强结构、活泼，独立 SaaS 与个人项目爱用。',
+ palette:['#ffe156','#ff6b9d','#4d96ff','#1a1a1a'],
+ type:'Space Grotesk / Archivo（粗壮几何）',
+ features:['Bento：不等高圆角卡片拼 12 列网格','Neo-Brutal：每格 2-4px 黑边 + 硬实心阴影','撞色填充：每格一个亮色（黄/粉/蓝/绿）','hover 卡片上浮 + 阴影放大'],
+ replicate:['grid 12 列 + grid-column/row span 拼 tile','每格 border:3px solid #1a1a1a + box-shadow:6px 6px 0 #1a1a1a','每格不同撞色背景','hover translate(-.5rem,-.5rem) + 阴影 10px 10px 0'],
+ examples:'独立 SaaS 落地页、个人项目、Gumroad 早期、创意机构、社区产品。',
+ specimen:'<div style="position:absolute;inset:0;background:#fbf7ee;padding:12px;display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1.2fr 1fr;gap:7px"><div style="grid-column:span 2;border:3px solid #1a1a1a;border-radius:14px;background:#ffe156;box-shadow:5px 5px 0 #1a1a1a;padding:11px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-size:14px;font-weight:900;color:#1a1a1a">BENTO</div><div style="font-size:8px;color:#1a1a1a;opacity:.7">模块 + 硬边</div></div><div style="border:3px solid #1a1a1a;border-radius:14px;background:#ff6b9d;box-shadow:5px 5px 0 #1a1a1a;display:flex;align-items:center;justify-content:center;color:#1a1a1a;font-size:20px;font-weight:900">A</div><div style="border:3px solid #1a1a1a;border-radius:14px;background:#4d96ff;box-shadow:5px 5px 0 #1a1a1a;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:900">B</div></div>'
+},
+  /*__NEXT__*/
+];
+const grid=document.getElementById('grid'),empty=document.getElementById('empty'),overlay=document.getElementById('overlay'),modal=document.getElementById('modal'),chipsEl=document.getElementById('chips'),statsEl=document.getElementById('stats'),q=document.getElementById('q');
+let active='all';
+function catClass(c){return 'cat-'+c}
+function counts(){const r={all:STYLES.length};for(const s of STYLES)r[s.cat]=(r[s.cat]||0)+1;return r}
+function renderChips(){const c=counts();const e=[['all','全部']].concat(Object.keys(CATS).map(k=>[k,CATS[k].zh]));chipsEl.innerHTML=e.map(([k,zh])=>'<button class="chip '+(active===k?'on':'')+'" data-cat="'+k+'">'+zh+'<span class="n">'+(c[k]||0)+'</span></button>').join('');chipsEl.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{active=b.dataset.cat;renderChips();render();});}
+function legend(){const c=counts();const sw=Object.entries(CATS).map(([k,v])=>'<span><i style="background:'+v.dot+'"></i>'+v.zh+' '+(c[k]||0)+'</span>').join('');statsEl.innerHTML='<div>共 <b>'+STYLES.length+'</b> 种风格 · 点击任意卡片查看复刻指南</div><div class="legend">'+sw+'</div>';}
+function match(s){if(active!=='all'&&s.cat!==active)return false;const t=q.value.trim().toLowerCase();if(!t)return true;const hay=(s.en+' '+s.zh+' '+s.essence+' '+(s.keywords||'')+' '+(s.examples||'')).toLowerCase();return hay.includes(t);}
+function card(s){const sw=(s.palette||[]).map(h=>'<span style="background:'+h+'"></span>').join('');return '<article class="card" data-id="'+s.id+'"><div class="specimen">'+s.specimen+'</div><div class="meta"><div class="names"><span class="en">'+s.en+'</span><span class="zh">'+s.zh+'</span></div><p class="essence">'+s.essence+'</p><div class="tags"><span class="tag '+catClass(s.cat)+'">'+CATS[s.cat].zh+'</span>'+(s.era?'<span class="tag">'+s.era+'</span>':'')+'</div><div class="swatches" style="margin-top:12px">'+sw+'</div></div></article>';}
+function render(){const list=STYLES.filter(match);grid.innerHTML=list.map(card).join('');empty.style.display=list.length?'none':'block';grid.querySelectorAll('.card').forEach(el=>{const s=STYLES.find(x=>x.id===el.dataset.id);el.onclick=()=>open(s);});}
+function pal(s){return '<div class="pal">'+(s.palette||[]).map(h=>'<div class="sw" data-hex="'+h+'"><div class="c" style="background:'+h+'"></div><div class="h">'+h.toUpperCase()+'</div></div>').join('')+'</div>';}
+function open(s){const feats=(s.features||[]).map(x=>'<li>'+x+'</li>').join('');const repl=(s.replicate||[]).map(x=>'<li>'+x+'</li>').join('');modal.innerHTML='<button class="close" onclick="closeM()">&#10005;</button><div class="m-specimen">'+s.specimen+'</div><div class="m-body"><div class="m-head"><div class="t"><h2>'+s.en+'</h2><div class="zh">'+s.zh+(s.keywords?' &middot; '+s.keywords:'')+'</div></div><div class="m-actions"><span class="era">'+(s.era||'&mdash;')+'</span><a class="demo-btn" target="_blank" rel="noopener" href="demos/'+s.id+'.html">&#9658; 查看 Demo</a></div></div><p class="m-essence">'+s.essence+'</p><div class="m-grid"><div class="sect"><h4>视觉特征 Visual Features</h4><ul>'+feats+'</ul></div><div class="sect"><h4>如何复刻 How to Replicate</h4><ul>'+repl+'</ul></div><div class="sect"><h4>配色 Palette &middot; 点击复制</h4>'+pal(s)+'<div style="margin-top:12px;font-size:12.5px;color:var(--ink3)">推荐字体：<code>'+(s.type||'&mdash;')+'</code></div></div><div class="sect"><h4>范例与适用 Examples</h4><div class="ex">'+(s.examples||'&mdash;')+'</div><div style="margin-top:14px"><span class="tag '+catClass(s.cat)+'">'+CATS[s.cat].zh+'</span></div></div></div></div>';modal.querySelectorAll('.sw').forEach(el=>el.onclick=()=>copy(el.dataset.hex));overlay.classList.add('show');}
+function closeM(){overlay.classList.remove('show');}
+overlay.onclick=e=>{if(e.target===overlay)closeM();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}});
+const copiedEl=document.getElementById('copied');
+function copy(h){navigator.clipboard&&navigator.clipboard.writeText(h);copiedEl.textContent='已复制 '+h.toUpperCase();copiedEl.classList.add('on');clearTimeout(window._t);window._t=setTimeout(()=>copiedEl.classList.remove('on'),1300);}
+document.getElementById('total2').textContent=STYLES.length;
+q.oninput=render;renderChips();legend();render();
+
+/* ===== 复刻实战方法论（融合 Claude Code 知识库 + DeepSeek 图谱） ===== */
+const FIVE_ELEMENTS=[
+ {k:'颜色 Color', v:'单色黑白 / 高饱和 / 莫兰迪低饱和 / 渐变 / 霓虹 / 大地色'},
+ {k:'字体 Typography', v:'无衬线 / 衬线 / 等宽 / 手写体 / 超大字号排版'},
+ {k:'形状 Shape', v:'直角 / 大圆角(16-32px) / 胶囊 / 不规则手绘'},
+ {k:'质感 Texture', v:'扁平 / 拟物阴影 / 毛玻璃 / 黏土 / 噪点 / 金属'},
+ {k:'留白与节奏 Spacing', v:'紧凑拥挤 / 大留白呼吸感 / 网格严谨 / 自由错落'}
+];
+const STEPS=[
+ {n:'1', t:'识别风格', p:'看背景(深色→SaaS/Cyber/Luxury；浅色→Flat/Editorial)→看质感(毛玻璃→Glass；硬阴影→Neo-Brutal；胖圆→Clay)→看布局(卡片网格→Bento；严谨多栏→Swiss)→看配色(撞色→Neo-Brutal；渐变光斑→Aurora；霓虹→Cyber)。'},
+ {n:'2', t:'拆解五要素', p:'翻开该风格配方，抄下具体数值：背景色与主辅色(十六进制)、字体名与字重、圆角像素、阴影参数、间距/留白程度。这五个变量调到目标值即完成 80%。'},
+ {n:'3', t:'写 Prompt 生成', p:'把【风格名 + 五要素参数 + 关键词】写进 prompt 喂给 Claude Code/Cursor/CodeX。用「视觉三要素法」：定主风格 + 定色彩情绪 + 定交互反馈。'}
+];
+const TEMPLATES=[
+ {t:'通用落地页', s:'替换风格名即可', c:`用 [React + Tailwind CSS] 实现一个产品落地页，采用 [Neo-Brutalism] 风格。\n\n视觉规范：\n- 粗黑边框 3px，硬实心阴影 box-shadow: 6px 6px 0 #000(不模糊)\n- 高饱和撞色：主色 #FFD600 黄、辅 #FF6B9D 粉、#4D9DE0 蓝\n- 大圆角 16px、Inter 粗体大标题\n- Bento Grid 布局，暗色背景 #0A0A0A\n\n页面结构：Hero(标题+CTA) + 功能 Bento 网格(6格) + 证言 + Footer\n要求：响应式、组件化、悬停微交互、用 lucide-react 图标。`},
+ {t:'Linear 风现代 SaaS', s:'最实用', c:`用 [Next.js + Tailwind] 做 SaaS 产品官网，Linear 风格：\n- 深色背景 #08090A(带微蓝调)\n- 顶部毛玻璃 sticky 导航\n- Hero 大字标题(Inter/Geist) + 极光渐变光晕(紫 #7C3AED + 蓝 #2563EB，blur 80px)\n- 功能区 Bento Grid(圆角 24px，边框 1px rgba(255,255,255,0.08))\n- 微动效：滚动渐入、悬停发光\n响应式、组件化、SEO 友好。`},
+ {t:'Gumroad 风独立产品', s:'高辨识度', c:`用 [React + Tailwind] 做 Gumroad 风独立产品页：\n- 纯色背景(亮黄 #FFD600 或米白)\n- 卡片：粗黑边框 3px + 硬黑色偏移阴影 4px 4px 0 #000 + 大圆角 20px\n- 撞色按钮(粉/蓝/绿轮换)\n- 粗体大标题，略显笨拙的可爱感\n- 手绘风插画点缀\n响应式，带微交互。`},
+ {t:'visionOS 空间感', s:'最前沿', c:`用 [React + Tailwind + Framer Motion] 做 visionOS 空间计算风格界面：\n- 深色环境背景 + 中央悬浮半透明玻璃面板\n- 面板：background rgba(255,255,255,0.1)、backdrop-filter blur(20px)、border 1px rgba(255,255,255,0.2)、超大圆角 32px\n- 面板带柔和外发光和多层级深度阴影\n- 内容浮于背景之上，有空间纵深感\n- 缓慢优雅的悬浮动效`}
+];
+const MIXES=[
+ {c:'Linear Dark + Aurora + Bento', e:'当代 AI 产品官网', s:'AI 工具、SaaS 落地页'},
+ {c:'Neo-Brutalism + Doodle Icon', e:'有趣的独立开发者产品', s:'独立产品、创意工具'},
+ {c:'Glassmorphism + 3D Clay', e:'柔和现代 SaaS', s:'教育、协作产品'},
+ {c:'Editorial Serif + Immersive', e:'高端品牌站', s:'时尚、媒体、奢侈品牌'},
+ {c:'Cyberpunk + HUD', e:'游戏感科技产品', s:'游戏、区块链、极客向'},
+ {c:'Bento + Neo-Brutalism', e:'高辨识度现代风', s:'独立 SaaS、个人项目'},
+ {c:'Vercel Mono + Grid BG', e:'开发者工具官网', s:'开源项目、技术产品'},
+ {c:'Calm Beige + Organic Curve', e:'治愈系生活方式', s:'健康、母婴、冥想'}
+];
+const SWATCHES=[
+ {n:'Linear Dark', bg:'#08090A', a:'#7C3AED', b:'#2563EB'},
+ {n:'Vercel', bg:'#000000', a:'#FFFFFF', b:'#666666'},
+ {n:'Neo-Brutalism', bg:'#FFD600', a:'#000000', b:'#FF6B9D'},
+ {n:'Stripe', bg:'#FFFFFF', a:'#635BFF', b:'#0A2540'},
+ {n:'Cyberpunk', bg:'#0A0A0F', a:'#00F0FF', b:'#FF00E6'},
+ {n:'Y2K', bg:'#C0DEFF', a:'#FFB3DE', b:'#C0C0C0'},
+ {n:'Calm Wellness', bg:'#F5F0EB', a:'#8B9D83', b:'#D4A574'},
+ {n:'Claymorphism', bg:'#FFF0F5', a:'#FFD6E8', b:'#D6E5FF'},
+ {n:'Material You', bg:'#FEF7FF', a:'#6750A4', b:'#EADDFF'},
+ {n:'iOS', bg:'#F2F2F7', a:'#007AFF', b:'#34C759'}
+];
+const PITFALLS=[
+ {h:'Neumorphism 可访问性差', d:'低对比度，弱视用户看不清，生产环境慎用，仅适合概念设计。'},
+ {h:'Glassmorphism 性能', d:'backdrop-filter 在低端设备耗性能，大范围使用需真机测试。'},
+ {h:'Neo-Brutalism 别滥用', d:'硬阴影在密集表格里会显得脏，适合落地页不适合后台。'},
+ {h:'3D 资产体积', d:'Spline/视频背景会拖慢首屏，务必懒加载与压缩。'},
+ {h:'风格要服务内容', d:'先想清产品定位和用户，再选风格，不要为风格而风格。'},
+ {h:'混合不超过 2 种主风格', d:'混太多会失去辨识度，显得杂乱。'},
+ {h:'纹理比纯色高级', d:'多用 noise texture overlay 和 grainy gradient，避免廉价感。'},
+ {h:'阴影要有层级', d:'别用默认 box-shadow，用多层叠加(0 4px 6px + 0 10px 20px)制造真实纵深。'}
+];
+const goverlay=document.getElementById('goverlay'),gmodal=document.getElementById('gmodal');
+function openGuide(tab){
+ const nav=['five','steps','tmpl','mix','sw','pit'].map(k=>'<button data-g="'+k+'"'+(k===(tab||'five')?' class="on"':'')+'>'+({five:'五要素公式',steps:'复刻三步法',tmpl:'Prompt 模板',mix:'混搭组合',sw:'配色速查',pit:'避坑提醒'}[k])+'</button>').join('');
+ const fe=FIVE_ELEMENTS.map(e=>'<tr><td><b>'+e.k+'</b></td><td>'+e.v+'</td></tr>').join('');
+ const sp=STEPS.map(s=>'<div class="step"><div class="num">'+s.n+'</div><h5>'+s.t+'</h5><p>'+s.p+'</p></div>').join('');
+ const tp=TEMPLATES.map((t,i)=>'<div class="tmpl"><div class="th"><div class="t">'+t.t+'<span>'+t.s+'</span></div><button onclick="copyTmpl('+i+')">复制</button></div><pre>'+t.c.replace(/</g,'&lt;')+'</pre></div>').join('');
+ const mx=MIXES.map(m=>'<tr><td>'+m.c+'</td><td>'+m.e+'</td><td>'+m.s+'</td></tr>').join('');
+ const sw=SWATCHES.map(w=>'<div class="swcard" onclick="copy(\''+w.a+'\')"><div class="bars"><span style="background:'+w.bg+'"></span><span style="background:'+w.a+'"></span><span style="background:'+w.b+'"></span></div><div class="info"><div class="nm">'+w.n+'</div><div class="hx">'+w.bg+' · '+w.a+'</div></div></div>').join('');
+ const pt=PITFALLS.map(p=>'<div class="pitfall"><div class="ic">!</div><p><b>'+p.h+'</b> — '+p.d+'</p></div>').join('');
+ gmodal.innerHTML='<button class="close" onclick="closeG()">&#10005;</button><nav>'+nav+'</nav>'+
+ '<div class="gsect '+(tab==='five'||!tab?'on':'')+'" id="g-five"><h3>五要素公式 · 读任何页面都能反推</h3><p class="lead">风格本质是这五个变量的固定组合。学会读这五个变量，看到任何好看的页面都能反推出它属于什么风格、怎么复刻。<b>复刻 = 把这五个变量调到目标风格的数值。</b></p><table class="ftab"><tr><th>要素</th><th>常见取值</th></tr>'+fe+'</table></div>'+
+ '<div class="gsect '+(tab==='steps'?'on':'')+'" id="g-steps"><h3>复刻三步法 · 从看到到生成</h3><p class="lead">看到喜欢的页面 → 对照速查索引识别风格 → 拆解五要素 → 写 Prompt 喂给 AI。这是 Vibe Coding 的核心工作流。</p><div class="steps">'+sp+'</div></div>'+
+ '<div class="gsect '+(tab==='tmpl'?'on':'')+'" id="g-tmpl"><h3>Prompt 模板 · 直接粘贴即用</h3><p class="lead">四套亲测可用的模板，复制后替换方括号内的风格名/参数即可。点「复制」按钮一键取用。</p>'+tp+'</div>'+
+ '<div class="gsect '+(tab==='mix'?'on':'')+'" id="g-mix"><h3>混搭黄金组合 · 亲测好看</h3><p class="lead">单一风格容易单调，混搭能产生新意。但记住：主风格不超过 2 种，否则失去辨识度。</p><table class="ftab mixtab"><tr><th>组合</th><th>效果</th><th>适合场景</th></tr>'+mx+'</table></div>'+
+ '<div class="gsect '+(tab==='sw'?'on':'')+'" id="g-sw"><h3>配色速查 · 点击复制</h3><p class="lead">常用风格的代表色板，点击卡片复制主色 hex。</p><div class="swlist">'+sw+'</div></div>'+
+ '<div class="gsect '+(tab==='pit'?'on':'')+'" id="g-pit"><h3>避坑提醒 · 别踩这些雷</h3><p class="lead">前人踩过的坑，帮你少走弯路。尤其注意可访问性与性能。</p>'+pt+'</div>';
+ gmodal.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{gmodal.querySelectorAll('.gsect').forEach(s=>s.classList.remove('on'));document.getElementById('g-'+b.dataset.g).classList.add('on');gmodal.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');gmodal.scrollTop=0;});
+ goverlay.classList.add('show');
+}
+function closeG(){goverlay.classList.remove('show');}
+function copyTmpl(i){copy(TEMPLATES[i].c);}
+goverlay.onclick=e=>{if(e.target===goverlay)closeG();};
+</script>
+  </body>
+</html>

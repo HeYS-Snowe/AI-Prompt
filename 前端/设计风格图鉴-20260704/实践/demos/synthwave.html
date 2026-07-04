@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthwave · 合成波 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Synthwave<small>合成波</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(180deg,#3a0ca3,#8338ec 45%,#ff006e);overflow:hidden"><div style="position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#fb5607,#ff006e);box-shadow:0 0 30px #ff006e"></div><div style="position:absolute;left:0;right:0;top:30%;height:0;border-top:3px solid #3a0ca3;transform:translateY(40px)"></div><div style="position:absolute;left:0;right:0;bottom:0;height:42%;background:repeating-linear-gradient(90deg,transparent,transparent 20px,#ff006e 20px,#ff006e 22px),repeating-linear-gradient(0deg,transparent,transparent 16px,#00f5d4 16px,#00f5d4 17px);transform:perspective(180px) rotateX(62deg);transform-origin:top"></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">80s 复古未来：日落渐变（橙粉紫）、透视网格地平线、霓虹描边、日落太阳带条纹，迷幻而怀旧。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">2010s</span>
+    <span class="tag">合成波 80s 日落 网格 霓虹</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ff006e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff006e')" title="#ff006e"><small>#FF006E</small></div><div class="sw" style="background:#fb5607" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fb5607')" title="#fb5607"><small>#FB5607</small></div><div class="sw" style="background:#8338ec" onclick="navigator.clipboard&&navigator.clipboard.writeText('#8338ec')" title="#8338ec"><small>#8338EC</small></div><div class="sw" style="background:#3a0ca3" onclick="navigator.clipboard&&navigator.clipboard.writeText('#3a0ca3')" title="#3a0ca3"><small>#3A0CA3</small></div></div>
+  <p class="hint">推荐字体：<code>Monoton / Audiowide（霓虹描边字）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>日落渐变：橙→粉→紫</li><li>透视网格地面 + 远山/太阳剪影</li><li>霓虹描边字（outline + glow）</li><li>深紫/品红基调，配粉橙高光</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>太阳：径向渐变圆 + 水平条纹裁切</li><li>网格：perspective + repeating-linear-gradient</li><li>标题用 -webkit-text-stroke 描边 + text-shadow glow</li><li>配色锁定粉紫橙</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">《迈阿密热线》、Drive 配乐封面、Synthwave 音乐厂牌、复古游戏 UI。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Synthwave" (合成波) style. 80s 复古未来：日落渐变（橙粉紫）、透视网格地平线、霓虹描边、日落太阳带条纹，迷幻而怀旧。 Visual: 日落渐变：橙→粉→紫; 透视网格地面 + 远山/太阳剪影; 霓虹描边字（outline + glow）; 深紫/品红基调，配粉橙高光. Palette: #ff006e, #fb5607, #8338ec, #3a0ca3. Font: Monoton / Audiowide（霓虹描边字）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

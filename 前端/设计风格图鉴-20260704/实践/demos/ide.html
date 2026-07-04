@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDE / Code Editor · IDE 代码编辑器 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">IDE / Code Editor<small>IDE 代码编辑器</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#1e1e1e;display:flex"><div style="width:30px;background:#333333;display:flex;flex-direction:column;align-items:center;padding-top:8px;gap:10px"><div style="width:14px;height:14px;background:#007acc;border-radius:2px"></div><div style="width:14px;height:14px;background:#555"></div><div style="width:14px;height:14px;background:#555"></div></div><div style="width:26%;background:#252526;padding:8px"><div style="color:#cccccc;font-size:8px;font-weight:600;margin-bottom:6px">资源管理器</div><div style="color:#888;font-size:7px">▸ SRC</div><div style="color:#c5c5c5;font-size:7px;padding-left:8px">main.ts</div><div style="color:#c5c5c5;font-size:7px;padding-left:8px">app.tsx</div></div><div style="flex:1;padding:8px;font-family:Consolas,monospace;font-size:8px;line-height:1.6"><div><span style="color:#858585">1</span> <span style="color:#569cd6">const</span> <span style="color:#4ec9b0">app</span> = () =&gt; {</div><div><span style="color:#858585">2</span> <span style="color:#569cd6">&nbsp;&nbsp;return</span> <span style="color:#ce9178">&lt;Editor/&gt;</span></div><div><span style="color:#858585">3</span> }</div></div><div style="position:absolute;left:0;right:0;bottom:0;height:16px;background:#007acc;color:#fff;font-size:7px;display:flex;align-items:center;padding:0 10px;gap:12px"><span>main 分支</span><span>UTF-8</span><span>TypeScript</span></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">代码编辑器界面：活动栏 + 侧边栏 + 编辑区 + 终端/面板，语法高亮、紧凑、信息密集，为开发者效率优化。</p>
+  <div class="meta">
+    <span class="tag">桌面软件</span>
+    <span class="tag">常青</span>
+    <span class="tag">IDE vscode cursor 编辑器 代码</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#1e1e1e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1e1e1e')" title="#1e1e1e"><small>#1E1E1E</small></div><div class="sw" style="background:#252526" onclick="navigator.clipboard&&navigator.clipboard.writeText('#252526')" title="#252526"><small>#252526</small></div><div class="sw" style="background:#007acc" onclick="navigator.clipboard&&navigator.clipboard.writeText('#007acc')" title="#007acc"><small>#007ACC</small></div><div class="sw" style="background:#4ec9b0" onclick="navigator.clipboard&&navigator.clipboard.writeText('#4ec9b0')" title="#4ec9b0"><small>#4EC9B0</small></div></div>
+  <p class="hint">推荐字体：<code>JetBrains Mono / Cascadia Code（等宽 + 连字）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>活动栏（图标）+ 文件树 + 编辑区</li><li>语法高亮（多色 token）</li><li>紧凑行高、行号、minimap</li><li>底部状态栏 + 集成终端</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>三栏布局：activity bar / sidebar / editor</li><li>语法色：关键字蓝、字符串橙、类型青</li><li>等宽字体 + 连字（ligatures）</li><li>深色 #1e1e1e 主，强调 #007acc</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">VS Code、Cursor、JetBrains 全家桶、Sublime、Zed。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "IDE / Code Editor" (IDE 代码编辑器) style. 代码编辑器界面：活动栏 + 侧边栏 + 编辑区 + 终端/面板，语法高亮、紧凑、信息密集，为开发者效率优化。 Visual: 活动栏（图标）+ 文件树 + 编辑区; 语法高亮（多色 token）; 紧凑行高、行号、minimap; 底部状态栏 + 集成终端. Palette: #1e1e1e, #252526, #007acc, #4ec9b0. Font: JetBrains Mono / Cascadia Code（等宽 + 连字）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

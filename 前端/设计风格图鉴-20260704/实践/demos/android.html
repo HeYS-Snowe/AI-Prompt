@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Android Material · 安卓 Material — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Android Material<small>安卓 Material</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#fef7ff;padding:0;display:flex;flex-direction:column"><div style="background:#6750a4;color:#fff;padding:16px 16px 18px"><div style="font-size:9px;opacity:.8;letter-spacing:.1em">今日</div><div style="font-size:18px;font-weight:700;margin-top:2px">Android</div></div><div style="padding:12px;display:flex;flex-direction:column;gap:8px;flex:1"><div style="background:#eaddff;color:#21005d;border-radius:18px;padding:12px"><div style="font-size:11px;font-weight:600">动态取色</div><div style="font-size:8px;opacity:.7;margin-top:2px">Dynamic Color from wallpaper</div></div><div style="display:flex;gap:6px"><span style="background:#6750a4;color:#fff;border-radius:8px;padding:4px 10px;font-size:9px;font-weight:600">Assist</span><span style="background:#fff;color:#6750a4;border:1px solid #cac4d0;border-radius:8px;padding:4px 10px;font-size:9px">Set up</span></div></div><div style="position:absolute;right:14px;bottom:18px;width:40px;height:40px;border-radius:14px;background:#6750a4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 14px rgba(103,80,164,.4)">+</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">Android 原生遵循 Material You：动态取色、大圆角、FAB、手势导航，强调个性、表达与流畅手势。</p>
+  <div class="meta">
+    <span class="tag">移动端 App</span>
+    <span class="tag">2021+</span>
+    <span class="tag">安卓 materialyou 动态色</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#6750a4" onclick="navigator.clipboard&&navigator.clipboard.writeText('#6750a4')" title="#6750a4"><small>#6750A4</small></div><div class="sw" style="background:#eaddff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#eaddff')" title="#eaddff"><small>#EADDFF</small></div><div class="sw" style="background:#21005d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#21005d')" title="#21005d"><small>#21005D</small></div><div class="sw" style="background:#fef7ff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fef7ff')" title="#fef7ff"><small>#FEF7FF</small></div></div>
+  <p class="hint">推荐字体：<code>Roboto（M3 默认）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>动态色取自壁纸</li><li>大圆角卡片 + FAB 悬浮按钮</li><li>底部手势条 + 顶部大型应用栏</li><li>表达力强：Chip、Card、Bottom Sheet</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>配色 M3 tonal，圆角 16~28px</li><li>FAB 在右下，Bottom Sheet 常驻手势</li><li>顶部 Large Top App Bar 可滚动收起</li><li>间距用 4dp 基准，间距 16/24dp</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Android 系统应用、Google 全家桶、Material You 主题第三方 App。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Android Material" (安卓 Material) style. Android 原生遵循 Material You：动态取色、大圆角、FAB、手势导航，强调个性、表达与流畅手势。 Visual: 动态色取自壁纸; 大圆角卡片 + FAB 悬浮按钮; 底部手势条 + 顶部大型应用栏; 表达力强：Chip、Card、Bottom Sheet. Palette: #6750a4, #eaddff, #21005d, #fef7ff. Font: Roboto（M3 默认）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

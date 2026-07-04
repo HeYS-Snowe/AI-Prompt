@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skeuomorphism 2.0 · 新拟物 2.0 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Skeuomorphism 2.0<small>新拟物 2.0</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#2a2a32,#0e0e12);display:flex;align-items:center;justify-content:center;gap:18px"><div style="width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5a5a66,#1a1a1f 70%);box-shadow:inset 0 3px 6px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.6),0 10px 24px rgba(0,0,0,.6);position:relative"><div style="position:absolute;left:50%;top:12px;width:4px;height:24px;background:#ffb84d;border-radius:2px;transform:translateX(-50%) rotate(35deg);transform-origin:bottom center;box-shadow:0 0 8px #ffb84d"></div></div><div style="color:#d4d4dc;font-size:11px;letter-spacing:.2em;text-transform:uppercase">Volume</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">在扁平化基础上重新引入微妙物理暗示：纹理、高光、金属/皮革质感、可旋转旋钮，复古而精致。</p>
+  <div class="meta">
+    <span class="tag">网页表面风格</span>
+    <span class="tag">2023+</span>
+    <span class="tag">拟物 物理质感 knob dial</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#1a1a1f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1a1a1f')" title="#1a1a1f"><small>#1A1A1F</small></div><div class="sw" style="background:#2a2a32" onclick="navigator.clipboard&&navigator.clipboard.writeText('#2a2a32')" title="#2a2a32"><small>#2A2A32</small></div><div class="sw" style="background:#ffb84d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffb84d')" title="#ffb84d"><small>#FFB84D</small></div><div class="sw" style="background:#d4d4dc" onclick="navigator.clipboard&&navigator.clipboard.writeText('#d4d4dc')" title="#d4d4dc"><small>#D4D4DC</small></div></div>
+  <p class="hint">推荐字体：<code>SF Pro / 自定义 Display（高质感）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>重新拥抱材质：拉丝金属、皮革、玻璃</li><li>高光与反射：顶部 linear-gradient + 底部阴影</li><li>物理交互：旋钮旋转、滑块有阻尼</li><li>精致但不卡通，偏高级感</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>用多层 radial/linear gradient 模拟金属圆柱/球面</li><li>box-shadow 内外结合：顶部 inset 高光 + 底部投影</li><li>纹理用 CSS pattern 或 SVG overlay，低透明度</li><li>visionOS、部分音频/创意工具在回归此风格</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Apple visionOS 控件、Logic Pro、部分高端音频 App、复古仪表盘 UI。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Skeuomorphism 2.0" (新拟物 2.0) style. 在扁平化基础上重新引入微妙物理暗示：纹理、高光、金属/皮革质感、可旋转旋钮，复古而精致。 Visual: 重新拥抱材质：拉丝金属、皮革、玻璃; 高光与反射：顶部 linear-gradient + 底部阴影; 物理交互：旋钮旋转、滑块有阻尼; 精致但不卡通，偏高级感. Palette: #1a1a1f, #2a2a32, #ffb84d, #d4d4dc. Font: SF Pro / 自定义 Display（高质感）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

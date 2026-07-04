@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOS / HIG Native · iOS 原生 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">iOS / HIG Native<small>iOS 原生</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#f2f2f7;padding:14px;display:flex;flex-direction:column;gap:10px"><div style="background:#fff;border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,.08)"><div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#007aff,#5ac8fa);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px">&#9776;</div><div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1c1c1e">设置</div><div style="font-size:9px;color:#8e8e93">通用 · 蓝牙 · 隐私</div></div><div style="color:#c7c7cc;font-size:14px">›</div></div><div style="background:#fff;border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 3px rgba(0,0,0,.08)"><span style="font-size:12px;color:#1c1c1e">飞行模式</span><div style="width:30px;height:18px;background:#34c759;border-radius:999px;position:relative"><div style="position:absolute;right:2px;top:2px;width:14px;height:14px;background:#fff;border-radius:50%"></div></div></div><div style="margin-top:auto;display:flex;justify-content:space-around;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-radius:14px;padding:8px"><span style="color:#007aff;font-size:11px;font-weight:600">首页</span><span style="color:#8e8e93;font-size:11px">搜索</span><span style="color:#8e8e93;font-size:11px">我的</span></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">遵循 Apple Human Interface Guidelines：圆角卡片、SF 字体、克制配色、毛玻璃导航栏，原生、精致、高一致性。</p>
+  <div class="meta">
+    <span class="tag">移动端 App</span>
+    <span class="tag">常青</span>
+    <span class="tag">iOS HIG 苹果 系统原生</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#f2f2f7" onclick="navigator.clipboard&&navigator.clipboard.writeText('#f2f2f7')" title="#f2f2f7"><small>#F2F2F7</small></div><div class="sw" style="background:#ffffff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffffff')" title="#ffffff"><small>#FFFFFF</small></div><div class="sw" style="background:#007aff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#007aff')" title="#007aff"><small>#007AFF</small></div><div class="sw" style="background:#1c1c1e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1c1c1e')" title="#1c1c1e"><small>#1C1C1E</small></div></div>
+  <p class="hint">推荐字体：<code>SF Pro Text / SF Pro Display（系统字体）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>圆角卡片（12~16px）+ 系统阴影</li><li>SF 字体，字重层级清晰</li><li>分组列表（inset grouped）</li><li>毛玻璃 TabBar/NavigationBar</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>圆角 12~16px，卡片白底 + 柔和阴影</li><li>配色 #f2f2f7 底 + #ffffff 卡 + #007aff 强调</li><li>列表用 grouped table，section header 大写灰</li><li>TabBar 用 blur + 半透明白</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">iOS 系统应用（设置、App Store）、Apple 自家 App、大量遵循 HIG 的第三方 App。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "iOS / HIG Native" (iOS 原生) style. 遵循 Apple Human Interface Guidelines：圆角卡片、SF 字体、克制配色、毛玻璃导航栏，原生、精致、高一致性。 Visual: 圆角卡片（12~16px）+ 系统阴影; SF 字体，字重层级清晰; 分组列表（inset grouped）; 毛玻璃 TabBar/NavigationBar. Palette: #f2f2f7, #ffffff, #007aff, #1c1c1e. Font: SF Pro Text / SF Pro Display（系统字体）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

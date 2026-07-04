@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Terminal / CRT · 终端复古 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Retro Terminal / CRT<small>终端复古</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#0a1a0a;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.25),rgba(0,0,0,.25) 1px,transparent 1px,transparent 3px);display:flex;align-items:center;justify-content:center"><div style="color:#33ff66;font-family:Consolas,monospace;font-size:12px;text-shadow:0 0 6px #33ff66;line-height:1.5"><div>&gt; system.init<span style="animation:blink 1s steps(1) infinite">_</span></div><div style="color:#ffb000">&gt; [OK] retro terminal online</div><div>&gt; press any key_<span style="color:#33ff66">&#9608;</span></div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">绿屏/琥珀色单色显示器、等宽字体、扫描线、CRT 弧面、闪烁光标，致敬早期计算机的硬核极客浪漫。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">70s~80s</span>
+    <span class="tag">终端 CRT 绿屏 扫描线</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#0a1a0a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0a1a0a')" title="#0a1a0a"><small>#0A1A0A</small></div><div class="sw" style="background:#33ff66" onclick="navigator.clipboard&&navigator.clipboard.writeText('#33ff66')" title="#33ff66"><small>#33FF66</small></div><div class="sw" style="background:#003b00" onclick="navigator.clipboard&&navigator.clipboard.writeText('#003b00')" title="#003b00"><small>#003B00</small></div><div class="sw" style="background:#ffb000" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffb000')" title="#ffb000"><small>#FFB000</small></div></div>
+  <p class="hint">推荐字体：<code>VT323 / IBM Plex Mono（等宽终端字）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>单色显示：绿底绿字 #33ff66 或琥珀色</li><li>扫描线 overlay + CRT 弧面 vignette</li><li>闪烁光标、逐字打字效果</li><li>纯 ASCII 界面，无图形</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>背景 #0a1a0a，文字 #33ff66，font VT323</li><li>扫描线：repeating-linear-gradient 叠加</li><li>光标闪烁 animation + text-shadow 发光</li><li>边框用 box-shadow inset 模拟 CRT 弧面</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">黑客主题作品集、CLI 工具官网、复古游戏、极客文化周边。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Retro Terminal / CRT" (终端复古) style. 绿屏/琥珀色单色显示器、等宽字体、扫描线、CRT 弧面、闪烁光标，致敬早期计算机的硬核极客浪漫。 Visual: 单色显示：绿底绿字 #33ff66 或琥珀色; 扫描线 overlay + CRT 弧面 vignette; 闪烁光标、逐字打字效果; 纯 ASCII 界面，无图形. Palette: #0a1a0a, #33ff66, #003b00, #ffb000. Font: VT323 / IBM Plex Mono（等宽终端字）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaporwave · 蒸汽波 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Vaporwave<small>蒸汽波</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(180deg,#ff71ce,#b967ff 40%,#01cdfe);overflow:hidden"><div style="position:absolute;inset:50% 0 0 0;background:linear-gradient(0deg,#2a0a4a,transparent),repeating-linear-gradient(90deg,transparent,transparent 22px,#ff71ce 22px,#ff71ce 24px),repeating-linear-gradient(0deg,transparent,transparent 18px,#01cdfe 18px,#01cdfe 20px);transform:perspective(220px) rotateX(58deg);transform-origin:top"></div><div style="position:absolute;left:50%;top:20px;transform:translateX(-50%);font-size:20px;color:#fff;text-shadow:0 0 8px #ff71ce;font-family:Arial">VAPORWAVE</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">粉紫青蓝渐变、希腊雕塑、棕榈、80s 网格地平线、日文假名，怀旧迷幻的赛博怀旧美学。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">2012+</span>
+    <span class="tag">蒸汽波 粉紫 希腊雕塑 复古网格</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ff71ce" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff71ce')" title="#ff71ce"><small>#FF71CE</small></div><div class="sw" style="background:#01cdfe" onclick="navigator.clipboard&&navigator.clipboard.writeText('#01cdfe')" title="#01cdfe"><small>#01CDFE</small></div><div class="sw" style="background:#b967ff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#b967ff')" title="#b967ff"><small>#B967FF</small></div><div class="sw" style="background:#05ffa1" onclick="navigator.clipboard&&navigator.clipboard.writeText('#05ffa1')" title="#05ffa1"><small>#05FFA1</small></div></div>
+  <p class="hint">推荐字体：<code>VCR OSD Mono / Pixel（复古霓虹字）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>粉紫 + 青蓝 + 品红的迷幻渐变</li><li>80s 透视网格地平线</li><li>希腊柱、棕榈、雕像、日文假名</li><li>故障/扫描线/CRT 质感</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>background: linear-gradient 粉紫青</li><li>用 perspective grid（CSS transform 透视网格）</li><li>叠加 scanline / glitch 滤镜</li><li>字体 VCR OSD Mono / 像素霓虹</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">音乐封面（Macintosh Plus）、潮流周边、复古主题作品集、Web3 艺术项目。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Vaporwave" (蒸汽波) style. 粉紫青蓝渐变、希腊雕塑、棕榈、80s 网格地平线、日文假名，怀旧迷幻的赛博怀旧美学。 Visual: 粉紫 + 青蓝 + 品红的迷幻渐变; 80s 透视网格地平线; 希腊柱、棕榈、雕像、日文假名; 故障/扫描线/CRT 质感. Palette: #ff71ce, #01cdfe, #b967ff, #05ffa1. Font: VCR OSD Mono / Pixel（复古霓虹字）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

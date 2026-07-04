@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial + Immersive · 杂志沉浸 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Editorial + Immersive<small>杂志沉浸</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(160deg,#2a2018,#0f0a06 60%);overflow:hidden"><div style="position:absolute;left:14px;top:14px;width:40%;color:#fcf9f4"><div style="font-size:22px;font-family:Georgia,serif;font-weight:800;line-height:.96;letter-spacing:-.02em">The Art of<br>Storytelling</div><div style="font-size:7px;color:#c1272d;letter-spacing:.2em;margin-top:5px;text-transform:uppercase">EDITORIAL · ISSUE 01</div></div><div style="position:absolute;right:12px;bottom:14px;width:42%;font-size:7px;color:#cfc7bb;line-height:1.5;font-family:Georgia,serif"><span style="font-size:20px;float:left;line-height:.85;margin:2px 4px 0 0;color:#fcf9f4">A</span> marriage of refined editorial typography and immersive full-bleed storytelling for premium brands.</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">杂志排版的精致版式 + 沉浸式全屏叙事：大衬线标题、多栏图文、首字下沉，叠加全屏大图视差与滚动驱动章节切换。高端品牌故事的标配。</p>
+  <div class="meta">
+    <span class="tag">复合风格</span>
+    <span class="tag">2022+</span>
+    <span class="tag">杂志 沉浸 editorial immersive 高端品牌 滚动叙事</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#fcf9f4" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fcf9f4')" title="#fcf9f4"><small>#FCF9F4</small></div><div class="sw" style="background:#1a1a1a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1a1a1a')" title="#1a1a1a"><small>#1A1A1A</small></div><div class="sw" style="background:#c1272d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#c1272d')" title="#c1272d"><small>#C1272D</small></div><div class="sw" style="background:#8a8a8a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#8a8a8a')" title="#8a8a8a"><small>#8A8A8A</small></div></div>
+  <p class="hint">推荐字体：<code>Playfair Display / Tiempos（大衬线）配滚动叙事</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>大衬线标题（Playfair 40-80px）+ 多栏正文</li><li>首字下沉、精致图注、严格网格</li><li>全屏大图/视频 hero + 视差滚动</li><li>滚动驱动章节切换（GSAP ScrollTrigger）</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>标题 Playfair Display，正文 column-count 2-3</li><li>hero height:100vh + 背景大图 + 文字 overlay</li><li>滚动用 ScrollTrigger pin 章节 + 视差 translateY</li><li>配色米白底 + 深墨文字 + 一抹红</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Apple 产品故事页、时尚/奢侈品牌官网、高端媒体专题、Airbnb 杂志。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Editorial + Immersive" (杂志沉浸) style. 杂志排版的精致版式 + 沉浸式全屏叙事：大衬线标题、多栏图文、首字下沉，叠加全屏大图视差与滚动驱动章节切换。高端品牌故事的标配。 Visual: 大衬线标题（Playfair 40-80px）+ 多栏正文; 首字下沉、精致图注、严格网格; 全屏大图/视频 hero + 视差滚动; 滚动驱动章节切换（GSAP ScrollTrigger）. Palette: #fcf9f4, #1a1a1a, #c1272d, #8a8a8a. Font: Playfair Display / Tiempos（大衬线）配滚动叙事.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

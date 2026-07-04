@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Gradient Web · 现代渐变 Web — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Modern Gradient Web<small>现代渐变 Web</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#0a0a0f;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px;overflow:hidden"><div style="position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#5b21b6,transparent 60%);filter:blur(30px);top:-60px;left:50%;transform:translateX(-50%);opacity:.7"></div><div style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#0ea5e9,transparent 60%);filter:blur(30px);bottom:-50px;right:10%;opacity:.6"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:transparent;background:linear-gradient(92deg,#fff,#a78bfa);-webkit-background-clip:text;background-clip:text;font-weight:800;font-size:20px">gradient.web</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">Stripe/Vercel 式精致渐变：流动光带、网格背景、柔和渐变文字，干净、专业、有科技感，是当代 SaaS 标配。</p>
+  <div class="meta">
+    <span class="tag">沉浸式 / 3D</span>
+    <span class="tag">2023+</span>
+    <span class="tag">渐变 stripe vercel 现代</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#0a0a0f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0a0a0f')" title="#0a0a0f"><small>#0A0A0F</small></div><div class="sw" style="background:#ffffff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffffff')" title="#ffffff"><small>#FFFFFF</small></div><div class="sw" style="background:#5b21b6" onclick="navigator.clipboard&&navigator.clipboard.writeText('#5b21b6')" title="#5b21b6"><small>#5B21B6</small></div><div class="sw" style="background:#0ea5e9" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0ea5e9')" title="#0ea5e9"><small>#0EA5E9</small></div></div>
+  <p class="hint">推荐字体：<code>Geist / Inter（现代紧凑，负字距）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>背景网格 + 流动渐变光带</li><li>渐变文字（background-clip:text）</li><li>深色底 + 单色高光</li><li>精致、克制、有质感</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>网格：background-image linear-gradient 网格线</li><li>光带：径向/锥形渐变 + blur + 缓动位移</li><li>文字渐变：linear-gradient + -webkit-background-clip:text</li><li>配色深底，高光用品牌色渐变</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Stripe、Vercel、Linear、Resend、当下所有顶级 SaaS 落地页。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Modern Gradient Web" (现代渐变 Web) style. Stripe/Vercel 式精致渐变：流动光带、网格背景、柔和渐变文字，干净、专业、有科技感，是当代 SaaS 标配。 Visual: 背景网格 + 流动渐变光带; 渐变文字（background-clip:text）; 深色底 + 单色高光; 精致、克制、有质感. Palette: #0a0a0f, #ffffff, #5b21b6, #0ea5e9. Font: Geist / Inter（现代紧凑，负字距）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

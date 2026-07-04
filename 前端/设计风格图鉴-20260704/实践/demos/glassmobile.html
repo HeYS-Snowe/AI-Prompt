@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Mobile · 毛玻璃移动 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Glass Mobile<small>毛玻璃移动</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(150deg,#5e5ce6,#ff375f 60%,#ff9f0a);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:rgba(255,255,255,.18);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px;color:#fff"><div style="font-size:9px;opacity:.8">飞行模式</div><div style="font-size:18px;margin-top:4px">✈</div></div><div style="background:rgba(255,255,255,.18);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px;color:#fff"><div style="font-size:9px;opacity:.8">音乐</div><div style="font-size:16px;margin-top:4px">♫</div></div><div style="grid-column:span 2;background:rgba(255,255,255,.18);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px;color:#fff"><div style="font-size:9px;opacity:.8">亮度</div><div style="height:6px;background:rgba(255,255,255,.4);border-radius:3px;margin-top:6px"><div style="width:70%;height:100%;background:#fff;border-radius:3px"></div></div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">彩色渐变背景上漂浮半透明毛玻璃卡片，iOS 控制中心那种感觉，通透、年轻、有层次，是 iOS 14+ 的标志风格。</p>
+  <div class="meta">
+    <span class="tag">移动端 App</span>
+    <span class="tag">iOS 14+</span>
+    <span class="tag">毛玻璃移动 渐变背景 半透明卡 控制中心</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#5e5ce6" onclick="navigator.clipboard&&navigator.clipboard.writeText('#5e5ce6')" title="#5e5ce6"><small>#5E5CE6</small></div><div class="sw" style="background:#ff9f0a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff9f0a')" title="#ff9f0a"><small>#FF9F0A</small></div><div class="sw" style="background:#ff375f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff375f')" title="#ff375f"><small>#FF375F</small></div><div class="sw" style="background:#0a0a0f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0a0a0f')" title="#0a0a0f"><small>#0A0A0F</small></div></div>
+  <p class="hint">推荐字体：<code>SF Pro Text（系统圆润）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>彩色渐变背景 + 半透明卡片漂浮</li><li>backdrop-filter blur 毛玻璃</li><li>圆角大、卡片有层次阴影</li><li>年轻、通透、活力</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>背景 linear-gradient 多彩</li><li>卡片 rgba 半透明 + blur(20px)</li><li>圆角 16-20px + 柔和阴影</li><li>强调色用系统色</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">iOS 控制中心、天气/音乐 App、年轻向工具、小组件界面。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Glass Mobile" (毛玻璃移动) style. 彩色渐变背景上漂浮半透明毛玻璃卡片，iOS 控制中心那种感觉，通透、年轻、有层次，是 iOS 14+ 的标志风格。 Visual: 彩色渐变背景 + 半透明卡片漂浮; backdrop-filter blur 毛玻璃; 圆角大、卡片有层次阴影; 年轻、通透、活力. Palette: #5e5ce6, #ff9f0a, #ff375f, #0a0a0f. Font: SF Pro Text（系统圆润）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

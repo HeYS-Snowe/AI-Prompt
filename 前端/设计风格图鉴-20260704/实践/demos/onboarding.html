@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding Story · 引导故事流 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Onboarding Story<small>引导故事流</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:linear-gradient(160deg,#6c5ce7,#a29bfe);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff"><div style="font-size:40px">🚀</div><div style="font-size:16px;font-weight:700;margin-top:14px">快速开始</div><div style="font-size:10px;opacity:.8;margin-top:6px;text-align:center;max-width:60%">三步上手，开启你的创作之旅</div><div style="position:absolute;bottom:24px;display:flex;gap:6px"><span style="width:24px;height:4px;background:#fff;border-radius:2px"></span><span style="width:6px;height:4px;background:#ffffff55;border-radius:2px"></span><span style="width:6px;height:4px;background:#ffffff55;border-radius:2px"></span></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">全屏插画 + 一句话、左右滑动、跳过按钮、进度点，首次启动引导的标准模式，讲故事、低门槛、建立第一印象。</p>
+  <div class="meta">
+    <span class="tag">移动端 App</span>
+    <span class="tag">常青</span>
+    <span class="tag">引导 onboarding 全屏插画 一句话 滑动 进度点</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#6c5ce7" onclick="navigator.clipboard&&navigator.clipboard.writeText('#6c5ce7')" title="#6c5ce7"><small>#6C5CE7</small></div><div class="sw" style="background:#fdcb6e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#fdcb6e')" title="#fdcb6e"><small>#FDCB6E</small></div><div class="sw" style="background:#a29bfe" onclick="navigator.clipboard&&navigator.clipboard.writeText('#a29bfe')" title="#a29bfe"><small>#A29BFE</small></div><div class="sw" style="background:#ffffff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffffff')" title="#ffffff"><small>#FFFFFF</small></div></div>
+  <p class="hint">推荐字体：<code>Poppins / Nunito（友好圆润）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>全屏插画 + 一句话标题</li><li>左右滑动切换，进度点指示</li><li>跳过按钮始终可见</li><li>首次启动，建立认知</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>每屏：全屏插画 + 居中一句话</li><li>底部进度点 + 跳过按钮</li><li>滑动用 transform translateX</li><li>插画用 clay/扁平风格</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">所有 App 首次启动、功能介绍、权限请求引导。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Onboarding Story" (引导故事流) style. 全屏插画 + 一句话、左右滑动、跳过按钮、进度点，首次启动引导的标准模式，讲故事、低门槛、建立第一印象。 Visual: 全屏插画 + 一句话标题; 左右滑动切换，进度点指示; 跳过按钮始终可见; 首次启动，建立认知. Palette: #6c5ce7, #fdcb6e, #a29bfe, #ffffff. Font: Poppins / Nunito（友好圆润）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

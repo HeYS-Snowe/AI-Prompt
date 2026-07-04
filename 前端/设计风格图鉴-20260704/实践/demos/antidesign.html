@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anti-Design · 反设计 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Anti-Design<small>反设计</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#ffff00;overflow:hidden"><div style="position:absolute;top:14px;left:16px;font-size:26px;font-family:Comic Sans MS,cursive;color:#ff00ff;font-weight:700;transform:rotate(-6deg)">anti!</div><div style="position:absolute;top:40px;right:20px;font-size:13px;color:#0000ff;text-decoration:underline">click here?</div><div style="position:absolute;bottom:18px;left:24px;font-size:11px;color:#00ff00;background:#000;padding:3px 7px;transform:rotate(4deg);font-family:Times New Roman">no rules</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">故意打破所有规则：混乱布局、不协调配色、复古系统字体，比 Brutalism 更极端、更随性，反叛、实验、有作者性。</p>
+  <div class="meta">
+    <span class="tag">网页表面风格</span>
+    <span class="tag">2020+</span>
+    <span class="tag">反设计 antidesign 混乱 打破规则 系统字体</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ff00ff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff00ff')" title="#ff00ff"><small>#FF00FF</small></div><div class="sw" style="background:#00ff00" onclick="navigator.clipboard&&navigator.clipboard.writeText('#00ff00')" title="#00ff00"><small>#00FF00</small></div><div class="sw" style="background:#ffff00" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffff00')" title="#ffff00"><small>#FFFF00</small></div><div class="sw" style="background:#0000ff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0000ff')" title="#0000ff"><small>#0000FF</small></div></div>
+  <p class="hint">推荐字体：<code>Comic Sans / Times New Roman / 系统默认（故意不协调）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>故意不协调：撞色、错位、字号混乱</li><li>复古系统字体（Comic Sans/Times）</li><li>打破网格，自由错落</li><li>比 Brutalism 更混乱，更"个人"</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>配色高饱和撞色（品红+绿+黄+蓝）</li><li>字体 Comic Sans / Times / 默认系统字</li><li>布局打破网格，元素随手放</li><li>链接下划线、文字倾斜、字号随意</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">艺术项目、实验性网站、反叛品牌、部分设计师作品集。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Anti-Design" (反设计) style. 故意打破所有规则：混乱布局、不协调配色、复古系统字体，比 Brutalism 更极端、更随性，反叛、实验、有作者性。 Visual: 故意不协调：撞色、错位、字号混乱; 复古系统字体（Comic Sans/Times）; 打破网格，自由错落; 比 Brutalism 更混乱，更"个人". Palette: #ff00ff, #00ff00, #ffff00, #0000ff. Font: Comic Sans / Times New Roman / 系统默认（故意不协调）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

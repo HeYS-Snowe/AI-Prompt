@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Tool / DAW Dark · 专业工具暗色 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Pro Tool / DAW Dark<small>专业工具暗色</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#1e1e20;display:flex;flex-direction:column"><div style="background:#2a2a2e;padding:6px 10px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #0a0a0a"><div style="width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5a5a5e,#1a1a1e);border:1px solid #3a3a3e"></div><div style="width:60px;height:6px;background:#3a3a3e;border-radius:3px;position:relative"><div style="position:absolute;left:60%;top:-3px;width:4px;height:12px;background:#0a84ff;border-radius:2px"></div></div><div style="color:#888;font-size:8px">-6.0 dB</div></div><div style="flex:1;display:flex;flex-direction:column;padding:8px;gap:4px"><div style="background:#2a2a2e;border-radius:4px;height:24px;display:flex;align-items:center;padding:0 8px;gap:8px"><div style="width:50px;color:#ccc;font-size:7px">轨道 1</div><svg width="60%" height="16" viewBox="0 0 200 16"><polyline points="0,8 10,4 20,12 30,3 40,13 50,5 60,11 70,2 80,14 90,6 100,10 110,4 120,12 130,3 140,13 150,6 160,10 170,5 180,11 190,7 200,8" fill="none" stroke="#0a84ff" stroke-width="1.5"/></svg></div><div style="background:#2a2a2e;border-radius:4px;height:24px;display:flex;align-items:center;padding:0 8px;gap:8px"><div style="width:50px;color:#ccc;font-size:7px">轨道 2</div><svg width="60%" height="16" viewBox="0 0 200 16"><polyline points="0,8 15,6 30,10 45,4 60,12 75,7 90,9 105,5 120,11 135,6 150,10 165,4 180,12 195,8" fill="none" stroke="#ff9f0a" stroke-width="1.5"/></svg></div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">音频/视频/设计等专业软件的暗色高密度界面：深灰面板、密集控件、波形/时间轴，为专业工作流优化。</p>
+  <div class="meta">
+    <span class="tag">桌面软件</span>
+    <span class="tag">常青</span>
+    <span class="tag">专业工具 daw 音频 视频 暗色 高密度</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#1e1e20" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1e1e20')" title="#1e1e20"><small>#1E1E20</small></div><div class="sw" style="background:#2a2a2e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#2a2a2e')" title="#2a2a2e"><small>#2A2A2E</small></div><div class="sw" style="background:#3a3a3e" onclick="navigator.clipboard&&navigator.clipboard.writeText('#3a3a3e')" title="#3a3a3e"><small>#3A3A3E</small></div><div class="sw" style="background:#0a84ff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0a84ff')" title="#0a84ff"><small>#0A84FF</small></div></div>
+  <p class="hint">推荐字体：<code>Inter / SF Pro（紧凑，小字号）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>深灰面板（#1e1e20~#2a2a2e）</li><li>密集控件：旋钮、推子、波形</li><li>时间轴/轨道布局</li><li>强调色克制，多为蓝/橙</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>面板分级 #1e1e20/#2a2a2e/#3a3a3e</li><li>波形用 SVG path，推子/旋钮自定义</li><li>时间轴用 grid + 缩放</li><li>控件密集但分组清晰</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Logic Pro、Ableton、Premiere、DaVinci Resolve、Figma 暗色。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Pro Tool / DAW Dark" (专业工具暗色) style. 音频/视频/设计等专业软件的暗色高密度界面：深灰面板、密集控件、波形/时间轴，为专业工作流优化。 Visual: 深灰面板（#1e1e20~#2a2a2e）; 密集控件：旋钮、推子、波形; 时间轴/轨道布局; 强调色克制，多为蓝/橙. Palette: #1e1e20, #2a2a2e, #3a3a3e, #0a84ff. Font: Inter / SF Pro（紧凑，小字号）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

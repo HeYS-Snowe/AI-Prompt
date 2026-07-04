@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material You (M3) · Material 3 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Material You (M3)<small>Material 3</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#fef7ff;display:flex;align-items:center;justify-content:center;gap:10px"><div style="width:60%;background:#eaddff;border-radius:24px;padding:16px;color:#21005d"><div style="font-size:13px;font-weight:700">Material You</div><div style="font-size:10px;opacity:.7;margin-top:3px">动态取色 大圆角</div><div style="display:flex;gap:6px;margin-top:12px"><span style="padding:5px 12px;border-radius:8px;background:#6750a4;color:#fff;font-size:10px;font-weight:600">Filled</span><span style="padding:5px 12px;border-radius:8px;background:#eaddff;color:#6750a4;border:1px solid #cac4d0;font-size:10px;font-weight:600">Outline</span></div></div><div style="position:absolute;right:18px;bottom:18px;width:46px;height:46px;border-radius:16px;background:#6750a4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 16px rgba(103,80,164,.4)">+</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">Google 新一代设计语言：从壁纸提取动态配色，圆角更夸张，组件更软，强调个性与情感。</p>
+  <div class="meta">
+    <span class="tag">网页表面风格</span>
+    <span class="tag">2021</span>
+    <span class="tag">材质你 动态色彩 大圆角</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#6750a4" onclick="navigator.clipboard&&navigator.clipboard.writeText('#6750a4')" title="#6750a4"><small>#6750A4</small></div><div class="sw" style="background:#eaddff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#eaddff')" title="#eaddff"><small>#EADDFF</small></div><div class="sw" style="background:#21005d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#21005d')" title="#21005d"><small>#21005D</small></div><div class="sw" style="background:#625b71" onclick="navigator.clipboard&&navigator.clipboard.writeText('#625b71')" title="#625b71"><small>#625B71</small></div></div>
+  <p class="hint">推荐字体：<code>Roboto / Google Sans</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>动态取色（Dynamic Color）从壁纸生成整套色板</li><li>圆角刻意大：按钮 999px、卡片 16~28px</li><li>Tonals：主色衍生 5 档深浅（primary container 等）</li><li>FAB、Chip、导航栏风格统一柔和</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>配色用 M3 tonal palette：primary / onPrimary / primaryContainer / onPrimaryContainer</li><li>阴影柔，多靠 elevation tonal 而非黑阴影</li><li>按钮高度 40px、Chip 圆角 8px、卡片 12~28px</li><li>参考 Material Theme Builder 直接生成 token</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Android 12+ 系统 UI、Google 全家桶、Flutter Material 3 组件库。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Material You (M3)" (Material 3) style. Google 新一代设计语言：从壁纸提取动态配色，圆角更夸张，组件更软，强调个性与情感。 Visual: 动态取色（Dynamic Color）从壁纸生成整套色板; 圆角刻意大：按钮 999px、卡片 16~28px; Tonals：主色衍生 5 档深浅（primary container 等）; FAB、Chip、导航栏风格统一柔和. Palette: #6750a4, #eaddff, #21005d, #625b71. Font: Roboto / Google Sans.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

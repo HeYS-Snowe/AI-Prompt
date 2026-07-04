@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generative UI · 生成式边框 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Generative UI<small>生成式边框</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#0b0b0f;display:flex;align-items:center;justify-content:center"><svg width="70%" height="80" viewBox="0 0 200 80"><path d="M10,40 Q30,15 50,40 T90,40 T130,40 T170,40 T210,40" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="6 4"/><path d="M10,55 Q30,30 50,55 T90,55 T130,55 T170,55 T210,55" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="3 5"/></svg></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">边框不再是直线，而是流动的、随机的波浪线或点阵，由算法/动效生成，强调 AI 原生的"活的"界面。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">2026 前沿</span>
+    <span class="tag">生成式 边框 流动波浪 点阵 generative</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#0b0b0f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0b0b0f')" title="#0b0b0f"><small>#0B0B0F</small></div><div class="sw" style="background:#7dd3fc" onclick="navigator.clipboard&&navigator.clipboard.writeText('#7dd3fc')" title="#7dd3fc"><small>#7DD3FC</small></div><div class="sw" style="background:#c4b5fd" onclick="navigator.clipboard&&navigator.clipboard.writeText('#c4b5fd')" title="#c4b5fd"><small>#C4B5FD</small></div><div class="sw" style="background:#34d399" onclick="navigator.clipboard&&navigator.clipboard.writeText('#34d399')" title="#34d399"><small>#34D399</small></div></div>
+  <p class="hint">推荐字体：<code>Space Grotesk / Geist（现代几何）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>边框用 SVG path 波浪线 / 虚线点阵</li><li>随机生成，每次不同</li><li>配以微动效（流动/呼吸）</li><li>深色底 + 发光描边</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>SVG path 画波浪/点阵边框，stroke-dasharray 动画</li><li>border 用 stroke-dashoffset 流动</li><li>配色深底 + 单色发光描边</li><li>可加 noise/random 让边框"活"起来</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">AI Agent 界面、自动化工具、前沿科技产品、2026 新兴趋势。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Generative UI" (生成式边框) style. 边框不再是直线，而是流动的、随机的波浪线或点阵，由算法/动效生成，强调 AI 原生的"活的"界面。 Visual: 边框用 SVG path 波浪线 / 虚线点阵; 随机生成，每次不同; 配以微动效（流动/呼吸）; 深色底 + 发光描边. Palette: #0b0b0f, #7dd3fc, #c4b5fd, #34d399. Font: Space Grotesk / Geist（现代几何）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

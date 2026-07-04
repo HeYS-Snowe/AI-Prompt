@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duotone · 双色调 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Duotone<small>双色调</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#1d3557;display:flex;align-items:center;justify-content:center;overflow:hidden"><div style="position:absolute;width:120px;height:120px;border-radius:50%;background:#e63946;mix-blend-mode:screen;top:14px;right:14px;opacity:.9"></div><div style="position:relative;text-align:center"><div style="font-size:24px;font-weight:900;color:#f1faee;letter-spacing:-.02em">DUO<br>TONE</div><div style="color:#e63946;font-size:9px;letter-spacing:.2em;margin-top:6px">TWO-COLOR WORLD</div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">只用两个对比色（如深蓝+亮橙）渲染图像/界面，源自印刷，强对比、风格化、高级且统一。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">常青</span>
+    <span class="tag">双色调 duotone 高对比 印刷</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#1d3557" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1d3557')" title="#1d3557"><small>#1D3557</small></div><div class="sw" style="background:#e63946" onclick="navigator.clipboard&&navigator.clipboard.writeText('#e63946')" title="#e63946"><small>#E63946</small></div><div class="sw" style="background:#f1faee" onclick="navigator.clipboard&&navigator.clipboard.writeText('#f1faee')" title="#f1faee"><small>#F1FAEE</small></div><div class="sw" style="background:#457b9d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#457b9d')" title="#457b9d"><small>#457B9D</small></div></div>
+  <p class="hint">推荐字体：<code>Inter / Oswald（干净，让色彩说话）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>图像用双色映射（filter / blend）</li><li>界面整体锁定双色 + 中性</li><li>高对比、强视觉统一</li><li>常配大字号无衬线</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>图像：CSS filter + mix-blend-mode，或 SVG feColorMatrix 双色映射</li><li>配色锁定 1 深 1 亮 + 中性灰</li><li>文字用浅色叠在深色之上</li><li>适合摄影/媒体类内容</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Spotify 早期品牌、媒体杂志、音乐流媒体、海报设计。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Duotone" (双色调) style. 只用两个对比色（如深蓝+亮橙）渲染图像/界面，源自印刷，强对比、风格化、高级且统一。 Visual: 图像用双色映射（filter / blend）; 界面整体锁定双色 + 中性; 高对比、强视觉统一; 常配大字号无衬线. Palette: #1d3557, #e63946, #f1faee, #457b9d. Font: Inter / Oswald（干净，让色彩说话）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

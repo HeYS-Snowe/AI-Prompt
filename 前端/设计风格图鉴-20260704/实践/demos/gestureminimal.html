@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gesture-first Minimal · 手势优先极简 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Gesture-first Minimal<small>手势优先极简</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#000;overflow:hidden"><div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#2a1a3a,#000)"></div><div style="position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);color:#fff;text-align:center"><div style="font-size:16px;font-weight:700">swipe</div><div style="font-size:9px;color:#ffffff99;margin-top:4px">向左滑看下一个</div></div><div style="position:absolute;right:10px;bottom:30px;display:flex;flex-direction:column;gap:14px;align-items:center;color:#fff"><span style="font-size:16px">♥</span><span style="font-size:14px">💬</span><span style="font-size:14px">↗</span></div><div style="position:absolute;left:0;right:0;bottom:8px;display:flex;gap:4px;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#fff"></span><span style="width:6px;height:6px;border-radius:50%;background:#fff4"></span><span style="width:6px;height:6px;border-radius:50%;background:#fff4"></span></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">极简到几乎无按钮，靠手势（滑动、长按、捏合）驱动，全屏沉浸、内容至上，是新一代「无感」设计。</p>
+  <div class="meta">
+    <span class="tag">移动端 App</span>
+    <span class="tag">2020+</span>
+    <span class="tag">手势极简 无按钮 全屏 swipable</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#000000" onclick="navigator.clipboard&&navigator.clipboard.writeText('#000000')" title="#000000"><small>#000000</small></div><div class="sw" style="background:#ffffff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffffff')" title="#ffffff"><small>#FFFFFF</small></div><div class="sw" style="background:#ff375f" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff375f')" title="#ff375f"><small>#FF375F</small></div><div class="sw" style="background:#f5f5f7" onclick="navigator.clipboard&&navigator.clipboard.writeText('#f5f5f7')" title="#f5f5f7"><small>#F5F5F7</small></div></div>
+  <p class="hint">推荐字体：<code>SF Pro / 系统默认（超克制）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>全屏沉浸，隐藏导航</li><li>手势驱动：左右滑切换、长按操作</li><li>极少的可见控件，浮于内容之上</li><li>动画跟手、有物理感</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>隐藏 TabBar/NavBar，手势替代</li><li>关键操作浮层化，闲置时淡出</li><li>手势配 spring 物理动效</li><li>内容铺满全屏，安全区留白</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">TikTok（全屏滑动）、Instagram Reels、Apple Books、Arc 移动版。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Gesture-first Minimal" (手势优先极简) style. 极简到几乎无按钮，靠手势（滑动、长按、捏合）驱动，全屏沉浸、内容至上，是新一代「无感」设计。 Visual: 全屏沉浸，隐藏导航; 手势驱动：左右滑切换、长按操作; 极少的可见控件，浮于内容之上; 动画跟手、有物理感. Palette: #000000, #ffffff, #ff375f, #f5f5f7. Font: SF Pro / 系统默认（超克制）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

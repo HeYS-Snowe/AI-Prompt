@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Web 90s · 90 年代网页 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Retro Web 90s<small>90 年代网页</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#008080;background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1px);background-size:12px 12px;padding:14px;text-align:center;font-family:Times New Roman"><div style="font-size:22px;color:#ffff00;font-weight:700;text-shadow:1px 1px #000">★ 欢迎来到我的主页 ★</div><div style="font-size:11px;color:#fff;margin-top:6px">建设中...</div><div style="margin-top:8px;display:inline-block;background:#c0c0c0;border:2px outset;padding:4px 10px;font-size:10px;color:#000">点击这里</div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">致敬早期互联网：Comic Sans、平铺背景图、&amp;lt;marquee&amp;gt;滚动、下划线蓝链、GIF 动画、表格布局，怀旧、原生态、网景时代。</p>
+  <div class="meta">
+    <span class="tag">网页表面风格</span>
+    <span class="tag">1990s</span>
+    <span class="tag">90s 网页 comic sans marquee gif 平铺背景</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#008080" onclick="navigator.clipboard&&navigator.clipboard.writeText('#008080')" title="#008080"><small>#008080</small></div><div class="sw" style="background:#0000ee" onclick="navigator.clipboard&&navigator.clipboard.writeText('#0000ee')" title="#0000ee"><small>#0000EE</small></div><div class="sw" style="background:#008000" onclick="navigator.clipboard&&navigator.clipboard.writeText('#008000')" title="#008000"><small>#008000</small></div><div class="sw" style="background:#c0c0c0" onclick="navigator.clipboard&&navigator.clipboard.writeText('#c0c0c0')" title="#c0c0c0"><small>#C0C0C0</small></div></div>
+  <p class="hint">推荐字体：<code>Comic Sans MS / Times New Roman（复古系统字）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>平铺背景纹理/壁纸</li><li>Comic Sans / Times 字体</li><li>下划线蓝色超链接</li><li>&amp;lt;marquee&amp;gt; 滚动文字、GIF、表格布局</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>背景平铺小纹理图案</li><li>字体 Comic Sans MS</li><li>链接 color:#0000ee; text-decoration:underline</li><li>表格布局，文字密集，居中对齐</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">怀旧个人站、复古趣味项目、Web1 致敬页、Lo-fi 美学。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Retro Web 90s" (90 年代网页) style. 致敬早期互联网：Comic Sans、平铺背景图、&amp;lt;marquee&amp;gt;滚动、下划线蓝链、GIF 动画、表格布局，怀旧、原生态、网景时代。 Visual: 平铺背景纹理/壁纸; Comic Sans / Times 字体; 下划线蓝色超链接; &amp;lt;marquee&amp;gt; 滚动文字、GIF、表格布局. Palette: #008080, #0000ee, #008000, #c0c0c0. Font: Comic Sans MS / Times New Roman（复古系统字）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>

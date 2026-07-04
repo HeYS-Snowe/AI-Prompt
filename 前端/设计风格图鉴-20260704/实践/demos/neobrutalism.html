@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo-Brutalism · 新野性主义 — Demo</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#15151d;--ink:#f4f4f7;--ink2:#a8a8b8;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh;padding:0}
+  .top{position:sticky;top:0;background:rgba(11,11,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;z-index:5}
+  .top a{color:var(--ink2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .top a:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+  .top .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .top .nm small{color:var(--ink2);font-weight:600;font-size:12px;margin-left:8px}
+  .stage{position:relative;height:46vh;min-height:280px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  h2{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:30px 0 14px;font-weight:700}
+  .lead{color:var(--ink);font-size:16px;line-height:1.65;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  ul{list-style:none}
+  li{color:var(--ink2);font-size:14px;line-height:1.6;padding:6px 0 6px 18px;position:relative}
+  li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:#ff5a3c}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:#ffd166;font-family:ui-monospace,Consolas,monospace}
+  .pal{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .pal .sw{width:60px;height:60px;border-radius:10px;cursor:pointer;border:1px solid var(--line);transition:.15s}
+  .pal .sw:hover{transform:translateY(-2px)}
+  .pal .sw small{display:block;text-align:center;font-size:10px;color:var(--ink2);margin-top:6px;font-family:ui-monospace,monospace;background:var(--panel);border-radius:0 0 10px 10px;padding:3px 0}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+  .pcard pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink2);line-height:1.6}
+  .pcard button{margin-top:12px;background:#ff5a3c;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .hint{color:var(--ink2);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="../前端设计风格图鉴.html">&#8592; 返回图鉴</a>
+  <div class="nm">Neo-Brutalism<small>新野性主义</small></div>
+</div>
+<div class="stage"><div style="position:absolute;inset:0;background:#ffe156;display:flex;align-items:center;justify-content:center"><div style="background:#fff;border:3px solid #1a1a1a;border-radius:14px;box-shadow:6px 6px 0 #1a1a1a;padding:16px 18px;text-align:center"><div style="font-size:18px;font-weight:900;color:#1a1a1a;font-family:Arial,sans-serif">NEO-BRUTAL</div><div style="display:inline-block;margin-top:10px;padding:7px 16px;background:#ff6b9d;color:#1a1a1a;border:3px solid #1a1a1a;border-radius:999px;font-weight:800;font-size:11px;box-shadow:3px 3px 0 #1a1a1a">CLICK ME</div></div></div></div>
+<div class="wrap">
+  <h2>风格速览</h2>
+  <p class="lead">野性主义的可爱进化版：粗黑实线边框 + 饱和亮色 + 硬投影偏移，活泼、醒目、强交互感，是 2022 后流行风。</p>
+  <div class="meta">
+    <span class="tag">氛围主题风格</span>
+    <span class="tag">2021+</span>
+    <span class="tag">新野性 粗黑边 亮色 偏移阴影</span>
+  </div>
+
+  <h2>配色 Palette · 点击复制</h2>
+  <div class="pal"><div class="sw" style="background:#ffe156" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ffe156')" title="#ffe156"><small>#FFE156</small></div><div class="sw" style="background:#ff6b9d" onclick="navigator.clipboard&&navigator.clipboard.writeText('#ff6b9d')" title="#ff6b9d"><small>#FF6B9D</small></div><div class="sw" style="background:#4d96ff" onclick="navigator.clipboard&&navigator.clipboard.writeText('#4d96ff')" title="#4d96ff"><small>#4D96FF</small></div><div class="sw" style="background:#1a1a1a" onclick="navigator.clipboard&&navigator.clipboard.writeText('#1a1a1a')" title="#1a1a1a"><small>#1A1A1A</small></div></div>
+  <p class="hint">推荐字体：<code>Space Grotesk / Archivo（粗壮几何）</code></p>
+
+  <h2>视觉特征 / 如何复刻</h2>
+  <div class="grid">
+    <div><h2 style="margin-top:0;font-size:13px">视觉特征</h2><ul><li>边框统一 2~4px 纯黑实线 #000</li><li>硬投影 box-shadow: 4px 4px 0 #000（无模糊）</li><li>底色高饱和：黄、粉、蓝、绿</li><li>圆角 0~12px，按钮按下偏移归零</li></ul></div>
+    <div><h2 style="margin-top:0;font-size:13px">如何复刻</h2><ul><li>box-shadow: 6px 6px 0 #1a1a1a; border: 3px solid #1a1a1a</li><li>hover：transform: translate(-2px,-2px); shadow: 8px 8px 0</li><li>配色块状对比，每块一个亮色</li><li>字体用粗黑几何无衬线，权重 700+</li></ul></div>
+  </div>
+
+  <h2>范例与适用</h2>
+  <p class="lead" style="font-size:14px;color:var(--ink2)">Gumroad、Linear 早期、Framer 模板、大量 indie SaaS 与 Web3 产品。</p>
+
+  <h2>即用 Prompt</h2>
+  <div class="pcard">
+    <pre>Build a page in "Neo-Brutalism" (新野性主义) style. 野性主义的可爱进化版：粗黑实线边框 + 饱和亮色 + 硬投影偏移，活泼、醒目、强交互感，是 2022 后流行风。 Visual: 边框统一 2~4px 纯黑实线 #000; 硬投影 box-shadow: 4px 4px 0 #000（无模糊）; 底色高饱和：黄、粉、蓝、绿; 圆角 0~12px，按钮按下偏移归零. Palette: #ffe156, #ff6b9d, #4d96ff, #1a1a1a. Font: Space Grotesk / Archivo（粗壮几何）.</pre>
+    <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='已复制 ✓';setTimeout(()=>this.textContent='复制 Prompt',1400)">复制 Prompt</button>
+  </div>
+</div>
+</body>
+</html>
