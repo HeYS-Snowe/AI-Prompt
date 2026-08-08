@@ -1,2 +1,5 @@
 # 本地配置(Claude Code 会话级权限,不入库)
 .claude/settings.local.json
+
+# 本地会话恢复快捷方式（含本地会话 ID，不入库）
+.对话.*
